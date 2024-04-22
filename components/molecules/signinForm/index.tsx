@@ -1,11 +1,14 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { PrimaryTextColors, UserLogin } from "@/models";
+import { FcGoogle } from "react-icons/fc";
+
 import {
   Box,
   Button,
   Checkbox,
   Divider,
+  Flex,
   FormControl,
   FormLabel,
   HStack,
@@ -122,6 +125,24 @@ function SigninForm() {
             </Text>
             <Divider borderColor={borderColor} />
           </HStack>
+          <Button
+            p="25px 20px"
+            borderRadius="30px"
+            background="transparent"
+            borderColor={borderColor}
+            borderWidth="2px"
+          >
+            <Flex
+              alignItems="center"
+              justifyContent="space-between"
+              gap="20px"
+              w="100%"
+            >
+              <FcGoogle fontSize="25px" />
+              <Text fontSize="17px">Sign in with Google</Text>
+              <Text></Text>
+            </Flex>
+          </Button>
         </Stack>
       </FormControl>
     </Box>
