@@ -1,8 +1,6 @@
 "use client";
-import { useForm } from "react-hook-form";
-import { PrimaryTextColors, UserLogin } from "@/models";
-import { FcGoogle } from "react-icons/fc";
 
+import { useForm } from "react-hook-form";
 import {
   Box,
   Button,
@@ -22,17 +20,20 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
+import { UserRegister, PrimaryTextColors } from "@/models";
+import { FcGoogle } from "react-icons/fc";
 
-function SigninForm() {
+function SignupForm() {
   const [isOpen, setIsOpen] = useState(false);
   const borderColor = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
   );
-  const { register, handleSubmit } = useForm<UserLogin>();
+
+  const { register, handleSubmit } = useForm<UserRegister>();
   const textColors = useColorModeValue("black", "white");
 
-  const onSubmit = (data: UserLogin) => {
+  const onSubmit = (data: UserRegister) => {
     console.log(data);
   };
 
@@ -47,6 +48,38 @@ function SigninForm() {
       <FormControl as="form" onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing="6">
           <Stack spacing="5">
+            <Flex gap="20px">
+              <FormControl>
+                <FormLabel htmlFor="firstname" color={borderColor}>
+                  Fisrtname
+                </FormLabel>
+
+                <Input
+                  h="50px"
+                  id="firstname"
+                  type="text"
+                  borderWidth="2px"
+                  borderColor={borderColor}
+                  color={textColors}
+                  {...register("firstname")}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel htmlFor="lastname" color={borderColor}>
+                  Lastname
+                </FormLabel>
+
+                <Input
+                  h="50px"
+                  id="lastname"
+                  type="text"
+                  borderWidth="2px"
+                  borderColor={borderColor}
+                  color={textColors}
+                  {...register("lastname")}
+                />
+              </FormControl>
+            </Flex>
             <FormControl>
               <FormLabel htmlFor="email" color={borderColor}>
                 Email
@@ -58,7 +91,7 @@ function SigninForm() {
                 borderWidth="2px"
                 borderColor={borderColor}
                 color={textColors}
-                {...register("username")}
+                {...register("email")}
               />
             </FormControl>
             <FormControl>
@@ -84,7 +117,7 @@ function SigninForm() {
                   borderColor={borderColor}
                   id="password"
                   type={isOpen ? "text" : "password"}
-                  autoComplete="current-password"
+                  autoComplete="new-password"
                   {...register("password")}
                 />
               </InputGroup>
@@ -93,14 +126,11 @@ function SigninForm() {
           <HStack justify="space-between">
             <Checkbox
               color={borderColor}
-              {...register("rememberMe")}
+              {...register("agreeTerms")}
               defaultChecked
             >
-              Remember me
+              I agree to the terms and conditions
             </Checkbox>
-            <Button variant="text" size="sm" color={borderColor}>
-              Forgot password?
-            </Button>
           </HStack>
         </Stack>
 
@@ -115,13 +145,13 @@ function SigninForm() {
               background="transparent"
               color={borderColor}
             >
-              Sign in
+              Sign up
             </Button>
           </Box>
           <HStack>
             <Divider borderColor={borderColor} />
             <Text textStyle="sm" whiteSpace="nowrap" color={borderColor}>
-              or continue withs
+              or continue with
             </Text>
             <Divider borderColor={borderColor} />
           </HStack>
@@ -149,4 +179,4 @@ function SigninForm() {
   );
 }
 
-export default SigninForm;
+export default SignupForm;

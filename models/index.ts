@@ -8,7 +8,7 @@ import {
 } from "./enums";
 
 import { INavItem } from "./interfaces";
-import { UserLogin } from "./types";
+import { UserLogin, UserRegister } from "./types";
 
 export {
   FullBackgrundColors,
@@ -19,4 +19,4 @@ export {
   LogoColor,
 };
 
-export type { INavItem, UserLogin };
+export type { INavItem, UserLogin, UserRegister };

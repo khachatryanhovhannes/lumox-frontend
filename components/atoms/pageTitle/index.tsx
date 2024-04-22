@@ -13,7 +13,12 @@ function PageTitle({ text }: IPageTitleProps) {
   );
 
   return (
-    <Text textAlign="center" fontSize="40px" color={primaryTextColor}>
+    <Text
+      textAlign="center"
+      fontSize="35px"
+      lineHeight="1"
+      color={primaryTextColor}
+    >
       {text}
     </Text>
   );
