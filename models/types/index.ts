@@ -3,5 +3,11 @@ type UserLogin = {
   password: string;
   rememberMe: boolean;
 };
-
-export type { UserLogin };
+type UserRegister = {
+  firstname: string;
+  lastname: string;
+  email: string;
+  password: string;
+  agreeTerms: boolean;
+};
+export type { UserLogin, UserRegister };
