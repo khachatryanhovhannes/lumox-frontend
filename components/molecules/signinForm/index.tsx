@@ -58,7 +58,7 @@ function SigninForm() {
                 borderWidth="2px"
                 borderColor={borderColor}
                 color={textColors}
-                {...register("username")}
+                {...register("email")}
               />
             </FormControl>
             <FormControl>
