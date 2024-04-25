@@ -4,39 +4,62 @@ import { Inter } from "next/font/google";
 import { PrimaryTextColors, SecondaryTextColors } from "../models";
 import { Search } from "../components";
 const inter = Inter({ subsets: ["latin"] });
-function Home() {
-  const primaryTextColor = useColorModeValue(
-    PrimaryTextColors.lightMode,
-    PrimaryTextColors.darkMode
-  );
 
-  const secondaryTextColor = useColorModeValue(
-    SecondaryTextColors.lightMode,
-    SecondaryTextColors.darkMode
-  );
+function Home() {
+  const primaryTextColors = [
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+  ];
+
+  const secondaryTextColors = [
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+  ];
 
   return (
     <Box textAlign="center">
       <Heading
         fontFamily="Lateef"
-        color={primaryTextColor}
-        fontSize="100px"
+        color={primaryTextColors}
+        fontSize={["30px", "35px", "40px", "45px", "100px"]}
         fontWeight="normal"
-        mt="50px"
-        lineHeight="0.8"
+        mt={["20px", "25px", "30px", "35px", "80px"]}
+        lineHeight={["1", "0.9", "0.8", "0.7", "0.2"]}
       >
         Learn to code for free
       </Heading>
       <Text
         className={inter.className}
-        fontSize="25px"
+        fontSize={["16px", "18px", "20px", "22px", "25px"]}
         fontWeight="100"
-        lineHeight="1"
-        color={secondaryTextColor}
+        lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
+        color={secondaryTextColors}
+        mt={["15px", "20px", "25px", "30px", "22px"]}
       >
         Join the millions learning to code with Lumox for free.
       </Text>
-      <Box mt="30px">
+      <Box mt="20px">
         <Search />
       </Box>
     </Box>
