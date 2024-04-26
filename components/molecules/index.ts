@@ -3,4 +3,13 @@ import SignButtons from "./signButtons";
 import Search from "./search";
 import SigninForm from "./signinForm";
 import SignupForm from "./signupForm";
-export { NavigationBar, SignButtons, Search, SigninForm, SignupForm };
+import AboutForm from "./aboutForm";
+
+export {
+  NavigationBar,
+  SignButtons,
+  Search,
+  SigninForm,
+  SignupForm,
+  AboutForm,
+};

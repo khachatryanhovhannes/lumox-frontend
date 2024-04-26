@@ -1,8 +1,13 @@
 import { PageTitle } from "@/components";
+import { AboutForm } from "@/components";
 import React from "react";
 
-const About = () => {
-  return <PageTitle text="About"/>
-};
+function About() {
+  return (
+    <>
+      <AboutForm />
+    </>
+  );
+}
 
 export default About;
