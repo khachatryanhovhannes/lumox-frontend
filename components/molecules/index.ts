@@ -4,6 +4,7 @@ import Search from "./search";
 import SigninForm from "./signinForm";
 import SignupForm from "./signupForm";
 import AboutForm from "./aboutForm";
+import ContactForm from "./contactForm/index";
 
 export {
   NavigationBar,
@@ -12,4 +13,5 @@ export {
   SigninForm,
   SignupForm,
   AboutForm,
+  ContactForm,
 };
