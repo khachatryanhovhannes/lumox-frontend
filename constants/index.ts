@@ -19,10 +19,6 @@ const NAV_BAR_ITEMS: INavItem[] = [
     label: "Support",
     path: "/support",
   },
-  {
-    label: "Privacy Policy",
-    path: "/privacy-policy",
-  },
 ];
 
 export { NAV_BAR_ITEMS, BASE_URL };

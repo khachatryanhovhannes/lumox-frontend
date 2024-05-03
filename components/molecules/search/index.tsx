@@ -18,7 +18,7 @@ function Search() {
   const textColors = useColorModeValue("black", "white");
 
   return (
-    <InputGroup position="relative" maxWidth="405px" m="auto">
+    <InputGroup position="relative" maxWidth="350px" width="100%" m="auto">
       <InputLeftElement
         position="absolute"
         pointerEvents="none"
@@ -36,8 +36,7 @@ function Search() {
         width="100%"
         borderColor={borderColor}
         borderWidth="2px"
-        paddingLeft="40px" // Adjusted to accommodate the icon
-        margin="auto"
+        paddingLeft="40px"
       />
     </InputGroup>
   );
