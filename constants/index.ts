@@ -16,8 +16,8 @@ const NAV_BAR_ITEMS: INavItem[] = [
     path: "/contact",
   },
   {
-    label: "Support",
-    path: "/support",
+    label: "Help",
+    path: "/help",
   },
 ];
 
