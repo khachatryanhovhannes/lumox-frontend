@@ -3,6 +3,9 @@ import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import { PrimaryTextColors, SecondaryTextColors } from "../models";
 import { Search } from "../components";
+import { BASE_URL } from "@/constants";
+import UseAuth from "@/hooks/useAuth";
+import { useEffect } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
@@ -13,6 +16,14 @@ function Home() {
     useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
     useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
   ];
+
+  const { user } = UseAuth();
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
+  console.log("___________________________________", user);
 
   const secondaryTextColors = [
     useColorModeValue(

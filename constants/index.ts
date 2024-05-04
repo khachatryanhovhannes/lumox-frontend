@@ -19,6 +19,22 @@ const NAV_BAR_ITEMS: INavItem[] = [
     label: "Help",
     path: "/help",
   },
+  {
+    label: "Our team",
+    path: "/our-team",
+  },
 ];
 
-export { NAV_BAR_ITEMS, BASE_URL };
+const OUR_TEAM = [
+  {
+    firstname: "",
+    lastname: "",
+    position: "",
+    description: "",
+    image: "",
+    prifile_link: "",
+  },
+  {},
+];
+
+export { NAV_BAR_ITEMS, BASE_URL, OUR_TEAM };

@@ -22,6 +22,9 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
+import { userLoginWithUsernamePassword } from "@/service/api/userService";
+import { useRouter } from "next/router";
+import UseCookies from "@/hooks/useCookies";
 
 function SigninForm() {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,8 +35,16 @@ function SigninForm() {
   const { register, handleSubmit } = useForm<UserLogin>();
   const textColors = useColorModeValue("black", "white");
 
-  const onSubmit = (data: UserLogin) => {
+  const onSubmit = async (data: UserLogin) => {
     console.log(data);
+    const res = await userLoginWithUsernamePassword({
+      email: data.email,
+      password: data.password,
+    });
+
+    if (res.data.access_token) {
+      UseCookies({ type: "set", access_token: res.data.access_token });
+    }
   };
 
   return (
