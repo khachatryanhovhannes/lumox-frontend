@@ -22,6 +22,8 @@ import { useState } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { UserRegister, PrimaryTextColors } from "@/models";
 import { FcGoogle } from "react-icons/fc";
+import { userRegistrationWithUsernamePassword } from "@/service/api/userService";
+import { usePathname } from "next/navigation";
 
 function SignupForm() {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,8 +35,15 @@ function SignupForm() {
   const { register, handleSubmit } = useForm<UserRegister>();
   const textColors = useColorModeValue("black", "white");
 
-  const onSubmit = (data: UserRegister) => {
-    console.log(data);
+  const onSubmit = async (data: UserRegister) => {
+    const userData = await userRegistrationWithUsernamePassword({
+      email: data.email,
+      password: data.password,
+      firstname: data.firstname,
+      lastname: data.lastname,
+    });
+
+    console.log(userData);
   };
 
   return (
