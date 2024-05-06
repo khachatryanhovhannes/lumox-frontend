@@ -21,7 +21,7 @@ const NAV_BAR_ITEMS: INavItem[] = [
   },
   {
     label: "Our team",
-    path: "/our-team",
+    path: "/team",
   },
 ];
 

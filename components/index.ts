@@ -8,6 +8,8 @@ import {
 import { Header } from "./organisms";
 import { PageTitle } from "./atoms";
 import ContactForm from "@/components/molecules/contactForm";
+import TeamForm from "@/components/molecules/teamForm/index";
+
 
 export {
   NavigationBar,
@@ -18,4 +20,5 @@ export {
   SignupForm,
   AboutForm,
   ContactForm,
+  TeamForm
 };
