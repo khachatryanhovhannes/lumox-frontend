@@ -1,8 +1,10 @@
 "use client";
+import { OUR_TEAM } from "@/constants";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
-import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Heading, Img, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
+
 
 function TeamForm (){
    const primaryTextColors = [
@@ -42,7 +44,7 @@ function TeamForm (){
         mt={["20px", "25px", "30px", "35px", "80px"]}
         lineHeight={["1", "0.9", "0.8", "0.7", "0.2"]}
       >
-        Our Team.{" "}
+        Our Team{" "}
       </Heading>
 
       <Text
@@ -62,7 +64,6 @@ function TeamForm (){
         mt={["15px", "20px", "25px", "30px", "22px"]}
         textAlign = "left"
         margin = "30px"
-        padding = "15px 15px 300px"
         >
          Leadership
          </Text>
@@ -74,11 +75,48 @@ function TeamForm (){
         mt={["15px", "20px", "25px", "30px", "22px"]}
         textAlign = "left"
         margin = "30px"
-        padding = "15px 15px 300px"
         >
          Team
          </Text>
       </Box>
+
+      {OUR_TEAM.map((member, index) =>(
+        <Box key={index} mt = "30px">
+          <Heading as = "h3" fontSize = "24px"
+          >
+            {member.firstname} {member.lastname}
+          </Heading>
+
+          <Text fontSize = "18px"
+           fontWeight = "bold" 
+           color = {secondaryTextColors} 
+           mt = "10px"
+           >
+            {member.position}
+          </Text>
+
+          <Text fontSize = "16px" 
+          color = {secondaryTextColors}
+          mt = "10px"
+          >
+            {member.description} 
+          </Text>
+
+          <Box mt = "10px"
+          >
+            <Img src = {member.image} alt = {member.firstname} />
+          </Box>
+
+          <Text fontSize = "14px" 
+          color = {secondaryTextColors} 
+          mt = "10px"
+          >
+            <a href = {member.profile_link} target = "_blank" rel = "noopener noreferrer">
+              View Profile
+            </a>
+          </Text>
+        </Box>
+      ))}  
     </Box>
     );
 }

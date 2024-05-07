@@ -32,7 +32,7 @@ const OUR_TEAM = [
     position: "",
     description: "",
     image: "",
-    prifile_link: "",
+    profile_link: "",
   },
   {},
 ];
