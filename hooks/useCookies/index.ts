@@ -4,9 +4,12 @@ type UseCookiesProps =
       access_token: string;
       refresh_token?: string;
     }
-  | { type: "get" };
+  | { type: "get" }
+  | { type: "delete" };
 
 function UseCookies(params: UseCookiesProps) {
+  const cookies = document.cookie.split(";");
+
   if (params.type === "set") {
     const { access_token, refresh_token } = params;
     document.cookie = `access_token=${access_token}; path=/`;
@@ -14,13 +17,22 @@ function UseCookies(params: UseCookiesProps) {
       document.cookie = `refresh_token=${refresh_token}; path=/`;
     }
   } else if (params.type === "get") {
-    const cookies = document.cookie.split(";");
-    const access_token = cookies.find((c) => c.startsWith("access_token="));
-    const refresh_token = cookies.find((c) => c.startsWith("refresh_token="));
+    const accessCookie = cookies.find((c) =>
+      c.trim().startsWith("access_token=")
+    );
+    const refreshCookie = cookies.find((c) =>
+      c.trim().startsWith("refresh_token=")
+    );
+
     return {
-      access_token: access_token?.split("=")[1],
-      refresh_token: refresh_token?.split("=")[1],
+      access_token: accessCookie ? accessCookie.split("=")[1] : undefined,
+      refresh_token: refreshCookie ? refreshCookie.split("=")[1] : undefined,
     };
+  } else if (params.type === "delete") {
+    document.cookie =
+      "access_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie =
+      "refresh_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   }
 }
 
