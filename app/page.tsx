@@ -1,11 +1,12 @@
 "use client";
-import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Heading, Text, Link, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
-import { PrimaryTextColors, SecondaryTextColors } from "../models";
 import { Search } from "../components";
+import { PrimaryTextColors, SecondaryTextColors } from "../models";
 import { BASE_URL } from "@/constants";
 import UseAuth from "@/hooks/useAuth";
 import { useEffect } from "react";
+import UseCookies from "@/hooks/useCookies";
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
@@ -16,14 +17,6 @@ function Home() {
     useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
     useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
   ];
-
-  const { user } = UseAuth();
-
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
-
-  console.log("___________________________________", user);
 
   const secondaryTextColors = [
     useColorModeValue(
@@ -47,6 +40,14 @@ function Home() {
       SecondaryTextColors.darkMode
     ),
   ];
+
+  const { user } = UseAuth();
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
+  console.log("___________________________________", user);
 
   return (
     <Box textAlign="center">
@@ -72,6 +73,41 @@ function Home() {
       </Text>
       <Box mt="20px">
         <Search />
+      </Box>
+      <Box mt="50px" display="flex" justifyContent="center">
+        <Link href="#" color={secondaryTextColors} mr="60px">
+          Coderepublic{" "}
+        </Link>
+        <Link href="#" color={secondaryTextColors} mr="60px">
+          Javascript{" "}
+        </Link>
+        <Link href="#" color={secondaryTextColors} mr="60px">
+          Programming{" "}
+        </Link>
+        <Link href="#" color={secondaryTextColors} mr="60px">
+          Linux{" "}
+        </Link>
+        <Link href="#" color={secondaryTextColors} mr="60px">
+          LinusTorvalds{" "}
+        </Link>
+        <Link href="#" color={secondaryTextColors} mr="60px">
+          Coderepublic{" "}
+        </Link>
+        <Link href="#" color={secondaryTextColors} mr="60px">
+          Javascript{" "}
+        </Link>
+        <Link href="#" color={secondaryTextColors} mr="60px">
+          Programming{" "}
+        </Link>
+        <Link href="#" color={secondaryTextColors} mr="60px">
+          Linux{" "}
+        </Link>
+        <Link href="#" color={secondaryTextColors}>
+          LinusTorvalds{" "}
+        </Link>
+        <Link href="#" color={secondaryTextColors}>
+          Programming{" "}
+        </Link>
       </Box>
     </Box>
   );

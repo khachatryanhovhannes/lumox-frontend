@@ -5,19 +5,20 @@ import { useEffect, useState } from "react";
 function UseAuth() {
   const [user, setUser] = useState();
   const [pending, setPending] = useState(true);
-  const [error, setError] = useState(null)
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getMe().then((me) => {
-      setUser(me.data);
-    })
-    .catch((error) => {
-      setError(error)
-    })
-    .finally(() => {
-      setPending(false)
-    })
-  }, [])
+    getMe()
+      .then((me) => {
+        setUser(me.data);
+      })
+      .catch((error) => {
+        setError(error);
+      })
+      .finally(() => {
+        setPending(false);
+      });
+  }, []);
 
   return { user, pending, error };
 }
