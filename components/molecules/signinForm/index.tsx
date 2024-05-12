@@ -44,6 +44,7 @@ function SigninForm() {
 
     if (res.data.access_token) {
       UseCookies({ type: "set", access_token: res.data.access_token });
+      window.location.href = "/";
     }
   };
 

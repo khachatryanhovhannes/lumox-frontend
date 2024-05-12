@@ -6,40 +6,17 @@ import { PrimaryTextColors, SecondaryTextColors } from "../models";
 import { BASE_URL } from "@/constants";
 import UseAuth from "@/hooks/useAuth";
 import { useEffect } from "react";
-import UseCookies from "@/hooks/useCookies";
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
-  const primaryTextColors = [
-    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-  ];
-
-  const secondaryTextColors = [
-    useColorModeValue(
-      SecondaryTextColors.lightMode,
-      SecondaryTextColors.darkMode
-    ),
-    useColorModeValue(
-      SecondaryTextColors.lightMode,
-      SecondaryTextColors.darkMode
-    ),
-    useColorModeValue(
-      SecondaryTextColors.lightMode,
-      SecondaryTextColors.darkMode
-    ),
-    useColorModeValue(
-      SecondaryTextColors.lightMode,
-      SecondaryTextColors.darkMode
-    ),
-    useColorModeValue(
-      SecondaryTextColors.lightMode,
-      SecondaryTextColors.darkMode
-    ),
-  ];
+  const primaryTextColors = useColorModeValue(
+    PrimaryTextColors.lightMode,
+    PrimaryTextColors.darkMode
+  );
+  const secondaryTextColors = useColorModeValue(
+    SecondaryTextColors.lightMode,
+    SecondaryTextColors.darkMode
+  );
 
   const { user } = UseAuth();
 
@@ -71,7 +48,7 @@ function Home() {
       >
         Join the millions learning to code with Lumox for free.
       </Text>
-      <Box mt="20px">
+      <Box mt="30px">
         <Search />
       </Box>
       <Box mt="50px" display="flex" justifyContent="center">
@@ -104,9 +81,6 @@ function Home() {
         </Link>
         <Link href="#" color={secondaryTextColors}>
           LinusTorvalds{" "}
-        </Link>
-        <Link href="#" color={secondaryTextColors}>
-          Programming{" "}
         </Link>
       </Box>
     </Box>

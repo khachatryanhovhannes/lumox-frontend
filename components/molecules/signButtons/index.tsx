@@ -13,6 +13,10 @@ function SignButtons() {
 
   const pathname = usePathname();
 
+  const saveCurrentPath = () => {
+    sessionStorage.setItem("currentPath", pathname);
+  };
+
   return (
     <Flex>
       <ButtonGroup>
@@ -23,6 +27,7 @@ function SignButtons() {
               border={`2px solid ${borderandTextColor}`}
               borderRadius={"50px"}
               color={borderandTextColor}
+              onClick={saveCurrentPath}
             >
               Sign In
             </Button>
@@ -35,6 +40,7 @@ function SignButtons() {
               border={`2px solid ${borderandTextColor}`}
               borderRadius={"50px"}
               color={borderandTextColor}
+              onClick={saveCurrentPath}
             >
               Sign Up
             </Button>
