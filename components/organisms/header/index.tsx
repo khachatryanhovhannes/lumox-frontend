@@ -1,4 +1,5 @@
 "use client";
+// components/organisms/header/index.tsx
 import { useState } from "react";
 import {
   Flex,
@@ -18,10 +19,18 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 
 import { ColorModeSwitcher, Logo } from "../../atoms";
 import { NavigationBar, SignButtons } from "../../molecules";
+import UserInHeader from "../userInHeader/userInHeader";
+import UseAuth from "@/hooks/useAuth";
 
 function Header() {
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const { user, pending, error } = UseAuth();
+
+  // Function to update user's profile picture
+  const updateUserProfilePicture = (image: string | null) => {
+    // Implement logic to update profile picture
+  };
 
   return (
     <Flex
@@ -35,7 +44,14 @@ function Header() {
       {isLargerThan768 ? (
         <Flex alignItems="center" gap="30px">
           <NavigationBar />
-          <SignButtons />
+          {user && (
+            <UserInHeader
+              user={user}
+              updateUserProfilePicture={updateUserProfilePicture}
+            />
+          )}
+          {!user && pending && <p>Pending</p>}
+          {error && <SignButtons />}
           <ColorModeSwitcher />
         </Flex>
       ) : (
