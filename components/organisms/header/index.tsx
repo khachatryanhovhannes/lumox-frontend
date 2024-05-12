@@ -1,5 +1,4 @@
 "use client";
-// components/organisms/header/index.tsx
 import { useState } from "react";
 import {
   Flex,
@@ -27,10 +26,7 @@ function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { user, pending, error } = UseAuth();
 
-  // Function to update user's profile picture
-  const updateUserProfilePicture = (image: string | null) => {
-    // Implement logic to update profile picture
-  };
+  const updateUserProfilePicture = (image: string | null) => {};
 
   return (
     <Flex

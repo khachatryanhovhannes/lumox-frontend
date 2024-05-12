@@ -1,5 +1,4 @@
 "use client";
-// components/organisms/userInHeader/userInHeader.tsx
 import React, { useState } from "react";
 import {
   Flex,
@@ -21,7 +20,7 @@ interface IUserInHeaderProps {
     email: string;
     password: string;
   };
-  updateUserProfilePicture: (image: string | null) => void; // Function to update profile picture
+  updateUserProfilePicture: (image: string | null) => void;
 }
 
 function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
@@ -48,8 +47,9 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
         <Popover placement="bottom" isOpen={isOpen} onClose={handleOpen}>
           <PopoverTrigger>
             <Flex alignItems="center" cursor="pointer">
+              {/* Նկարի հետ կա փոքր խնդիր հետագայում պետք է փոխել */}
               <img
-                src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png" // Replace with actual image URL
+                src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
                 alt="Profile Picture"
                 style={{
                   width: "45px",
@@ -70,6 +70,8 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
                   marginBottom: "10px",
                 }}
               >
+                {/* Նկարի հետ կա փոքր խնդիր հետագայում պետք է փոխել */}
+
                 <img
                   src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
                   alt="Profile Picture"
@@ -92,17 +94,18 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
                 ></span>
               </div>
               <span>Account </span>
+              <Link href="/user" style={{ display: "block", color: "gray" }}>
+                User{" "}
+              </Link>
               <Link
                 href="/settings"
                 style={{ display: "block", color: "gray" }}
               >
                 Settings & Privacy
               </Link>
-              <Link href="/  " style={{ display: "block", color: "gray" }}>
-                Help
-              </Link>
+
               <Link
-                href="/chideminch"
+                href="/language"
                 style={{ display: "block", color: "gray" }}
               >
                 Language

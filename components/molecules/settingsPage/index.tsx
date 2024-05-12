@@ -12,7 +12,7 @@ import {
   InputGroup,
   InputRightElement,
   IconButton,
-  Image, // ավելացնել Image կոմպոնենտը
+  Image,
 } from "@chakra-ui/react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
@@ -40,7 +40,6 @@ function SettingsPage() {
   };
 
   const handleSaveChange = () => {
-    // Logic to save changes, such as making an API call or updating state
     console.log("Changes saved!");
     console.log("Selected image:", selectedImage);
   };
@@ -73,7 +72,6 @@ function SettingsPage() {
         </Text>
         <Flex align="center" justify="space-between" width="100%" p={10}>
           <Box>
-            {/* Display selected image or default circle */}
             {selectedImage ? (
               <Image
                 src={selectedImage}
@@ -85,7 +83,6 @@ function SettingsPage() {
             ) : (
               <Box bg="teal" w="80px" h="80px" borderRadius="50%" />
             )}
-            {/* Hidden input element for file selection */}
             <input
               type="file"
               id="imageInput"
@@ -98,7 +95,6 @@ function SettingsPage() {
             Profile picture
           </Text>
           <Flex ml={600}>
-            {/* Trigger file input on button click */}
             <label htmlFor="imageInput">
               <Button
                 as="span"

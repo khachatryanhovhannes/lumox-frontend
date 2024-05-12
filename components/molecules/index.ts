@@ -5,7 +5,8 @@ import SigninForm from "./signinForm";
 import SignupForm from "./signupForm";
 import AboutForm from "./aboutForm";
 import ContactForm from "./contactForm/index";
-import TeamForm from "./teamForm"
+import TeamForm from "./teamForm";
+import UserPage from "./userPage/index";
 
 export {
   NavigationBar,
@@ -15,5 +16,6 @@ export {
   SignupForm,
   AboutForm,
   ContactForm,
-  TeamForm
+  TeamForm,
+  UserPage,
 };
