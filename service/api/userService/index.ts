@@ -32,8 +32,7 @@ async function userRegistrationWithUsernamePassword({
     lastname,
   });
 
-  // return data.data;
-  return await instance.post("/auth/signin", { email, password });
+  return data.data;
 }
 
 async function getMe() {
