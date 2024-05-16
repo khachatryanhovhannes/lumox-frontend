@@ -1,8 +1,9 @@
 "use client";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
-import { Box, Heading, Text, useColorModeValue, Image, Button, Flex } from "@chakra-ui/react";
+import { Box, Heading, Text, useColorModeValue, Image, Button, Flex, Input } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import Search from "../search";
+import { useRef, useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 interface ProfilePictureProps {
@@ -28,9 +29,10 @@ function ProfilePicture({src, alt}: ProfilePictureProps){
 interface CoverPhotoProps {
   src: string;
   alt: string;
+  onChangePhoto: () => void;
 }
 
-function CoverPhoto ({src, alt} : CoverPhotoProps){
+function CoverPhoto ({src, alt, onChangePhoto} : CoverPhotoProps){
   return(
       <Box position="relative">
           <Image 
@@ -47,6 +49,8 @@ function CoverPhoto ({src, alt} : CoverPhotoProps){
         bottom={4}
         right={4}
         size="sm"
+        zIndex={3}
+        onClick={onChangePhoto}
        >
           Chaneg Cover Photo
        </Button>
@@ -55,6 +59,25 @@ function CoverPhoto ({src, alt} : CoverPhotoProps){
 }
 
 function UserPage() {
+  const [coverPhoto, setCoverPhoto] = useState("https://img.freepik.com/free-photo/abstract-luxury-blur-grey-color-gradient-used-as-background-studio-wall-display-your-products_1258-52609.jpg");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleCoverPhotoChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target && typeof e.target.result === "string") {
+          setCoverPhoto(e.target.result);
+        }
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  };
+
+  const triggerFileInput = () => {
+      fileInputRef.current?.click();
+  }
+
   const primaryTextColors = [
     useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
     useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
@@ -92,10 +115,16 @@ function UserPage() {
   return (
     <Box p={4}>
       <CoverPhoto 
-             src='https://img.freepik.com/free-photo/abstract-luxury-blur-grey-color-gradient-used-as-background-studio-wall-display-your-products_1258-52609.jpg'
+             src={coverPhoto}
              alt='Background Picture'
+             onChangePhoto={triggerFileInput}
             />
-            
+            <Input 
+             type="file"
+             ref={fileInputRef}
+             style={{display: "none"}}
+             onChange={handleCoverPhotoChange}
+            />
             <Flex
              justifyContent="space-between"
              align="center"
