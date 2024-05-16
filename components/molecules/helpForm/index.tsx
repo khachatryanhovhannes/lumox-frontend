@@ -1,8 +1,9 @@
 "use client";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
-import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import Search from "../search";
+import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 
 function HelpForm() {
@@ -59,9 +60,46 @@ function HelpForm() {
       >
         Join the millions learning to code with Lumox for free{" "}
       </Text>
+
       <Box mt="20px">
         <Search />
+        <Flex justifyContent="center" mt="100px">
+          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
+          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
+          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
+        </Flex>
+        <Flex justifyContent="center" mt="100px">
+          <Box mr="80px" w="350px" h="400px" bg="#D9D9D9" />
+          <Box mr="80px" w="350px" h="400px" bg="#D9D9D9" />
+          <Box mr="80px" w="350px" h="400px" bg="#D9D9D9" />
+        </Flex>
+        <Flex justifyContent="center" mt="100px">
+          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
+          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
+          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
+        </Flex>
       </Box>
+
+      <Flex
+        justifyContent="flex-end"
+        pt={20}
+        my={50}
+        pr="200px"
+        color={primaryTextColors}
+      >
+        <Box mr="20px">
+          <Link href="/contact">Contact</Link>
+        </Box>{" "}
+        <Link href="/user">My Profile</Link>
+      </Flex>
+      <Box
+        width="80%"
+        mx="auto"
+        color={primaryTextColors}
+        borderBottom={`3px solid `}
+        my={10}
+        // mb={5}
+      ></Box>
     </Box>
   );
 }

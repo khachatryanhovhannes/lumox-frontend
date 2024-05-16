@@ -1,5 +1,4 @@
 "use client";
-
 import { useForm } from "react-hook-form";
 import {
   Box,
@@ -23,7 +22,7 @@ import { HiEye, HiEyeOff } from "react-icons/hi";
 import { UserRegister, PrimaryTextColors } from "@/models";
 import { FcGoogle } from "react-icons/fc";
 import { userRegistrationWithUsernamePassword } from "@/service/api/userService";
-import { usePathname } from "next/navigation";
+import UseCookies from "@/hooks/useCookies";
 
 function SignupForm() {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,7 +42,12 @@ function SignupForm() {
       lastname: data.lastname,
     });
 
-    console.log(userData);
+    // console.log(userData);
+
+    if (userData.data.access_token) {
+      UseCookies({ type: "set", access_token: userData.data.access_token });
+      window.location.href = "/";
+    }
   };
 
   return (
