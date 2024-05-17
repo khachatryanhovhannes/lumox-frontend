@@ -1,5 +1,13 @@
 "use client";
-import { Box, Heading, Text, Link, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Heading,
+  Text,
+  Link,
+  useColorModeValue,
+  Flex,
+  Button,
+} from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import { Search } from "../components";
 import { PrimaryTextColors, SecondaryTextColors } from "../models";
@@ -83,6 +91,73 @@ function Home() {
           LinusTorvalds{" "}
         </Link>
       </Box>
+      <Flex mt="80px" justify="center" gap="150px">
+        <Box width="220px" height="140px" bg="#D9D9D9" />
+        <Flex direction="column" gap="20px">
+          <Box width="300px" height="50px" bg="#D9D9D9" />
+          <Box width="200px" height="70px" bg="#D9D9D9" />
+        </Flex>
+        <Box width="500px" height="100px" bg="#D9D9D9" />
+      </Flex>
+
+      <Flex mt="80px" justify="center" gap="150px">
+        <Box width="220px" height="140px" bg="#D9D9D9" />
+        <Flex direction="column" gap="20px">
+          <Box width="300px" height="50px" bg="#D9D9D9" />
+          <Box width="200px" height="70px" bg="#D9D9D9" />
+        </Flex>
+        <Box width="500px" height="100px" bg="#D9D9D9" />
+      </Flex>
+
+      <Flex mt="80px" justify="center" gap="150px">
+        <Box width="220px" height="140px" bg="#D9D9D9" />
+        <Flex direction="column" gap="20px">
+          <Box width="300px" height="50px" bg="#D9D9D9" />
+          <Box width="200px" height="70px" bg="#D9D9D9" />
+        </Flex>
+        <Box width="500px" height="100px" bg="#D9D9D9" />
+      </Flex>
+
+      <Flex mt="80px" justify="center" gap="150px">
+        <Box width="220px" height="140px" bg="#D9D9D9" />
+        <Flex direction="column" gap="20px">
+          <Box width="300px" height="50px" bg="#D9D9D9" />
+          <Box width="200px" height="70px" bg="#D9D9D9" />
+        </Flex>
+        <Box width="500px" height="100px" bg="#D9D9D9" />
+      </Flex>
+      <Box mt="100px" mr={950}>
+        <Button
+          color={secondaryTextColors}
+          variant="outline"
+          borderColor={secondaryTextColors}
+          borderRadius={70}
+          width="35%"
+          colorScheme={primaryTextColors}
+        >
+          See more stories{" "}
+        </Button>
+      </Box>
+      <Flex
+        justifyContent="flex-end"
+        pt={5}
+        my={50}
+        pr="200px"
+        color={primaryTextColors}
+      >
+        <Box mr="20px">
+          <Link href="/contact">Contact</Link>
+        </Box>{" "}
+        <Link href="/user">My Profile</Link>
+      </Flex>
+      <Box
+        width="80%"
+        mx="auto"
+        color={primaryTextColors}
+        borderBottom={`3px solid `}
+        my={10}
+        // mb={5}
+      ></Box>
     </Box>
   );
 }
