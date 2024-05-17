@@ -16,6 +16,7 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  Spinner,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
@@ -23,9 +24,11 @@ import { UserRegister, PrimaryTextColors } from "@/models";
 import { FcGoogle } from "react-icons/fc";
 import { userRegistrationWithUsernamePassword } from "@/service/api/userService";
 import UseCookies from "@/hooks/useCookies";
+import Swal from "sweetalert2";
 
 function SignupForm() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const borderColor = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
@@ -35,18 +38,39 @@ function SignupForm() {
   const textColors = useColorModeValue("black", "white");
 
   const onSubmit = async (data: UserRegister) => {
-    const userData = await userRegistrationWithUsernamePassword({
-      email: data.email,
-      password: data.password,
-      firstname: data.firstname,
-      lastname: data.lastname,
-    });
+    setIsLoading(true);
+    try {
+      const userData = await userRegistrationWithUsernamePassword({
+        email: data.email,
+        password: data.password,
+        firstname: data.firstname,
+        lastname: data.lastname,
+      });
 
-    // console.log(userData);
-
-    if (userData.data.access_token) {
-      UseCookies({ type: "set", access_token: userData.data.access_token });
-      window.location.href = "/";
+      if (userData?.data?.access_token) {
+        UseCookies({ type: "set", access_token: userData.data.access_token });
+        window.location.href = "/";
+      } else {
+        console.error("Registration successful, but no access token found.");
+        Swal.fire({
+          title: "Success!",
+          text: "Registration successful, but we couldn't log you in automatically. Please try logging in manually.",
+          icon: "success",
+          confirmButtonText: "OK",
+        }).then(() => {
+          window.location.href = "/signin"; // Redirect to Sign in page
+        });
+      }
+    } catch (error) {
+      console.error("Error during registration:", error);
+      Swal.fire({
+        title: "Error!",
+        text: "An error occurred during registration. Please try again.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -64,9 +88,8 @@ function SignupForm() {
             <Flex gap="20px">
               <FormControl>
                 <FormLabel htmlFor="firstname" color={borderColor}>
-                  Fisrtname
+                  Firstname
                 </FormLabel>
-
                 <Input
                   h="50px"
                   id="firstname"
@@ -81,7 +104,6 @@ function SignupForm() {
                 <FormLabel htmlFor="lastname" color={borderColor}>
                   Lastname
                 </FormLabel>
-
                 <Input
                   h="50px"
                   id="lastname"
@@ -157,6 +179,8 @@ function SignupForm() {
               borderColor={borderColor}
               background="transparent"
               color={borderColor}
+              isLoading={isLoading}
+              loadingText="Signing up"
             >
               Sign up
             </Button>
