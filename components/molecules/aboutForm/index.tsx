@@ -1,6 +1,6 @@
 "use client";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
-import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
@@ -58,6 +58,26 @@ function AboutForm() {
       >
         IT Lumox is a home for human stories and ideas.{" "}
       </Text>
+      <Box mt="100px" ml={370}>
+        <Box height="50px" width="650px" bg="gray.200" mb="10px" />
+        <Box height="120px" width="950px" bg="gray.200" />
+      </Box>
+      <Box mt="100px" ml={370}>
+        <Box height="50px" width="650px" bg="gray.200" mb="10px" />
+        <Box height="120px" width="950px" bg="gray.200" />
+      </Box>
+      <Box mt="100px" ml={370}>
+        <Box height="50px" width="650px" bg="gray.200" mb="10px" />
+        <Box height="120px" width="950px" bg="gray.200" />
+      </Box>
+      <Box
+        width="80%"
+        mx="auto"
+        color={primaryTextColors}
+        borderBottom={`3px solid `}
+        my={20}
+        // mb={5}
+      ></Box>
     </Box>
   );
 }
