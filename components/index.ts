@@ -12,8 +12,6 @@ import TeamForm from "@/components/molecules/teamForm/index";
 import SettingsPage from "@/components/molecules/settingsPage";
 import UserPage from "./molecules/userPage/index";
 
-
-
 export {
   NavigationBar,
   Header,
@@ -26,5 +24,4 @@ export {
   TeamForm,
   SettingsPage,
   UserPage,
-
 };
