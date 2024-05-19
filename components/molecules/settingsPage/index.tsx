@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Heading,
@@ -32,17 +32,36 @@ function SettingsPage() {
   const [isOpenSecond, setIsOpenSecond] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
+  useEffect(() => {
+    const storedImage = localStorage.getItem("profilePicture");
+    if (storedImage) {
+      setSelectedImage(storedImage);
+    }
+  }, []);
+
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      setSelectedImage(URL.createObjectURL(file));
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64String = reader.result as string;
+        setSelectedImage(base64String);
+        localStorage.setItem("profilePicture", base64String);
+      };
+      reader.readAsDataURL(file);
     }
+  };
+
+  const handleRemoveImage = () => {
+    setSelectedImage(null);
+    localStorage.removeItem("profilePicture");
   };
 
   const handleSaveChange = () => {
     console.log("Changes saved!");
     console.log("Selected image:", selectedImage);
   };
+
   return (
     <Flex
       direction="column"
@@ -104,7 +123,7 @@ function SettingsPage() {
                 mr={5}
                 borderColor={primaryTextColors}
               >
-                Change{" "}
+                Change
               </Button>
             </label>
             <Button
@@ -112,6 +131,7 @@ function SettingsPage() {
               variant="outline"
               borderWidth="3px"
               borderColor={primaryTextColors}
+              onClick={handleRemoveImage}
             >
               Remove
             </Button>
@@ -152,12 +172,12 @@ function SettingsPage() {
           textAlign="left"
           pl={7}
         >
-          Contact Email{" "}
+          Contact Email
         </Text>
         <Flex justify="space-between" width="95%" mx="auto" mt={5}>
           <Box width="45%">
             <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
-              Email{" "}
+              Email
             </Text>
             <Input borderWidth="2px" borderColor={primaryTextColors} />
           </Box>
@@ -171,7 +191,7 @@ function SettingsPage() {
               borderColor={primaryTextColors}
             >
               Add another email
-            </Button>{" "}
+            </Button>
           </Box>
         </Flex>
         <Box
@@ -246,9 +266,10 @@ function SettingsPage() {
           variant="outline"
           borderWidth="2px"
           borderColor={primaryTextColors}
+          onClick={handleSaveChange}
         >
-          Save Change{" "}
-        </Button>{" "}
+          Save Change
+        </Button>
       </Box>
     </Flex>
   );
