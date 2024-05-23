@@ -128,13 +128,10 @@ function SigninForm() {
             </FormControl>
           </Stack>
           <HStack justify="space-between">
-            <Checkbox
-              color={borderColor}
-              {...register("rememberMe")}
-              defaultChecked
-            >
+            <Checkbox color={borderColor} {...register("rememberMe")}>
               Remember me
             </Checkbox>
+
             <Button variant="text" size="sm" color={borderColor}>
               Forgot password?
             </Button>

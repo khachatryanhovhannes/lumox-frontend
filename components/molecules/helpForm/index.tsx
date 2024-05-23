@@ -4,6 +4,7 @@ import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import Search from "../search";
 import Link from "next/link";
+import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
 
 function HelpForm() {
@@ -100,6 +101,9 @@ function HelpForm() {
         my={10}
         // mb={5}
       ></Box>
+      <Box p={4}>
+        <ScrollToTopButton />
+      </Box>
     </Box>
   );
 }

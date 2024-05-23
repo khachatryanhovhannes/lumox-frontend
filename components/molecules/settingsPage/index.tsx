@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
+import ScrollToTopButton from "@/constants/scrool";
 
 function SettingsPage() {
   const primaryTextColors = useColorModeValue(
@@ -270,6 +271,9 @@ function SettingsPage() {
         >
           Save Change
         </Button>
+      </Box>
+      <Box p={4}>
+        <ScrollToTopButton />
       </Box>
     </Flex>
   );
