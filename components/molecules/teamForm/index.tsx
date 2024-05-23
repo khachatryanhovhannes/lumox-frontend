@@ -1,38 +1,38 @@
 "use client";
+import ScrollToTopButton from "@/constants/scrool";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import { Box, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
-function TeamForm (){
-   const primaryTextColors = [
-      useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-      useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-      useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-      useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+function TeamForm() {
+  const primaryTextColors = [
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+  ];
 
-    ];
-  
-    const secondaryTextColors = [
-      useColorModeValue(
-        SecondaryTextColors.lightMode,
-        SecondaryTextColors.darkMode
-      ),
-      useColorModeValue(
-        SecondaryTextColors.lightMode,
-        SecondaryTextColors.darkMode
-      ),
-      useColorModeValue(
-        SecondaryTextColors.lightMode,
-        SecondaryTextColors.darkMode
-      ),
-      useColorModeValue(
-         SecondaryTextColors.lightMode,
-         SecondaryTextColors.darkMode
-       )
-    ];
+  const secondaryTextColors = [
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+  ];
 
-    return (
+  return (
     <Box textAlign="center">
       <Heading
         fontFamily="Lateef"
@@ -57,30 +57,35 @@ function TeamForm (){
       </Text>
 
       <Box>
-         <Text className={inter.className}
-        color={secondaryTextColors}
-        mt={["15px", "20px", "25px", "30px", "22px"]}
-        textAlign = "left"
-        margin = "30px"
-        padding = "15px 15px 300px"
+        <Text
+          className={inter.className}
+          color={secondaryTextColors}
+          mt={["15px", "20px", "25px", "30px", "22px"]}
+          textAlign="left"
+          margin="30px"
+          padding="15px 15px 300px"
         >
-         Leadership
-         </Text>
+          Leadership
+        </Text>
       </Box>
 
       <Box>
-         <Text className={inter.className}
-        color={secondaryTextColors}
-        mt={["15px", "20px", "25px", "30px", "22px"]}
-        textAlign = "left"
-        margin = "30px"
-        padding = "15px 15px 300px"
+        <Text
+          className={inter.className}
+          color={secondaryTextColors}
+          mt={["15px", "20px", "25px", "30px", "22px"]}
+          textAlign="left"
+          margin="30px"
+          padding="15px 15px 300px"
         >
-         Team
-         </Text>
+          Team
+        </Text>
+      </Box>
+      <Box p={4}>
+        <ScrollToTopButton />
       </Box>
     </Box>
-    );
+  );
 }
 
 export default TeamForm;

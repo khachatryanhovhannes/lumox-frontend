@@ -13,6 +13,7 @@ import {
 import { Inter } from "next/font/google";
 import Search from "../search";
 import { useEffect, useRef, useState } from "react";
+import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
 
 interface ProfilePictureProps {
@@ -153,12 +154,17 @@ function UserPage() {
           alt="Profile Picture"
         />
       </Flex>
+
       <Input
         type="file"
         ref={fileInputRef}
         style={{ display: "none" }}
         onChange={handleCoverPhotoChange}
       />
+
+      <Box p={4}>
+        <ScrollToTopButton />
+      </Box>
     </Box>
   );
 }

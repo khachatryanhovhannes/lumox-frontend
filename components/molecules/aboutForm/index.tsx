@@ -1,4 +1,5 @@
 "use client";
+import ScrollToTopButton from "@/constants/scrool";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
@@ -78,6 +79,9 @@ function AboutForm() {
         my={20}
         // mb={5}
       ></Box>
+      <Box p={4}>
+        <ScrollToTopButton />
+      </Box>
     </Box>
   );
 }
