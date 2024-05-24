@@ -2,7 +2,6 @@
 import { useForm } from "react-hook-form";
 import { PrimaryTextColors, UserLogin } from "@/models";
 import { FcGoogle } from "react-icons/fc";
-
 import {
   Box,
   Button,
@@ -42,7 +41,6 @@ function SigninForm() {
   const textColors = useColorModeValue("black", "white");
 
   const onSubmit = async (data: UserLogin) => {
-    console.log(data);
     try {
       const res = await userLoginWithUsernamePassword({
         email: data.email,
@@ -87,7 +85,13 @@ function SigninForm() {
                 borderWidth="2px"
                 borderColor={borderColor}
                 color={textColors}
-                {...register("email", { required: "Email is required" })}
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: "Entered value does not match email format",
+                  },
+                })}
               />
               <FormErrorMessage>
                 {errors.email && errors.email.message}
@@ -119,6 +123,10 @@ function SigninForm() {
                   autoComplete="current-password"
                   {...register("password", {
                     required: "Password is required",
+                    minLength: {
+                      value: 8,
+                      message: "Password must be at least 8 characters long",
+                    },
                   })}
                 />
               </InputGroup>
