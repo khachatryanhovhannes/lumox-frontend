@@ -28,11 +28,11 @@ function ProfilePicture({ src, alt }: ProfilePictureProps) {
       src={src} 
       alt={alt} 
       borderRadius="50%" 
-      boxSize="150px" 
+      boxSize={{base:"100px", sm:"120px", md:"150px"}} 
       objectFit="cover" 
       zIndex={1} 
       position="relative" 
-      top="50px" 
+      top={{base:"20px", sm:"30px", md:"50px"}} 
     /> 
   ); 
 } 
@@ -51,7 +51,7 @@ function CoverPhoto({ src, alt, onChangePhoto }: CoverPhotoProps) {
         alt={alt} 
         objectFit="cover" 
         w="100%" 
-        h="200px" 
+        h={{base:"150px", sm:"180px", md:"200px" }}
         position="relative" 
       /> 
  
@@ -143,7 +143,7 @@ function UserPage() {
         align="center" 
         marginBottom="20px" 
         position="absolute" 
-        top="50%" 
+        top={{base:"100px", md:"150px"}}
         left={10} 
         right={0} 
         bottom={0} 
@@ -158,45 +158,30 @@ function UserPage() {
       <Heading
       as="h1"
       size="lg"
-      ml="200px"
-      mt="10px"
+      ml={{base:"150px", sm:"180px", md:"230px"}}
+      mt="20px"
       position="absolute"
       >
         UserName
       </Heading>
       <HStack
-       spacing="30px"
+       spacing={{base:"10px", sm:"20px", md:"80px"}}
        justifyContent="center"
        mt={20}
        position="absolute"
        left={0}
        right={0}
       >
-        <Link 
-         href="#" 
-         >
-        TimeLine
-        </Link>
-        <Link 
-         href="#"
-         >
-        Booking History
-        </Link>
-        <Link 
-         href="#" 
-         >
-        My Favourites
-        </Link>
-        <Link 
-         href="#" 
-         >
-        Account Settings
-        </Link>
+        <Link href="#"> TimeLine </Link>
+        <Link href="#"> Booking History </Link>
+        <Link href="#"> My Favourites </Link>
+        <Link href="#"> Account Settings </Link>
       </HStack>
       <Input 
         type="file" 
         ref={fileInputRef} 
-        style={{ display: "none" }}onChange={handleCoverPhotoChange} 
+        style={{ display: "none" }}
+        onChange={handleCoverPhotoChange} 
         /> 
       </Box> 
     ); 

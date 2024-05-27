@@ -58,18 +58,25 @@ function AboutForm() {
       >
         IT Lumox is a home for human stories and ideas.{" "}
       </Text>
-      <Box mt="100px" ml={370}>
+
+      <Flex direction="column" alignItems="flex-start">
+
+      <Box mt="100px" ml={["10px", "50px", "100px", "150px", "370px"]}>
         <Box height="50px" width="650px" bg="gray.200" mb="10px" />
         <Box height="120px" width="950px" bg="gray.200" />
       </Box>
-      <Box mt="100px" ml={370}>
+
+      <Box mt="100px" ml={["10px", "50px", "100px", "150px", "370px"]}>
         <Box height="50px" width="650px" bg="gray.200" mb="10px" />
         <Box height="120px" width="950px" bg="gray.200" />
       </Box>
-      <Box mt="100px" ml={370}>
+
+      <Box mt="100px" ml={["10px", "50px", "100px", "150px", "370px"]}>
         <Box height="50px" width="650px" bg="gray.200" mb="10px" />
         <Box height="120px" width="950px" bg="gray.200" />
       </Box>
+
+      </Flex>
       <Box
         width="80%"
         mx="auto"
