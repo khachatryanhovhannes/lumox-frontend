@@ -26,6 +26,10 @@ const NAV_BAR_ITEMS: INavItem[] = [
   {
     label: " User Page",
     path: "/user",
+  },
+  {
+    label: " Write Page",
+    path: "/write"
   }
 ];
 
