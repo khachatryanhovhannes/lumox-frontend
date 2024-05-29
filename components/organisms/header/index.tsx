@@ -14,7 +14,7 @@ import {
   Text,
   Divider,
 } from "@chakra-ui/react";
-import { BellIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
 
 import { ColorModeSwitcher, Logo } from "../../atoms";
 import { NavigationBar, SignButtons } from "../../molecules";
@@ -40,7 +40,6 @@ function Header() {
       {isLargerThan768 ? (
         <Flex alignItems="center" gap="30px">
           <NavigationBar />
-          {<BellIcon fontSize={30} />}
           {user && (
             <UserInHeader
               user={user}
