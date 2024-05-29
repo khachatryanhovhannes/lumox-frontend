@@ -194,7 +194,6 @@ function SignupForm() {
               {...register("agreeTerms", {
                 required: "You must agree to the terms and conditions",
               })}
-              defaultChecked
             >
               I agree to the terms and conditions
             </Checkbox>

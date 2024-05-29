@@ -57,7 +57,7 @@ function HelpForm() {
         fontWeight="100"
         lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
         color={secondaryTextColors}
-        mt={["15px", "20px", "25px", "30px", "22px"]}
+        mt={["15px", "20px", "25px", "30px", "12px"]}
       >
         Join the millions learning to code with Lumox for free{" "}
       </Text>
