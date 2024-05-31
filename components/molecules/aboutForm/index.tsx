@@ -101,7 +101,7 @@ function AboutForm() {
             GLOBAL REACH
           </Heading>
           <Text height="120px" width="950px" textAlign="left" lineHeight="2">
-            While ITLumox prioritizes Armenian content, we are committed to being a global platform. We offer articles and resources in English to serve a diverse audience. Our language editions are managed by dedicated editorial teams to ensure quality and cultural relevance. We believe in the power of community-driven enlightenment. The idea that you can be a teacher to someone will push you to be the person you dreamed of when you needed a teacher.
+            While ITLumox prioritizes  Armenian content, we are committed to being a global platform. We offer articles and resources in English to serve a diverse audience. Our language editions are managed by dedicated editorial teams to ensure quality and cultural relevance. We believe in the power of community-driven enlightenment. The idea that you can be a teacher to someone will push you to be the person you dreamed of when you needed a teacher.
             Welcome to ITLumox – where curiosity finds its home and learning is luminously free!
           </Text>
         </Box>
