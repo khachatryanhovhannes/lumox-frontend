@@ -1,11 +1,13 @@
 "use client";
-import ScrollToTopButton from "@/constants/scrool";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
+import Search from "../search";
+import Link from "next/link";
+import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
 
-function AboutForm() {
+function BlogForm() {
   const primaryTextColors = [
     useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
     useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
@@ -45,9 +47,9 @@ function AboutForm() {
         fontSize={["30px", "35px", "40px", "45px", "100px"]}
         fontWeight="normal"
         mt={["20px", "25px", "30px", "35px", "80px"]}
-        lineHeight={["1", "0.9", "0.8", "0.7", "0.2"]}
+        lineHeight={["1", "0.9", "0.8", "0.7", "0.5"]}
       >
-        Everyone has a story to tell.{" "}
+        The It Lumox Blog.{" "}
       </Heading>
       <Text
         className={inter.className}
@@ -57,33 +59,60 @@ function AboutForm() {
         color={secondaryTextColors}
         mt={["15px", "20px", "25px", "30px", "22px"]}
       >
-        IT Lumox is a home for human stories and ideas.{" "}
+        Join the millions learning to code with Lumox for free{" "}
       </Text>
 
-      <Flex direction="column" alignItems="flex-start">
-
-      <Box mt="100px" ml={["10px", "50px", "100px", "150px", "370px"]}>
-        <Box height="50px" width="650px" bg="gray.200" mb="10px" />
-        <Box height="120px" width="950px" bg="gray.200" />
+      <Box mt="20px">
+        <Search />
       </Box>
+      <Flex mt="80px" justify="center" gap="150px">
+        <Box width="520px" height="350px" bg="#D9D9D9" />
+        <Flex direction="column" gap="20px">
+          <Box width="450px" height="70px" bg="#D9D9D9" />
+          <Box width="300px" height="50px" bg="#D9D9D9" />
+          <Box width="450px" height="150px" bg="#D9D9D9" />
+        </Flex>
+      </Flex>
+      <Flex mt="80px" justify="center" gap="40px">
+        <Box width="350px" height="175px" bg="#D9D9D9" />
+        <Flex direction="column" gap="20px">
+          <Box width="350px" height="175px" bg="#D9D9D9" />
+        </Flex>
+        <Box width="350px" height="175px" bg="#D9D9D9" />
+      </Flex>
 
-      <Box mt="100px" ml={["10px", "50px", "100px", "150px", "370px"]}>
-        <Box height="50px" width="650px" bg="gray.200" mb="10px" />
-        <Box height="120px" width="950px" bg="gray.200" />
-      </Box>
-
-      <Box mt="100px" ml={["10px", "50px", "100px", "150px", "370px"]}>
-        <Box height="50px" width="650px" bg="gray.200" mb="10px" />
-        <Box height="120px" width="950px" bg="gray.200" />
-      </Box>
-
+      <Flex mt="80px" justify="center" gap="40px">
+        <Flex direction="column" gap="20px">
+          <Box width="350px" height="50px" bg="#D9D9D9" />
+          <Box width="200px" height="70px" bg="#D9D9D9" />
+        </Flex>
+        <Flex direction="column" gap="20px">
+          <Box width="350px" height="50px" bg="#D9D9D9" />
+          <Box width="200px" height="70px" bg="#D9D9D9" />
+        </Flex>
+        <Flex direction="column" gap="20px">
+          <Box width="350px" height="50px" bg="#D9D9D9" />
+          <Box width="200px" height="70px" bg="#D9D9D9" />
+        </Flex>
+      </Flex>
+      <Flex
+        justifyContent="flex-end"
+        pt={50}
+        my={50}
+        pr="200px"
+        color={primaryTextColors}
+      >
+        <Box mr="20px">
+          <Link href="/contact">Contact</Link>
+        </Box>{" "}
+        <Link href="/user">My Profile</Link>
       </Flex>
       <Box
         width="80%"
         mx="auto"
         color={primaryTextColors}
         borderBottom={`3px solid `}
-        my={20}
+        my={10}
         // mb={5}
       ></Box>
       <Box p={4}>
@@ -93,4 +122,4 @@ function AboutForm() {
   );
 }
 
-export default AboutForm;
+export default BlogForm;

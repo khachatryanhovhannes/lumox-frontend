@@ -13,8 +13,6 @@ import SettingsPage from "@/components/molecules/settingsPage";
 import UserPage from "./molecules/userPage/index";
 import WritePage from "./molecules/writePage";
 
-
-
 export {
   NavigationBar,
   Header,
@@ -27,5 +25,5 @@ export {
   TeamForm,
   SettingsPage,
   UserPage,
-  WritePage
+
 };

@@ -4,6 +4,7 @@ import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import Search from "../search";
 import Link from "next/link";
+import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
 
 function HelpForm() {
@@ -57,7 +58,7 @@ function HelpForm() {
         fontWeight="100"
         lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
         color={secondaryTextColors}
-        mt={["15px", "20px", "25px", "30px", "22px"]}
+        mt={["15px", "20px", "25px", "30px", "12px"]}
       >
         Join the millions learning to code with Lumox for free{" "}
       </Text>
@@ -103,6 +104,9 @@ function HelpForm() {
         my={10}
         // mb={5}
       ></Box>
+      <Box p={4}>
+        <ScrollToTopButton />
+      </Box>
     </Box>
   );
 }

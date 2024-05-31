@@ -16,7 +16,7 @@ import {
   Stack,
   Text,
   useColorModeValue,
-  Spinner,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
@@ -34,7 +34,11 @@ function SignupForm() {
     PrimaryTextColors.darkMode
   );
 
-  const { register, handleSubmit } = useForm<UserRegister>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UserRegister>();
   const textColors = useColorModeValue("black", "white");
 
   const onSubmit = async (data: UserRegister) => {
@@ -51,7 +55,6 @@ function SignupForm() {
         UseCookies({ type: "set", access_token: userData.data.access_token });
         window.location.href = "/";
       } else {
-        console.error("Registration successful, but no access token found.");
         Swal.fire({
           title: "Success!",
           text: "Registration successful, but we couldn't log you in automatically. Please try logging in manually.",
@@ -62,7 +65,6 @@ function SignupForm() {
         });
       }
     } catch (error) {
-      console.error("Error during registration:", error);
       Swal.fire({
         title: "Error!",
         text: "An error occurred during registration. Please try again.",
@@ -86,7 +88,7 @@ function SignupForm() {
         <Stack spacing="6">
           <Stack spacing="5">
             <Flex gap="20px">
-              <FormControl>
+              <FormControl isInvalid={!!errors.firstname}>
                 <FormLabel htmlFor="firstname" color={borderColor}>
                   Firstname
                 </FormLabel>
@@ -97,10 +99,15 @@ function SignupForm() {
                   borderWidth="2px"
                   borderColor={borderColor}
                   color={textColors}
-                  {...register("firstname")}
+                  {...register("firstname", {
+                    required: "First name is required",
+                  })}
                 />
+                <FormErrorMessage>
+                  {errors.firstname && errors.firstname.message}
+                </FormErrorMessage>
               </FormControl>
-              <FormControl>
+              <FormControl isInvalid={!!errors.lastname}>
                 <FormLabel htmlFor="lastname" color={borderColor}>
                   Lastname
                 </FormLabel>
@@ -111,11 +118,16 @@ function SignupForm() {
                   borderWidth="2px"
                   borderColor={borderColor}
                   color={textColors}
-                  {...register("lastname")}
+                  {...register("lastname", {
+                    required: "Last name is required",
+                  })}
                 />
+                <FormErrorMessage>
+                  {errors.lastname && errors.lastname.message}
+                </FormErrorMessage>
               </FormControl>
             </Flex>
-            <FormControl>
+            <FormControl isInvalid={!!errors.email}>
               <FormLabel htmlFor="email" color={borderColor}>
                 Email
               </FormLabel>
@@ -126,10 +138,19 @@ function SignupForm() {
                 borderWidth="2px"
                 borderColor={borderColor}
                 color={textColors}
-                {...register("email")}
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: "Entered value does not match email format",
+                  },
+                })}
               />
+              <FormErrorMessage>
+                {errors.email && errors.email.message}
+              </FormErrorMessage>
             </FormControl>
-            <FormControl>
+            <FormControl isInvalid={!!errors.password}>
               <FormLabel htmlFor="password" color={borderColor}>
                 Password
               </FormLabel>
@@ -153,19 +174,32 @@ function SignupForm() {
                   id="password"
                   type={isOpen ? "text" : "password"}
                   autoComplete="new-password"
-                  {...register("password")}
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 8,
+                      message: "Password must be at least 8 characters long",
+                    },
+                  })}
                 />
               </InputGroup>
+              <FormErrorMessage>
+                {errors.password && errors.password.message}
+              </FormErrorMessage>
             </FormControl>
           </Stack>
           <HStack justify="space-between">
             <Checkbox
               color={borderColor}
-              {...register("agreeTerms")}
-              defaultChecked
+              {...register("agreeTerms", {
+                required: "You must agree to the terms and conditions",
+              })}
             >
               I agree to the terms and conditions
             </Checkbox>
+            <FormErrorMessage>
+              {errors.agreeTerms && errors.agreeTerms.message}
+            </FormErrorMessage>
           </HStack>
         </Stack>
 
