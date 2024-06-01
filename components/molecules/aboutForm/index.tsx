@@ -1,9 +1,9 @@
 "use client";
-import ScrollToTopButton from "@/constants/scrool";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import { AboutColors } from "@/models/enums";
 import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
+
 const inter = Inter({ subsets: ["latin"] });
 
 function AboutForm() {
@@ -104,8 +104,8 @@ function AboutForm() {
             width="650px"
             mb="10px"
             textAlign="left"
-            fontSize={20}
             color={aboutColors}
+            fontSize={20}
           >
             CONTENT AND SCOPE
           </Heading>
@@ -129,6 +129,7 @@ function AboutForm() {
             fontSize={20}
             color={aboutColors}
           >
+            {" "}
             COMMUNITY AND EDITING
           </Heading>
           <Text height="120px" width="970px" textAlign="left" lineHeight="2">
@@ -148,8 +149,8 @@ function AboutForm() {
             width="650px"
             mb="10px"
             textAlign="left"
-            fontSize={20}
             color={aboutColors}
+            fontSize={20}
           >
             FIVE STRONG PILLARS
           </Heading>
@@ -187,9 +188,10 @@ function AboutForm() {
             width="650px"
             mb="10px"
             textAlign="left"
-            fontSize={20}
             color={aboutColors}
+            fontSize={20}
           >
+            {" "}
             QUALITY CONTROL
           </Heading>
           <Text height="100px" width="960px" textAlign="left" lineHeight="2">
@@ -226,34 +228,17 @@ function AboutForm() {
             fontSize={20}
             color={aboutColors}
           >
+            {" "}
             GLOBAL REACH
           </Heading>
-          <Text height="100px" width="950px" textAlign="left" lineHeight="2">
-            ITLumox is a global platform, welcoming users from all corners of
-            the world. Our multilingual support ensures that language is never a
-            barrier to
-            <br /> accessing knowledge. We believe in the power of diversity and
-            aim to create a global community of learners and experts.
-          </Text>
-        </Box>
-
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
-          <Heading
-            height="50px"
-            width="650px"
-            mb="10px"
-            textAlign="left"
-            fontSize={20}
-            color={aboutColors}
-          >
-            ACCESSIBILITY AND INCLUSIVITY
-          </Heading>
-          <Text height="100px" width="960px" textAlign="left" lineHeight="2">
-            We are committed to making ITLumox accessible to everyone. Our
-            platform is designed with inclusivity in mind, featuring tools and
-            resources <br />
-            that cater to individuals with disabilities. We strive to create an
-            environment where everyone feels welcome and valued.
+          <Text height="120px" width="950px" textAlign="left" lineHeight="2">
+            ITLumox aims to have a global reach. We are working towards
+            translating our content into multiple languages to cater to a
+            <br />
+            diverse audience. Our platform is designed to be user-friendly and
+            accessible, ensuring that people from all around the world can
+            <br />
+            benefit from the knowledge shared on ITLumox.
           </Text>
         </Box>
       </Flex>
