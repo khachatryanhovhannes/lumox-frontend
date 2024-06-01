@@ -14,8 +14,8 @@ function SignButtons() {
   const pathname = usePathname();
 
   const saveCurrentPath = () => {
-    sessionStorage.setItem("currentPath", pathname)
-  }
+    sessionStorage.setItem("currentPath", pathname);
+  };
 
   return (
     <Flex>
@@ -52,3 +52,4 @@ function SignButtons() {
 }
 
 export default SignButtons;
+
