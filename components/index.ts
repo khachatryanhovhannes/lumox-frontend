@@ -25,5 +25,5 @@ export {
   TeamForm,
   SettingsPage,
   UserPage,
-  WritePage,
+  WritePage
 };

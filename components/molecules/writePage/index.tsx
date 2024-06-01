@@ -6,6 +6,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 function WritePage() {
   return <></>;
+  
+  return (
+    <>
+    </>
+  )
 }
 
 export default WritePage;

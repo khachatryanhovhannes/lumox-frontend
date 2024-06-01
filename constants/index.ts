@@ -25,7 +25,7 @@ const NAV_BAR_ITEMS: INavItem[] = [
   },
 
   // {
-  //   label: " User Page",
+  //   label: " User",
   //   path: "/user",
   // }
   {
