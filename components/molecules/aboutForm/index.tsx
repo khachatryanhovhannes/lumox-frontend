@@ -257,15 +257,6 @@ function AboutForm() {
           </Text>
         </Box>
       </Flex>
-
-      <Box
-        position="fixed"
-        bottom="40px"
-        right={["16px", "30px", "50px", "65px", "140px"]}
-        zIndex="9999"
-      >
-        <ScrollToTopButton />
-      </Box>
     </Box>
   );
 }
