@@ -16,10 +16,6 @@ const enum ActiveColors {
   lightMode = "rgb(62,113,243)",
   darkMode = "rgb(253,253,255)",
 }
-const enum AboutColors {
-  lightMode = "#452966",
-  darkMode = "#A8E8DE",
-}
 
 const enum ColorMode {
   light = "light",
@@ -38,5 +34,4 @@ export {
   ActiveColors,
   ColorMode,
   LogoColor,
-  AboutColors,
 };
