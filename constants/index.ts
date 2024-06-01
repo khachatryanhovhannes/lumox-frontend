@@ -23,6 +23,7 @@ const NAV_BAR_ITEMS: INavItem[] = [
     label: "Our team",
     path: "/team",
   },
+
   // {
   //   label: " User Page",
   //   path: "/user",
@@ -30,6 +31,10 @@ const NAV_BAR_ITEMS: INavItem[] = [
   {
     label: "Blog",
     path: "/blog",
+  },
+  {
+    label: "Write",
+    path: "/write",
   },
 ];
 
