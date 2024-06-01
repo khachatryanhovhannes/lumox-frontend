@@ -1,7 +1,8 @@
 "use client";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
-import { useColorModeValue, Flex, Button, Textarea } from "@chakra-ui/react";
+import { useColorModeValue, Flex, Button, Image, Textarea } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
+import React, { useRef, useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 function WritePage() {
@@ -30,7 +31,29 @@ function WritePage() {
       SecondaryTextColors.lightMode,
       SecondaryTextColors.darkMode
     ),
-  ];  
+  ];
+
+
+  const [coverPhoto, setCoverPhoto] = useState<string>('');
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleAddImage = () => {
+    if(fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if(file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setCoverPhoto(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   
   return (
     <Flex direction="column" alignItems="center" px={8} py={8}>
@@ -38,8 +61,18 @@ function WritePage() {
       type="file"
       accept="image/*"
       style={{display:"none"}}
+      ref={fileInputRef}
+      onChange={handleFileChange}
       />
-      
+      {coverPhoto && (
+        <Image
+        src={coverPhoto}
+        alt="Cover Photo"
+        mb={8}
+        boxSize="300px"
+        objectFit="cover"
+       />
+      )}
 
       <Flex justifyContent="space-around" width="100%"  px={8} py={8}>
         <Button
@@ -47,6 +80,7 @@ function WritePage() {
          borderWidth="1px"
          borderColor={primaryTextColors}
          background="none"
+         onClick={handleAddImage}
         >
           Add a Cover Photo
         </Button>
