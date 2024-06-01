@@ -35,7 +35,7 @@ function AboutForm() {
         color={secondaryTextColor}
         mt={["15px", "20px", "25px", "30px", "22px"]}
       >
-        IT Lumox is a home for human stories and ideas.
+        IT Lumox is a home for human stories and ideas
       </Text>
 
       <Flex
