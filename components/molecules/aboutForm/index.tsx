@@ -104,8 +104,8 @@ function AboutForm() {
             width="650px"
             mb="10px"
             textAlign="left"
-            color={aboutColors}
             fontSize={20}
+            color={aboutColors}
           >
             CONTENT AND SCOPE
           </Heading>
@@ -129,7 +129,6 @@ function AboutForm() {
             fontSize={20}
             color={aboutColors}
           >
-            {" "}
             COMMUNITY AND EDITING
           </Heading>
           <Text height="120px" width="970px" textAlign="left" lineHeight="2">
@@ -149,8 +148,8 @@ function AboutForm() {
             width="650px"
             mb="10px"
             textAlign="left"
-            color={aboutColors}
             fontSize={20}
+            color={aboutColors}
           >
             FIVE STRONG PILLARS
           </Heading>
@@ -188,10 +187,9 @@ function AboutForm() {
             width="650px"
             mb="10px"
             textAlign="left"
-            color={aboutColors}
             fontSize={20}
+            color={aboutColors}
           >
-            {" "}
             QUALITY CONTROL
           </Heading>
           <Text height="100px" width="960px" textAlign="left" lineHeight="2">
@@ -228,35 +226,44 @@ function AboutForm() {
             fontSize={20}
             color={aboutColors}
           >
-            {" "}
             GLOBAL REACH
           </Heading>
-          <Text height="120px" width="950px" textAlign="left" lineHeight="2">
-            While ITLumox prioritizes Armenian content, we are committed to
-            being a global platform. We offer articles and resources in English
-            to <br /> serve a diverse audience. Our language editions are
-            managed by dedicated editorial teams to ensure quality and cultural
-            relevance <br />
-            Thus ,Were not chasing clicks or selling your data. Were fueled by a
-            community hungry for knowledge and eager to share. We believe in{" "}
-            <br />
-            the power of community-driven enlightenment. The idea that you can
-            be a teacher to someone will push you to be the person you <br />
-            dreamed of when you needed a teacher. <br /> Welcome to ITLumox –
-            where curiosity finds its home and learning is luminously free!
+          <Text height="100px" width="950px" textAlign="left" lineHeight="2">
+            ITLumox is a global platform, welcoming users from all corners of
+            the world. Our multilingual support ensures that language is never a
+            barrier to
+            <br /> accessing knowledge. We believe in the power of diversity and
+            aim to create a global community of learners and experts.
+          </Text>
+        </Box>
+
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+          <Heading
+            height="50px"
+            width="650px"
+            mb="10px"
+            textAlign="left"
+            fontSize={20}
+            color={aboutColors}
+          >
+            ACCESSIBILITY AND INCLUSIVITY
+          </Heading>
+          <Text height="100px" width="960px" textAlign="left" lineHeight="2">
+            We are committed to making ITLumox accessible to everyone. Our
+            platform is designed with inclusivity in mind, featuring tools and
+            resources <br />
+            that cater to individuals with disabilities. We strive to create an
+            environment where everyone feels welcome and valued.
           </Text>
         </Box>
       </Flex>
 
       <Box
-        width="80%"
-        mx="auto"
-        color={primaryTextColor}
-        borderBottom="3px solid"
-        my={170}
-        mb={5}
-      ></Box>
-      <Box p={4}>
+        position="fixed"
+        bottom="40px"
+        right={["16px", "30px", "50px", "65px", "140px"]}
+        zIndex="9999"
+      >
         <ScrollToTopButton />
       </Box>
     </Box>
