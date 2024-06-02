@@ -9,12 +9,22 @@ import {
   Button,
   Flex,
   Input,
+  HStack,
 } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
-import Search from "../search";
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
+
+// Placeholder function to simulate fetching user data
+const getCurrentUser = () => {
+  return {
+    username: "User Name",
+    profilePicture:
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+  };
+};
 
 interface ProfilePictureProps {
   src: string;
@@ -53,7 +63,6 @@ function CoverPhoto({ src, alt, onChangePhoto }: CoverPhotoProps) {
         h="200px"
         position="relative"
       />
-
       <Button
         position="absolute"
         bottom={4}
@@ -70,10 +79,18 @@ function CoverPhoto({ src, alt, onChangePhoto }: CoverPhotoProps) {
 
 function UserPage() {
   const [coverPhoto, setCoverPhoto] = useState<string>("");
+  const [user, setUser] = useState<{
+    username: string;
+    profilePicture: string;
+  } | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    // Fetch user data
+    const userData = getCurrentUser();
+    setUser(userData);
+
     if (typeof window !== "undefined") {
       const storedCoverPhoto = localStorage.getItem("coverPhoto");
       setCoverPhoto(
@@ -136,7 +153,6 @@ function UserPage() {
         alt="Background Picture"
         onChangePhoto={() => fileInputRef.current?.click()}
       />
-
       <Flex
         justifyContent="space-between"
         align="center"
@@ -149,19 +165,34 @@ function UserPage() {
         p={4}
         zIndex={2}
       >
-        <ProfilePicture
-          src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
-          alt="Profile Picture"
-        />
+        {user && (
+          <ProfilePicture src={user.profilePicture} alt="Profile Picture" />
+        )}
       </Flex>
-
+      {user && (
+        <Heading as="h1" size="lg" ml="200px" mt="10px" position="absolute">
+          {user.username}
+        </Heading>
+      )}
+      <HStack
+        spacing="30px"
+        justifyContent="center"
+        mt={20}
+        position="absolute"
+        left={0}
+        right={0}
+      >
+        <Link href="#">TimeLine</Link>
+        <Link href="#">Booking History</Link>
+        <Link href="#">My Favourites</Link>
+        <Link href="#">Account Settings</Link>
+      </HStack>
       <Input
         type="file"
         ref={fileInputRef}
         style={{ display: "none" }}
         onChange={handleCoverPhotoChange}
       />
-
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
@@ -170,3 +201,4 @@ function UserPage() {
 }
 
 export default UserPage;
+
