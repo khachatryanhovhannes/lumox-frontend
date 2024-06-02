@@ -40,6 +40,7 @@ function HelpForm() {
   ];
 
   return (
+    
     <Box textAlign="center">
       <Heading
         fontFamily="Lateef"
@@ -64,20 +65,22 @@ function HelpForm() {
 
       <Box mt="20px">
         <Search />
-        <Flex justifyContent="center" mt="100px">
-          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
-          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
-          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
+        <Flex justifyContent="center" flexDirection={["column", "column", "row", "row", "row"]} mt="100px">
+          <Box mr="20px" mb="20px" width={["300px", "300px", "350px", "350px", "350px"]} height={["300px", "300px", "350px", "350px", "350px"]} bg="#D9D9D9" />
+          <Box mr="20px" mb="20px" width={["300px", "300px", "350px", "350px", "350px"]} height={["300px", "300px", "350px", "350px", "350px"]} bg="#D9D9D9" />
+          <Box width={["300px", "300px", "350px", "350px", "350px"]} height={["300px", "300px", "350px", "350px", "350px"]} bg="#D9D9D9" />
         </Flex>
-        <Flex justifyContent="center" mt="100px">
-          <Box mr="80px" w="350px" h="400px" bg="#D9D9D9" />
-          <Box mr="80px" w="350px" h="400px" bg="#D9D9D9" />
-          <Box mr="80px" w="350px" h="400px" bg="#D9D9D9" />
+        
+        <Flex justifyContent="center" flexDirection={["column", "column", "row", "row", "row"]} mt="100px">
+          <Box mr="20px" mb="20px" width={["300px", "300px", "350px", "350px", "350px"]} height={["300px", "300px", "350px", "350px", "350px"]} bg="#D9D9D9" />
+          <Box mr="20px" mb="20px" width={["300px", "300px", "350px", "350px", "350px"]} height={["300px", "300px", "350px", "350px", "350px"]} bg="#D9D9D9" />
+          <Box width={["300px", "300px", "350px", "350px", "350px"]} height={["300px", "300px", "350px", "350px", "350px"]} bg="#D9D9D9" />
         </Flex>
-        <Flex justifyContent="center" mt="100px">
-          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
-          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
-          <Box mr="80px" w="350px" h="350px" bg="#D9D9D9" />
+
+        <Flex justifyContent="center" flexDirection={["column", "column", "row", "row", "row"]} mt="100px">
+          <Box mr="20px" mb="20px" width={["300px", "300px", "350px", "350px", "350px"]} height={["300px", "300px", "350px", "350px", "350px"]} bg="#D9D9D9" />
+          <Box mr="20px" mb="20px" width={["300px", "300px", "350px", "350px", "350px"]} height={["300px", "300px", "350px", "350px", "350px"]} bg="#D9D9D9" />
+          <Box width={["300px", "300px", "350px", "350px", "350px"]} height={["300px", "300px", "350px", "350px", "350px"]} bg="#D9D9D9" />
         </Flex>
       </Box>
 

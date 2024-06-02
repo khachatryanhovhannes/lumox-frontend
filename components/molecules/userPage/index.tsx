@@ -17,7 +17,6 @@ import Link from "next/link";
 import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
 
-// Placeholder function to simulate fetching user data
 const getCurrentUser = () => {
   return {
     username: "User Name",
@@ -37,11 +36,11 @@ function ProfilePicture({ src, alt }: ProfilePictureProps) {
       src={src}
       alt={alt}
       borderRadius="50%"
-      boxSize="150px"
+      boxSize={{ base: "100px", sm: "120px", md: "150px" }}
       objectFit="cover"
       zIndex={1}
       position="relative"
-      top="50px"
+      top={{ base: "20px", sm: "30px", md: "50px" }}
     />
   );
 }
@@ -60,7 +59,7 @@ function CoverPhoto({ src, alt, onChangePhoto }: CoverPhotoProps) {
         alt={alt}
         objectFit="cover"
         w="100%"
-        h="200px"
+        h={{ base: "150px", sm: "180px", md: "200px" }}
         position="relative"
       />
       <Button
@@ -87,7 +86,6 @@ function UserPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    // Fetch user data
     const userData = getCurrentUser();
     setUser(userData);
 
@@ -158,7 +156,7 @@ function UserPage() {
         align="center"
         marginBottom="20px"
         position="absolute"
-        top="50%"
+        top={{ base: "100px", md: "150px" }}
         left={10}
         right={0}
         bottom={0}
@@ -170,12 +168,18 @@ function UserPage() {
         )}
       </Flex>
       {user && (
-        <Heading as="h1" size="lg" ml="200px" mt="10px" position="absolute">
+        <Heading
+          as="h1"
+          size="lg"
+          ml={{ base: "150px", sm: "180px", md: "230px" }}
+          mt="20px"
+          position="absolute"
+        >
           {user.username}
         </Heading>
       )}
       <HStack
-        spacing="30px"
+        spacing={{ base: "10px", sm: "20px", md: "80px" }}
         justifyContent="center"
         mt={20}
         position="absolute"

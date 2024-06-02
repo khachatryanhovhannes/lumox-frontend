@@ -12,10 +12,17 @@ function NavigationBar() {
   );
 
   return (
-    <Flex gap="20px">
+    <Flex 
+     gap={{base:"10px", sm:"15px", md:"20px"}}
+     direction={{base:"column", md:"row"}}
+     >
       {NAV_BAR_ITEMS.map((item: INavItem) => (
         <Link href={item.path} key={item.path}>
-          <Text color={linkColor}>{item.label}</Text>
+          <Text 
+          color={linkColor}
+          fontSize={{base:"16px", sm:"18px", md:"20px"}}
+          >
+            {item.label}</Text>
         </Link>
       ))}
     </Flex>
