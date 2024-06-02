@@ -23,10 +23,19 @@ const NAV_BAR_ITEMS: INavItem[] = [
     label: "Our team",
     path: "/team",
   },
+
+  // {
+  //   label: " User",
+  //   path: "/user",
+  // }
   {
-    label: " User Page",
-    path: "/user",
-  }
+    label: "Blog",
+    path: "/blog",
+  },
+  {
+    label: "Write",
+    path: "/write",
+  },
 ];
 
 const OUR_TEAM = [
@@ -60,7 +69,7 @@ const OUR_TEAM = [
     position: "Front-end Developer",
     description: "",
     image: "",
-    prifile_link: "",
+    profile_link: "",
   },
 ];
 

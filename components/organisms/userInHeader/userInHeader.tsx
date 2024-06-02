@@ -52,9 +52,9 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
                 src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
                 alt="Profile Picture"
                 style={{
-                  width: "45px",
-                  height: "45px",
-                  borderRadius: "90%",
+                  width: "35px",
+                  height: "35px",
+                  borderRadius: "80%",
                   marginRight: "20px",
                 }}
                 onClick={handleOpen}
