@@ -8,7 +8,6 @@ import {
   PopoverContent,
   PopoverBody,
   Link,
-  Image
 } from "@chakra-ui/react";
 import { PrimaryTextColors } from "../../../models";
 import { usePathname } from "next/navigation";
@@ -49,36 +48,45 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
           <PopoverTrigger>
             <Flex alignItems="center" cursor="pointer">
               {/* Նկարի հետ կա փոքր խնդիր հետագայում պետք է փոխել */}
-              <Image
+              <img
                 src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
                 alt="Profile Picture"
-                boxSize={["35px", "45px", "50px"]}
-                borderRadius="full"
-                marginRight="20px"
+                style={{
+                  width: "35px",
+                  height: "35px",
+                  borderRadius: "80%",
+                  marginRight: "20px",
+                }}
                 onClick={handleOpen}
               />
             </Flex>
           </PopoverTrigger>
           <PopoverContent maxW="200px">
             <PopoverBody>
-              <Flex
-                  alignItems = "center"
-                  marginBottom = "10px"
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                }}
               >
                 {/* Նկարի հետ կա փոքր խնդիր հետագայում պետք է փոխել */}
 
-                <Image
+                <img
                   src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
                   alt="Profile Picture"
-                  boxSize={["40px", "50px", "60px"]}
-                  borderRadius = "full"
-                  marginRight = "10px"
+                  style={{
+                    width: "50px",
+                    height: "50px",
+                    borderRadius: "50%",
+                    marginRight: "10px",
+                  }}
                 />
                 <div>
                   <span>{user.firstname + " " + user.lastname}</span>
                   <span style={{ color: "gray", fontSize: "0.8em" }}></span>
                 </div>
-              </Flex>
+              </div>
 
               <div>
                 <span
@@ -86,47 +94,34 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
                 ></span>
               </div>
               <span>Account </span>
-              <Link 
-                href="/user" 
-                display={["block", "none", "none"]} 
-                color = "gray"
-                >
+              <Link href="/user" style={{ display: "block", color: "gray" }}>
                 User{" "}
               </Link>
               <Link
                 href="/settings"
-                display={["block", "none", "none"]} 
-                color = "gray"
+                style={{ display: "block", color: "gray" }}
               >
                 Settings & Privacy
               </Link>
 
               <Link
                 href="/language"
-                display={["block", "none", "none"]} 
-                color = "gray"
+                style={{ display: "block", color: "gray" }}
               >
                 Language
               </Link>
               <span>Manage </span>
-              <Link 
-              href="/logout" 
-                display={["block", "none", "none"]} 
-                color = "gray"
-              >
+              <Link href="/logout" style={{ display: "block", color: "gray" }}>
                 Link
               </Link>
               <Link
                 href="/logout"
-                display={["block", "none", "none"]} 
-                color = "gray"
-                >
-                </Link>
+                style={{ display: "block", color: "gray" }}
+              ></Link>
               <Link
                 onClick={handleLogOut}
-                display={["block", "none", "none"]} 
-                color = "gray"
-                >
+                style={{ display: "block", color: "gray" }}
+              >
                 Sign Out
               </Link>
             </PopoverBody>
@@ -138,3 +133,4 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
 }
 
 export default UserInHeader;
+

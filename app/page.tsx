@@ -14,6 +14,7 @@ import { PrimaryTextColors, SecondaryTextColors } from "../models";
 import { BASE_URL } from "@/constants";
 import UseAuth from "@/hooks/useAuth";
 import { useEffect } from "react";
+import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
@@ -158,6 +159,9 @@ function Home() {
         my={10}
         // mb={5}
       ></Box>
+      <Box p={4}>
+        <ScrollToTopButton />
+      </Box>
     </Box>
   );
 }

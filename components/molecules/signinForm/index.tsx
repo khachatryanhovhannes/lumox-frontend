@@ -2,7 +2,6 @@
 import { useForm } from "react-hook-form";
 import { PrimaryTextColors, UserLogin } from "@/models";
 import { FcGoogle } from "react-icons/fc";
-
 import {
   Box,
   Button,
@@ -19,6 +18,7 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
@@ -32,19 +32,34 @@ function SigninForm() {
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
   );
-  const { register, handleSubmit } = useForm<UserLogin>();
+  const {
+    register,
+    handleSubmit,
+    setError,
+    formState: { errors },
+  } = useForm<UserLogin>();
   const textColors = useColorModeValue("black", "white");
 
   const onSubmit = async (data: UserLogin) => {
-    console.log(data);
-    const res = await userLoginWithUsernamePassword({
-      email: data.email,
-      password: data.password,
-    });
+    try {
+      const res = await userLoginWithUsernamePassword({
+        email: data.email,
+        password: data.password,
+      });
 
-    if (res.data.access_token) {
-      UseCookies({ type: "set", access_token: res.data.access_token });
-      window.location.href = "/";
+      if (res.data.access_token) {
+        UseCookies({ type: "set", access_token: res.data.access_token });
+        window.location.href = "/";
+      }
+    } catch (error) {
+      setError("email", {
+        type: "manual",
+        message: "Invalid email or password",
+      });
+      setError("password", {
+        type: "manual",
+        message: "Invalid email or password",
+      });
     }
   };
 
@@ -59,7 +74,7 @@ function SigninForm() {
       <FormControl as="form" onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing="6">
           <Stack spacing="5">
-            <FormControl>
+            <FormControl isInvalid={!!errors.email}>
               <FormLabel htmlFor="email" color={borderColor}>
                 Email
               </FormLabel>
@@ -70,10 +85,19 @@ function SigninForm() {
                 borderWidth="2px"
                 borderColor={borderColor}
                 color={textColors}
-                {...register("email")}
+                {...register("email", {
+                  required: "Email is required",
+                  pattern: {
+                    value: /^\S+@\S+$/i,
+                    message: "Entered value does not match email format",
+                  },
+                })}
               />
+              <FormErrorMessage>
+                {errors.email && errors.email.message}
+              </FormErrorMessage>
             </FormControl>
-            <FormControl>
+            <FormControl isInvalid={!!errors.password}>
               <FormLabel htmlFor="password" color={borderColor}>
                 Password
               </FormLabel>
@@ -97,19 +121,25 @@ function SigninForm() {
                   id="password"
                   type={isOpen ? "text" : "password"}
                   autoComplete="current-password"
-                  {...register("password")}
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 8,
+                      message: "Password must be at least 8 characters long",
+                    },
+                  })}
                 />
               </InputGroup>
+              <FormErrorMessage>
+                {errors.password && errors.password.message}
+              </FormErrorMessage>
             </FormControl>
           </Stack>
           <HStack justify="space-between">
-            <Checkbox
-              color={borderColor}
-              {...register("rememberMe")}
-              defaultChecked
-            >
+            <Checkbox color={borderColor} {...register("rememberMe")}>
               Remember me
             </Checkbox>
+
             <Button variant="text" size="sm" color={borderColor}>
               Forgot password?
             </Button>
@@ -133,7 +163,7 @@ function SigninForm() {
           <HStack>
             <Divider borderColor={borderColor} />
             <Text textStyle="sm" whiteSpace="nowrap" color={borderColor}>
-              or continue withs
+              or continue with
             </Text>
             <Divider borderColor={borderColor} />
           </HStack>
