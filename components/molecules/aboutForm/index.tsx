@@ -35,7 +35,7 @@ function AboutForm() {
         color={secondaryTextColor}
         mt={["15px", "20px", "25px", "30px", "22px"]}
       >
-        IT Lumox is a home for human stories and ideas
+        Join Lumox, learn free – just like millions already!.
       </Text>
 
       <Flex
@@ -43,7 +43,7 @@ function AboutForm() {
         alignItems="flex-start"
         // fontFamily="Inter, sans-serif"
       >
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Text
             height="120px"
             width="100%"
@@ -62,7 +62,7 @@ function AboutForm() {
           </Text>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
@@ -92,7 +92,7 @@ function AboutForm() {
           </Text>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
@@ -113,7 +113,7 @@ function AboutForm() {
           </Text>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
@@ -135,7 +135,7 @@ function AboutForm() {
           </Text>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
@@ -173,7 +173,7 @@ function AboutForm() {
           </Box>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
@@ -209,7 +209,7 @@ function AboutForm() {
           </Box>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
@@ -236,4 +236,3 @@ function AboutForm() {
 }
 
 export default AboutForm;
-
