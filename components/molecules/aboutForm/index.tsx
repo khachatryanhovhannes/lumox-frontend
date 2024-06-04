@@ -1,4 +1,5 @@
 "use client";
+import ScrollToTopButton from "@/constants/scrool";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
@@ -49,6 +50,7 @@ function AboutForm() {
             width="100%"
             textAlign="left"
             lineHeight="2"
+            color={primaryTextColor}
             fontFamily="Inter, sans-serif"
             fontSize={["16px", "18px", "20px", "22px", "16px"]}
           >
@@ -67,8 +69,10 @@ function AboutForm() {
             height="50px"
             width="650px"
             mb="10px"
+            color={primaryTextColor}
             textAlign="left"
             fontSize={20}
+            fontWeight={300}
           >
             MISSION AND VISION
           </Heading>
@@ -77,6 +81,7 @@ function AboutForm() {
             width="100%"
             textAlign="left"
             lineHeight="2"
+            color={primaryTextColor}
             fontFamily="Inter, sans-serif"
             fontSize={["16px", "18px", "20px", "22px", "16px"]}
           >
@@ -98,11 +103,19 @@ function AboutForm() {
             width="650px"
             mb="10px"
             textAlign="left"
+            color={primaryTextColor}
+            fontWeight={300}
             fontSize={20}
           >
             CONTENT AND SCOPE
           </Heading>
-          <Text height="120px" width="950px" textAlign="left" lineHeight="2">
+          <Text
+            height="120px"
+            width="950px"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColor}
+          >
             ITLumox covers a wide array of subjects, from technology and science
             to arts and personal development. Our platform hosts articles,
             <br />
@@ -118,13 +131,20 @@ function AboutForm() {
             height="50px"
             width="650px"
             mb="10px"
+            color={primaryTextColor}
             textAlign="left"
+            fontWeight={300}
             fontSize={20}
           >
-            {" "}
             COMMUNITY AND EDITING
           </Heading>
-          <Text height="120px" width="970px" textAlign="left" lineHeight="2">
+          <Text
+            height="120px"
+            width="970px"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColor}
+          >
             Our community is at the heart of ITLumox. We believe that the best
             knowledge comes from collaboration and sharing diverse <br />
             perspectives. Our platform allows users to make a post, write
@@ -141,15 +161,28 @@ function AboutForm() {
             width="650px"
             mb="10px"
             textAlign="left"
+            color={primaryTextColor}
+            fontWeight={300}
             fontSize={20}
           >
             FIVE STRONG PILLARS
           </Heading>
-          <Text width="950px" textAlign="left" height={70}>
+          <Text
+            width="950px"
+            textAlign="left"
+            height={70}
+            color={primaryTextColor}
+          >
             Our platform is built on five strong pillars that guide our
             operations and community engagement:
           </Text>
-          <Box as="ol" pl="20px" textAlign="left" lineHeight="2.5">
+          <Box
+            as="ol"
+            pl="20px"
+            textAlign="left"
+            lineHeight="2.5"
+            color={primaryTextColor}
+          >
             <Box as="li">
               Quality Information: Ensuring that all content is reliable,
               well-researched, and professionally written.
@@ -179,17 +212,30 @@ function AboutForm() {
             width="650px"
             mb="10px"
             textAlign="left"
+            color={primaryTextColor}
+            fontWeight={300}
             fontSize={20}
           >
-            {" "}
             QUALITY CONTROL
           </Heading>
-          <Text height="100px" width="960px" textAlign="left" lineHeight="2">
+          <Text
+            height="100px"
+            width="960px"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColor}
+          >
             Quality is a cornerstone of ITLumox. We employ rigorous quality
             control measures to ensure that all content is trustworthy and
             valuable:
           </Text>
-          <Box as="ul" pl="20px" textAlign="left" lineHeight="2">
+          <Box
+            as="ul"
+            pl="20px"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColor}
+          >
             <Box as="li">
               Verification: All submissions are reviewed for accuracy and
               supported by credible sources.
@@ -214,13 +260,20 @@ function AboutForm() {
             height="50px"
             width="650px"
             mb="10px"
+            color={primaryTextColor}
             textAlign="left"
+            fontWeight={300}
             fontSize={20}
           >
-            {" "}
             GLOBAL REACH
           </Heading>
-          <Text height="120px" width="950px" textAlign="left" lineHeight="2">
+          <Text
+            height="120px"
+            width="950px"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColor}
+          >
             ITLumox aims to have a global reach. We are working towards
             translating our content into multiple languages to cater to a
             <br />
@@ -231,6 +284,9 @@ function AboutForm() {
           </Text>
         </Box>
       </Flex>
+      <Box p={4}>
+        <ScrollToTopButton />
+      </Box>
     </Box>
   );
 }
