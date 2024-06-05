@@ -26,6 +26,11 @@ const enum LogoColor {
   lightMode = "rgb(7,8,30)",
   darkMode = "rgb(168,232,222)",
 }
+const enum HeaderColor {
+  lightMode = "rgb(69, 41, 102)",
+  darkMode = "rgb(168, 232, 222)"
+}
+
 
 export {
   FullBackgrundColors,
@@ -34,4 +39,5 @@ export {
   ActiveColors,
   ColorMode,
   LogoColor,
+  HeaderColor
 };
