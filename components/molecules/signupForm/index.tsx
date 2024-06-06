@@ -1,5 +1,5 @@
 "use client";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import {
   Box,
   Button,
@@ -18,7 +18,7 @@ import {
   useColorModeValue,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { UserRegister, PrimaryTextColors } from "@/models";
 import { FcGoogle } from "react-icons/fc";
@@ -29,6 +29,8 @@ import Swal from "sweetalert2";
 function SignupForm() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [firstNameValid, setFirstNameValid] = useState(false);
+  const [lastNameValid, setLastNameValid] = useState(false);
   const borderColor = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
@@ -38,8 +40,40 @@ function SignupForm() {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
+    clearErrors,
+    watch,
   } = useForm<UserRegister>();
   const textColors = useColorModeValue("black", "white");
+
+  const firstname = watch("firstname");
+  const lastname = watch("lastname");
+
+  useEffect(() => {
+    const namePattern = /^[A-Za-z]+$/i;
+    if (firstname && (!namePattern.test(firstname) || firstname.length < 3)) {
+      setError("firstname", {
+        type: "manual",
+        message:
+          "First name must be at least 3 letters and only contain letters",
+      });
+      setFirstNameValid(false);
+    } else {
+      clearErrors("firstname");
+      setFirstNameValid(!!firstname && firstname.length >= 3);
+    }
+    if (lastname && (!namePattern.test(lastname) || lastname.length < 3)) {
+      setError("lastname", {
+        type: "manual",
+        message:
+          "Last name must be at least 3 letters and only contain letters",
+      });
+      setLastNameValid(false);
+    } else {
+      clearErrors("lastname");
+      setLastNameValid(!!lastname && lastname.length >= 3);
+    }
+  }, [firstname, lastname, setError, clearErrors]);
 
   const onSubmit = async (data: UserRegister) => {
     setIsLoading(true);
@@ -61,7 +95,7 @@ function SignupForm() {
           icon: "success",
           confirmButtonText: "OK",
         }).then(() => {
-          window.location.href = "/signin"; // Redirect to Sign in page
+          window.location.href = "/signin";
         });
       }
     } catch (error) {
@@ -101,11 +135,22 @@ function SignupForm() {
                   color={textColors}
                   {...register("firstname", {
                     required: "First name is required",
+                    minLength: {
+                      value: 3,
+                      message: "First name must be at least 3 letters long",
+                    },
+                    pattern: {
+                      value: /^[A-Za-z]+$/i,
+                      message: "First name can only contain letters",
+                    },
                   })}
                 />
                 <FormErrorMessage>
                   {errors.firstname && errors.firstname.message}
                 </FormErrorMessage>
+                {!errors.firstname && firstNameValid && (
+                  <Text color="green.500">First name is appropriate</Text>
+                )}
               </FormControl>
               <FormControl isInvalid={!!errors.lastname}>
                 <FormLabel htmlFor="lastname" color={borderColor}>
@@ -120,11 +165,22 @@ function SignupForm() {
                   color={textColors}
                   {...register("lastname", {
                     required: "Last name is required",
+                    minLength: {
+                      value: 3,
+                      message: "Last name must be at least 3 letters long",
+                    },
+                    pattern: {
+                      value: /^[A-Za-z]+$/i,
+                      message: "Last name can only contain letters",
+                    },
                   })}
                 />
                 <FormErrorMessage>
                   {errors.lastname && errors.lastname.message}
                 </FormErrorMessage>
+                {!errors.lastname && lastNameValid && (
+                  <Text color="green.500">Last name is appropriate</Text>
+                )}
               </FormControl>
             </Flex>
             <FormControl isInvalid={!!errors.email}>
