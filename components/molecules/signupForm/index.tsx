@@ -1,5 +1,5 @@
 "use client";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import {
   Box,
   Button,
@@ -31,6 +31,9 @@ function SignupForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [firstNameValid, setFirstNameValid] = useState(false);
   const [lastNameValid, setLastNameValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [agreeTermsError, setAgreeTermsError] = useState(false);
   const borderColor = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
@@ -48,9 +51,13 @@ function SignupForm() {
 
   const firstname = watch("firstname");
   const lastname = watch("lastname");
+  const password = watch("password");
 
   useEffect(() => {
-    const namePattern = /^[A-Za-z]+$/i;
+    const namePattern = /^[A-Za-z\u0531-\u0587]+$/i;
+    const passwordPattern =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.])[A-Za-z\d@$!%*#?&.]{8,}$/;
+
     if (firstname && (!namePattern.test(firstname) || firstname.length < 3)) {
       setError("firstname", {
         type: "manual",
@@ -73,9 +80,24 @@ function SignupForm() {
       clearErrors("lastname");
       setLastNameValid(!!lastname && lastname.length >= 3);
     }
-  }, [firstname, lastname, setError, clearErrors]);
+    if (password && !passwordPattern.test(password)) {
+      setError("password", {
+        type: "manual",
+        message:
+          "Password must be at least 8 characters long, contain letters, numbers, and symbols",
+      });
+      setPasswordValid(false);
+    } else {
+      clearErrors("password");
+      setPasswordValid(!!password && passwordPattern.test(password));
+    }
+  }, [firstname, lastname, password, setError, clearErrors]);
 
   const onSubmit = async (data: UserRegister) => {
+    if (!agreeTerms) {
+      setAgreeTermsError(true);
+      return;
+    }
     setIsLoading(true);
     try {
       const userData = await userRegistrationWithUsernamePassword({
@@ -140,7 +162,7 @@ function SignupForm() {
                       message: "First name must be at least 3 letters long",
                     },
                     pattern: {
-                      value: /^[A-Za-z]+$/i,
+                      value: /^[A-Za-z\u0531-\u0587]+$/i,
                       message: "First name can only contain letters",
                     },
                   })}
@@ -170,7 +192,7 @@ function SignupForm() {
                       message: "Last name must be at least 3 letters long",
                     },
                     pattern: {
-                      value: /^[A-Za-z]+$/i,
+                      value: /^[A-Za-z\u0531-\u0587]+$/i,
                       message: "Last name can only contain letters",
                     },
                   })}
@@ -236,27 +258,42 @@ function SignupForm() {
                       value: 8,
                       message: "Password must be at least 8 characters long",
                     },
+                    pattern: {
+                      value:
+                        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.])[A-Za-z\d@$!%*#?&.]{8,}$/,
+                      message:
+                        "Password must contain letters, numbers, and symbols",
+                    },
                   })}
                 />
               </InputGroup>
               <FormErrorMessage>
                 {errors.password && errors.password.message}
               </FormErrorMessage>
+              {!errors.password && passwordValid && (
+                <Text color="green.500">Password is appropriate</Text>
+              )}
             </FormControl>
           </Stack>
-          <HStack justify="space-between">
+          <FormControl isInvalid={agreeTermsError}>
             <Checkbox
               color={borderColor}
-              {...register("agreeTerms", {
-                required: "You must agree to the terms and conditions",
-              })}
+              onChange={(e) => {
+                setAgreeTerms(e.target.checked);
+                setAgreeTermsError(false);
+              }}
+              isChecked={agreeTerms}
             >
               I agree to the terms and conditions
             </Checkbox>
-            <FormErrorMessage>
-              {errors.agreeTerms && errors.agreeTerms.message}
-            </FormErrorMessage>
-          </HStack>
+            {agreeTermsError && (
+              <FormErrorMessage>
+                <Text color="red.500">
+                  You must agree to the terms and conditions
+                </Text>
+              </FormErrorMessage>
+            )}
+          </FormControl>
         </Stack>
 
         <Stack spacing="6">
