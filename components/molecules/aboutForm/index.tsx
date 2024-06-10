@@ -1,4 +1,5 @@
 "use client";
+import ScrollToTopButton from "@/constants/scrool";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
@@ -19,7 +20,7 @@ function AboutForm() {
   const headerColor = useColorModeValue(
     HeaderColor.lightMode,
     HeaderColor.darkMode
-  )
+  );
   return (
     <Box textAlign="center">
       <Heading
@@ -40,23 +41,19 @@ function AboutForm() {
         color={headerColor}
         mt={["15px", "20px", "25px", "30px", "22px"]}
       >
-        IT Lumox is a home for human stories and ideas
+        Join Lumox, learn free – just like millions already!.
       </Text>
 
-      <Flex
-        direction="column"
-        alignItems="flex-start"
-        // fontFamily="Inter, sans-serif"
-      >
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+      <Flex direction="column" alignItems="flex-start">
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Text
             height="auto"
             width="100%"
             textAlign="left"
             lineHeight="2"
+            color={primaryTextColor}
             fontFamily="Inter, sans-serif"
             fontSize={["16px", "18px", "20px", "22px", "16px"]}
-            color={headerColor}
           >
             ITLumox believes in YOU. Every human being is a library of stories,
             filled with chapters of failure, victory, and valuable information.
@@ -68,7 +65,7 @@ function AboutForm() {
           </Text>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="auto"
             width="650px"
@@ -84,9 +81,9 @@ function AboutForm() {
             width="100%"
             textAlign="left"
             lineHeight="2"
+            color={primaryTextColor}
             fontFamily="Inter, sans-serif"
             fontSize={["16px", "18px", "20px", "22px", "16px"]}
-            color={headerColor}
           >
             Our mission is to build a vibrant and strong online community where
             anyone can find professional information and enhance their <br />
@@ -100,23 +97,25 @@ function AboutForm() {
           </Text>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
             mb="10px"
             textAlign="left"
-            fontSize={20}
             color={headerColor}
+            fontWeight={300}
+            fontSize={20}
           >
             CONTENT AND SCOPE
           </Heading>
-          <Text 
-           height="auto" 
-           width="950px" 
-           textAlign="left" 
-           lineHeight="2" 
-           color={headerColor}>
+          <Text
+            height="auto"
+            width="950px"
+            textAlign="left"
+            lineHeight="2"
+            color={headerColor}
+          >
             ITLumox covers a wide array of subjects, from technology and science
             to arts and personal development. Our platform hosts articles,
             <br />
@@ -127,24 +126,25 @@ function AboutForm() {
           </Text>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
             mb="10px"
             textAlign="left"
-            fontSize={20}
             color={headerColor}
+            fontWeight={300}
+            fontSize={20}
           >
-            {" "}
             COMMUNITY AND EDITING
           </Heading>
-          <Text 
-           height="auto" 
-           width="970px" 
-           textAlign="left" 
-           lineHeight="2" 
-           color={headerColor}>
+          <Text
+            height="auto"
+            width="970px"
+            textAlign="left"
+            lineHeight="2"
+            color={headerColor}
+          >
             Our community is at the heart of ITLumox. We believe that the best
             knowledge comes from collaboration and sharing diverse <br />
             perspectives. Our platform allows users to make a post, write
@@ -155,26 +155,34 @@ function AboutForm() {
           </Text>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
             mb="10px"
             textAlign="left"
-            fontSize={20}
             color={headerColor}
+            fontWeight={300}
+            fontSize={20}
           >
             FIVE STRONG PILLARS
           </Heading>
           <Text
-           width="950px"
-           textAlign="left" 
-           height="auto"
-           color={headerColor}>
+            width="950px"
+            textAlign="left"
+            height="auto"
+            color={headerColor}
+          >
             Our platform is built on five strong pillars that guide our
             operations and community engagement:
           </Text>
-          <Box as="ol" pl="20px" textAlign="left" lineHeight="2.5" color={headerColor}>
+          <Box
+            as="ol"
+            pl="20px"
+            textAlign="left"
+            lineHeight="2.5"
+            color={headerColor}
+          >
             <Box as="li">
               Quality Information: Ensuring that all content is reliable,
               well-researched, and professionally written.
@@ -198,24 +206,36 @@ function AboutForm() {
           </Box>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
             mb="10px"
             textAlign="left"
-            fontSize={20}
             color={headerColor}
+            fontWeight={300}
+            fontSize={20}
           >
-            {" "}
             QUALITY CONTROL
           </Heading>
-          <Text height="auto" width="960px" textAlign="left" lineHeight="2" color={headerColor}>
+          <Text
+            height="auto"
+            width="960px"
+            textAlign="left"
+            lineHeight="2"
+            color={headerColor}
+          >
             Quality is a cornerstone of ITLumox. We employ rigorous quality
             control measures to ensure that all content is trustworthy and
             valuable:
           </Text>
-          <Box as="ul" pl="20px" textAlign="left" lineHeight="2" color={headerColor}>
+          <Box
+            as="ul"
+            pl="20px"
+            textAlign="left"
+            lineHeight="2"
+            color={headerColor}
+          >
             <Box as="li">
               Verification: All submissions are reviewed for accuracy and
               supported by credible sources.
@@ -235,24 +255,25 @@ function AboutForm() {
           </Box>
         </Box>
 
-        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "300px"]}>
+        <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
             height="50px"
             width="650px"
             mb="10px"
             textAlign="left"
-            fontSize={20}
             color={headerColor}
+            fontWeight={300}
+            fontSize={20}
           >
-            {" "}
             GLOBAL REACH
           </Heading>
-          <Text 
-           height="auto" 
-           width="950px" 
-           textAlign="left" 
-           lineHeight="2" 
-           color={headerColor}>
+          <Text
+            height="auto"
+            width="950px"
+            textAlign="left"
+            lineHeight="2"
+            color={headerColor}
+          >
             ITLumox aims to have a global reach. We are working towards
             translating our content into multiple languages to cater to a
             <br />
@@ -263,8 +284,12 @@ function AboutForm() {
           </Text>
         </Box>
       </Flex>
+      <Box p={4}>
+        <ScrollToTopButton />
+      </Box>
     </Box>
   );
 }
 
 export default AboutForm;
+

@@ -22,11 +22,22 @@ import UserInHeader from "../userInHeader/userInHeader";
 import UseAuth from "@/hooks/useAuth";
 
 function Header() {
-  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
+  const [isLargerScreen] = useMediaQuery("(min-width: 1280px)");
+   const [isMediumScreen] = useMediaQuery("(min-Width: 992px) and (max-width: 1279px))");
+   const [isSmallScreen] = useMediaQuery("(min-width: 360px) and (max-width: 991px)");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { user, pending, error } = UseAuth();
 
   const updateUserProfilePicture = (image: string | null) => {};
+
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+  }; 
+  
+  const handleDrawerOpen = () => {
+    setIsDrawerOpen(true);
+  };
+
 
   return (
     <Flex
@@ -37,7 +48,7 @@ function Header() {
       alignItems="center"
     >
       <Logo />
-      {isLargerThan768 ? (
+      {isLargerScreen ? (
         <Flex alignItems="center" gap="30px">
           <NavigationBar />
           {user && (
@@ -60,7 +71,7 @@ function Header() {
           />
           <Drawer
             placement="left"
-            onClose={() => setIsDrawerOpen(false)}
+            onClose={handleDrawerClose}
             isOpen={isDrawerOpen}
           >
             <DrawerOverlay>
@@ -84,7 +95,7 @@ function Header() {
             </DrawerOverlay>
           </Drawer>
         </>
-      )}
+      ) }
     </Flex>
   );
 }

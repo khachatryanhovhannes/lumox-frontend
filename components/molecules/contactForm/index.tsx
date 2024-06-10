@@ -46,15 +46,21 @@ function ContactForm() {
         Whatever you would like to share with us, we are always prepared to
         listen.
       </Text>
-      <Stack spacing="44px" mt="100px" align="center">
-        <Box>
+      <Stack 
+       spacing="44px"
+       mt={["50px", "70px", "90px", "110px", "130px"]}
+       align="center"
+       width={["90%", "80%", "70%", "60%", "50%"]}
+       mx="auto"
+       >
+        <Box width="100%">
           <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
             Your Full Name
           </Text>
           <Input
             type="text"
             size="md"
-            width="950px"
+            width="100%"
             borderBottomWidth="1px"
             borderColor={secondaryTextColors}
             borderTopWidth="0"
@@ -63,14 +69,14 @@ function ContactForm() {
             borderRadius="0"
           />
         </Box>
-        <Box>
+        <Box width="100%">
           <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
             Your Email Address
           </Text>
           <Input
             type="email"
             size="md"
-            width="950px"
+            width="100%"
             borderBottomWidth="1px"
             borderTopWidth="0"
             borderLeftWidth="0"
@@ -79,7 +85,7 @@ function ContactForm() {
             borderRadius="0"
           />
         </Box>
-        <Box>
+        <Box width="100%">
           <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
             {" "}
             What Brings You Here?
@@ -87,7 +93,7 @@ function ContactForm() {
           <Input
             type="text"
             size="md"
-            width="950px"
+            width="100%"
             borderBottomWidth="1px"
             borderTopWidth="0"
             borderLeftWidth="0"
@@ -96,7 +102,9 @@ function ContactForm() {
             borderRadius="0"
           />
         </Box>
-        <Box width="850px">
+        <Box 
+         width="80%"
+         >
           {" "}
           <Button
             mt={50}
