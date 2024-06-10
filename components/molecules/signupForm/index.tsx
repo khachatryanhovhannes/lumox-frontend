@@ -19,7 +19,7 @@ import {
   useBreakpointValue,
   FormErrorMessage,
 } from "@chakra-ui/react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { UserRegister, PrimaryTextColors } from "@/models";
 import { FcGoogle } from "react-icons/fc";
@@ -30,6 +30,11 @@ import Swal from "sweetalert2";
 function SignupForm() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [firstNameValid, setFirstNameValid] = useState(false);
+  const [lastNameValid, setLastNameValid] = useState(false);
+  const [passwordValid, setPasswordValid] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(false);
+  const [agreeTermsError, setAgreeTermsError] = useState(false);
   const borderColor = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
@@ -39,10 +44,61 @@ function SignupForm() {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
+    clearErrors,
+    watch,
   } = useForm<UserRegister>();
   const textColors = useColorModeValue("black", "white");
 
+  const firstname = watch("firstname");
+  const lastname = watch("lastname");
+  const password = watch("password");
+
+  useEffect(() => {
+    const namePattern = /^[A-Za-z\u0531-\u0587]+$/i;
+    const passwordPattern =
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.])[A-Za-z\d@$!%*#?&.]{8,}$/;
+
+    if (firstname && (!namePattern.test(firstname) || firstname.length < 3)) {
+      setError("firstname", {
+        type: "manual",
+        message:
+          "First name must be at least 3 letters and only contain letters",
+      });
+      setFirstNameValid(false);
+    } else {
+      clearErrors("firstname");
+      setFirstNameValid(!!firstname && firstname.length >= 3);
+    }
+    if (lastname && (!namePattern.test(lastname) || lastname.length < 3)) {
+      setError("lastname", {
+        type: "manual",
+        message:
+          "Last name must be at least 3 letters and only contain letters",
+      });
+      setLastNameValid(false);
+    } else {
+      clearErrors("lastname");
+      setLastNameValid(!!lastname && lastname.length >= 3);
+    }
+    if (password && !passwordPattern.test(password)) {
+      setError("password", {
+        type: "manual",
+        message:
+          "Password must be at least 8 characters long, contain letters, numbers, and symbols",
+      });
+      setPasswordValid(false);
+    } else {
+      clearErrors("password");
+      setPasswordValid(!!password && passwordPattern.test(password));
+    }
+  }, [firstname, lastname, password, setError, clearErrors]);
+
   const onSubmit = async (data: UserRegister) => {
+    if (!agreeTerms) {
+      setAgreeTermsError(true);
+      return;
+    }
     setIsLoading(true);
     try {
       const userData = await userRegistrationWithUsernamePassword({
@@ -62,7 +118,7 @@ function SignupForm() {
           icon: "success",
           confirmButtonText: "OK",
         }).then(() => {
-          window.location.href = "/signin"; // Redirect to Sign in page
+          window.location.href = "/signin";
         });
       }
     } catch (error) {
@@ -105,11 +161,22 @@ function SignupForm() {
                   color={textColors}
                   {...register("firstname", {
                     required: "First name is required",
+                    minLength: {
+                      value: 3,
+                      message: "First name must be at least 3 letters long",
+                    },
+                    pattern: {
+                      value: /^[A-Za-z\u0531-\u0587]+$/i,
+                      message: "First name can only contain letters",
+                    },
                   })}
                 />
                 <FormErrorMessage>
                   {errors.firstname && errors.firstname.message}
                 </FormErrorMessage>
+                {!errors.firstname && firstNameValid && (
+                  <Text color="green.500">First name is appropriate</Text>
+                )}
               </FormControl>
               <FormControl isInvalid={!!errors.lastname}>
                 <FormLabel htmlFor="lastname" color={borderColor}>
@@ -124,11 +191,22 @@ function SignupForm() {
                   color={textColors}
                   {...register("lastname", {
                     required: "Last name is required",
+                    minLength: {
+                      value: 3,
+                      message: "Last name must be at least 3 letters long",
+                    },
+                    pattern: {
+                      value: /^[A-Za-z\u0531-\u0587]+$/i,
+                      message: "Last name can only contain letters",
+                    },
                   })}
                 />
                 <FormErrorMessage>
                   {errors.lastname && errors.lastname.message}
                 </FormErrorMessage>
+                {!errors.lastname && lastNameValid && (
+                  <Text color="green.500">Last name is appropriate</Text>
+                )}
               </FormControl>
             </Flex>
             <FormControl isInvalid={!!errors.email}>
@@ -184,27 +262,42 @@ function SignupForm() {
                       value: 8,
                       message: "Password must be at least 8 characters long",
                     },
+                    pattern: {
+                      value:
+                        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&.])[A-Za-z\d@$!%*#?&.]{8,}$/,
+                      message:
+                        "Password must contain letters, numbers, and symbols",
+                    },
                   })}
                 />
               </InputGroup>
               <FormErrorMessage>
                 {errors.password && errors.password.message}
               </FormErrorMessage>
+              {!errors.password && passwordValid && (
+                <Text color="green.500">Password is appropriate</Text>
+              )}
             </FormControl>
           </Stack>
-          <HStack justify="space-between">
+          <FormControl isInvalid={agreeTermsError}>
             <Checkbox
               color={borderColor}
-              {...register("agreeTerms", {
-                required: "You must agree to the terms and conditions",
-              })}
+              onChange={(e) => {
+                setAgreeTerms(e.target.checked);
+                setAgreeTermsError(false);
+              }}
+              isChecked={agreeTerms}
             >
               I agree to the terms and conditions
             </Checkbox>
-            <FormErrorMessage>
-              {errors.agreeTerms && errors.agreeTerms.message}
-            </FormErrorMessage>
-          </HStack>
+            {agreeTermsError && (
+              <FormErrorMessage>
+                <Text color="red.500">
+                  You must agree to the terms and conditions
+                </Text>
+              </FormErrorMessage>
+            )}
+          </FormControl>
         </Stack>
 
         <Stack spacing="6">

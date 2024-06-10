@@ -25,10 +25,20 @@ import UseAuth from "@/hooks/useAuth";
 function Header() {
   const [isLargerThan834] = useMediaQuery("(min-width: 834px)");
   const [isLargerThan390] = useMediaQuery("(min-width: 390px)");
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { user, pending, error } = UseAuth();
 
   const updateUserProfilePicture = (image: string | null) => {};
+
+  const handleDrawerClose = () => {
+    setIsDrawerOpen(false);
+  }; 
+  
+  const handleDrawerOpen = () => {
+    setIsDrawerOpen(true);
+  };
+
 
   return (
     <Flex
@@ -63,7 +73,7 @@ function Header() {
           />
           <Drawer
             placement="left"
-            onClose={() => setIsDrawerOpen(false)}
+            onClose={handleDrawerClose}
             isOpen={isDrawerOpen}
           >
             <DrawerOverlay>
@@ -94,7 +104,7 @@ function Header() {
             </DrawerOverlay>
           </Drawer>
         </>
-      )}
+      ) }
     </Flex>
   );
 }
