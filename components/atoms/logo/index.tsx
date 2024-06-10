@@ -14,9 +14,9 @@ function Logo() {
 
   return (
     <Link href="/">
-      <Flex>
-        <Image src={logo} alt="Lumox Logo" />
-        <Text fontSize="48px" fontFamily="Italiana" color={textColor}>
+      <Flex alignItems="center">
+        <Image src={logo} alt="Lumox Logo" width={50} height={50}/>
+        <Text fontSize={{base:"48px", md:"24px"}} fontFamily="Italiana" color={textColor}>
           IT Lumox
         </Text>
       </Flex>

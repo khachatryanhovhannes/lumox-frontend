@@ -16,6 +16,7 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useBreakpointValue,
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
@@ -132,10 +133,13 @@ function SignupForm() {
     }
   };
 
+  const boxWidth = useBreakpointValue({ base: "90%", md: "500px" });
+  const marginX = useBreakpointValue({ base: "auto", md: "0px" });
+
   return (
     <Box
-      width={"500px"}
-      m="auto"
+      width={boxWidth}
+      mx={marginX}
       py={{ base: "0", sm: "8" }}
       px={{ base: "4", sm: "10" }}
       bg={{ base: "transparent", sm: "bg.surface" }}
@@ -143,7 +147,7 @@ function SignupForm() {
       <FormControl as="form" onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing="6">
           <Stack spacing="5">
-            <Flex gap="20px">
+            <Flex gap="20px" direction={{ base: "column", md: "row" }}>
               <FormControl isInvalid={!!errors.firstname}>
                 <FormLabel htmlFor="firstname" color={borderColor}>
                   Firstname

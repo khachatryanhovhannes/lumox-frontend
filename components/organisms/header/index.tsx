@@ -13,6 +13,7 @@ import {
   VStack,
   Text,
   Divider,
+  Spinner,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
@@ -22,9 +23,9 @@ import UserInHeader from "../userInHeader/userInHeader";
 import UseAuth from "@/hooks/useAuth";
 
 function Header() {
-  const [isLargerScreen] = useMediaQuery("(min-width: 1280px)");
-   const [isMediumScreen] = useMediaQuery("(min-Width: 992px) and (max-width: 1279px))");
-   const [isSmallScreen] = useMediaQuery("(min-width: 360px) and (max-width: 991px)");
+  const [isLargerThan834] = useMediaQuery("(min-width: 834px)");
+  const [isLargerThan390] = useMediaQuery("(min-width: 390px)");
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { user, pending, error } = UseAuth();
 
@@ -46,19 +47,20 @@ function Header() {
       justify="space-between"
       p="10px"
       alignItems="center"
+      maxW={{ sm: "100%", md: "100%", lg: "1920px" }}
     >
       <Logo />
-      {isLargerScreen ? (
+      {isLargerThan834 ? (
         <Flex alignItems="center" gap="30px">
           <NavigationBar />
-          {user && (
+          {pending && <Spinner />}
+          {user && !pending && (
             <UserInHeader
               user={user}
               updateUserProfilePicture={updateUserProfilePicture}
             />
           )}
-          {!user && pending && <p>Pending</p>}
-          {error && <SignButtons />}
+          {error && !user && <SignButtons />}
           <ColorModeSwitcher />
         </Flex>
       ) : (
@@ -75,7 +77,7 @@ function Header() {
             isOpen={isDrawerOpen}
           >
             <DrawerOverlay>
-              <DrawerContent>
+              <DrawerContent h="100vh">
                 <DrawerCloseButton />
                 <DrawerHeader>Menu</DrawerHeader>
 
@@ -84,7 +86,14 @@ function Header() {
                     <Divider />
                     <NavigationBar />
                     <Divider />
-                    <SignButtons />
+                    {pending && <Spinner />}
+                    {user && !pending && (
+                      <UserInHeader
+                        user={user}
+                        updateUserProfilePicture={updateUserProfilePicture}
+                      />
+                    )}
+                    {error && !user && <SignButtons />}
                     <Divider />
                     <Text fontWeight="bold">Preferences</Text>
                     <Divider />
