@@ -18,6 +18,7 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useBreakpointValue,
   FormErrorMessage,
 } from "@chakra-ui/react";
 import { useState } from "react";
@@ -63,10 +64,13 @@ function SigninForm() {
     }
   };
 
+  const boxWidth = useBreakpointValue({ base: "90%", md: "500px" });
+  const marginX = useBreakpointValue({ base: "auto", md: "0px" });
+
   return (
     <Box
-      width={"500px"}
-      m="auto"
+      width={boxWidth}
+      mx={marginX}
       py={{ base: "0", sm: "8" }}
       px={{ base: "4", sm: "10" }}
       bg={{ base: "transparent", sm: "bg.surface" }}

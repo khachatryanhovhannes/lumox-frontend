@@ -24,7 +24,7 @@ function AboutForm() {
     <Box textAlign="center">
       <Heading
         fontFamily="Lateef"
-        color={primaryTextColor}
+        color={headerColor}
         fontSize={["30px", "35px", "40px", "45px", "100px"]}
         fontWeight="normal"
         mt={["20px", "25px", "30px", "35px", "80px"]}

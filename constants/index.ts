@@ -20,7 +20,7 @@ const NAV_BAR_ITEMS: INavItem[] = [
     path: "/help",
   },
   {
-    label: "Our team",
+    label: "Team",
     path: "/team",
   },
 
