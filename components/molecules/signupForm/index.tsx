@@ -81,7 +81,14 @@ function SignupForm() {
   const marginX = useBreakpointValue({ base: "auto", md: "0px" });
 
   return (
-    <Box
+    <Flex
+     width="100%"
+     minHeight="100vh"
+     alignItems="center"
+     justifyContent="center"
+     bg={useColorModeValue("gray.50", "gray.900")}
+    >
+      <Box
       width={boxWidth}
       mx={marginX}
       py={{ base: "0", sm: "8" }}
@@ -251,6 +258,7 @@ function SignupForm() {
         </Stack>
       </FormControl>
     </Box>
+    </Flex>
   );
 }
 
