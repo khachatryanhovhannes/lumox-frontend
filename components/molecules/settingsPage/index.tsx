@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -13,6 +14,7 @@ import {
   InputRightElement,
   IconButton,
   Image,
+  useToast,
 } from "@chakra-ui/react";
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
@@ -32,6 +34,17 @@ function SettingsPage() {
   const [isOpenFirst, setIsOpenFirst] = useState(false);
   const [isOpenSecond, setIsOpenSecond] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [firstNameError, setFirstNameError] = useState("");
+  const [lastNameError, setLastNameError] = useState("");
+
+  const [password1, setPassword1] = useState("");
+  const [password2, setPassword2] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  const toast = useToast();
 
   useEffect(() => {
     const storedImage = localStorage.getItem("profilePicture");
@@ -59,8 +72,113 @@ function SettingsPage() {
   };
 
   const handleSaveChange = () => {
-    console.log("Changes saved!");
-    console.log("Selected image:", selectedImage);
+    const isFirstNameValid = validateFirstName(firstName);
+    const isLastNameValid = validateLastName(lastName);
+    const isPasswordValid = validatePassword(password1);
+    const isPassword2Valid = validatePassword2(password2);
+
+    if (
+      isFirstNameValid &&
+      isLastNameValid &&
+      isPasswordValid &&
+      isPassword2Valid &&
+      password1 === password2
+    ) {
+      toast({
+        title: "Changes Saved Successfully",
+        description: "Your changes have been saved.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+
+      console.log("Changes saved!");
+      console.log("Selected image:", selectedImage);
+    } else {
+      console.log("Please fill out all required fields correctly.");
+    }
+  };
+
+  const validateFirstName = (name: string) => {
+    if (name.length < 3) {
+      setFirstNameError("First name must be at least 3 characters long.");
+      return false;
+    }
+    if (/\d/.test(name)) {
+      setFirstNameError("First name cannot contain numbers.");
+      return false;
+    }
+    setFirstNameError("");
+    return true;
+  };
+
+  const validateLastName = (name: string) => {
+    if (name.length < 3) {
+      setLastNameError("Last name must be at least 3 characters long.");
+      return false;
+    }
+    if (/\d/.test(name)) {
+      setLastNameError("Last name cannot contain numbers.");
+      return false;
+    }
+    setLastNameError("");
+    return true;
+  };
+
+  const validatePassword = (password: string) => {
+    if (!/[A-Z]/.test(password)) {
+      setPasswordError(
+        "Password must contain at least one uppercase letter (A-Z)."
+      );
+      return false;
+    }
+    if (!/[1-9]/.test(password)) {
+      setPasswordError("Password must contain at least one digit (1-9).");
+      return false;
+    }
+    if (!/[!@#$%^&*()<>?]/.test(password)) {
+      setPasswordError(
+        "Password must contain at least one special character (!@#$%^&*()<>?)."
+      );
+      return false;
+    }
+    setPasswordError("");
+    return true;
+  };
+
+  const validatePassword2 = (password: string) => {
+    if (password !== password1) {
+      setPasswordError("Passwords do not match.");
+      return false;
+    }
+    setPasswordError("");
+    return true;
+  };
+
+  const handleFirstNameChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFirstName(event.target.value);
+    validateFirstName(event.target.value);
+  };
+
+  const handleLastNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLastName(event.target.value);
+    validateLastName(event.target.value);
+  };
+
+  const handlePassword1Change = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPassword1(event.target.value);
+    validatePassword(event.target.value);
+  };
+
+  const handlePassword2Change = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setPassword2(event.target.value);
+    validatePassword2(event.target.value);
   };
 
   return (
@@ -151,13 +269,33 @@ function SettingsPage() {
             <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
               First Name
             </Text>
-            <Input borderWidth="2px" borderColor={primaryTextColors} />
+            <Input
+              borderWidth="2px"
+              borderColor={primaryTextColors}
+              value={firstName}
+              onChange={handleFirstNameChange}
+            />
+            {firstNameError && (
+              <Text color="red" mt={1} fontSize="14px">
+                {firstNameError}
+              </Text>
+            )}
           </Box>
           <Box width="45%" ml={10}>
             <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
               Last Name
             </Text>
-            <Input borderWidth="2px" borderColor={primaryTextColors} />
+            <Input
+              borderWidth="2px"
+              borderColor={primaryTextColors}
+              value={lastName}
+              onChange={handleLastNameChange}
+            />
+            {lastNameError && (
+              <Text color="red" mt={1} fontSize="14px">
+                {lastNameError}
+              </Text>
+            )}
           </Box>
         </Flex>
         <Box
@@ -234,6 +372,8 @@ function SettingsPage() {
               type={isOpenFirst ? "text" : "password"}
               autoComplete="current-password"
               placeholder="Enter Password"
+              value={password1}
+              onChange={handlePassword1Change}
             />
           </InputGroup>
           <InputGroup alignItems="center" width="45%">
@@ -256,10 +396,17 @@ function SettingsPage() {
               id="password-2"
               type={isOpenSecond ? "text" : "password"}
               autoComplete="current-password"
-              placeholder="Enter Password"
+              placeholder="Confirm Password"
+              value={password2}
+              onChange={handlePassword2Change}
             />
           </InputGroup>
         </Flex>
+        {passwordError && (
+          <Text color="red" mt={1} fontSize="14px" textAlign="center">
+            {passwordError}
+          </Text>
+        )}
         <Button
           w={250}
           my={70}
