@@ -69,7 +69,7 @@ const OUR_TEAM = [
     position: "Front-end Developer",
     description: "",
     image: "",
-    prifile_link: "",
+    profile_link: "",
   },
 ];
 

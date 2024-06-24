@@ -122,3 +122,4 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
 }
 
 export default UserInHeader;
+

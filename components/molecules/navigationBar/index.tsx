@@ -20,7 +20,11 @@ function NavigationBar({direction = "row"}: NavigationBarProps) {
     <Flex direction={direction} gap="20px">
       {NAV_BAR_ITEMS.map((item: INavItem) => (
         <Link href={item.path} key={item.path}>
-          <Text color={linkColor}>{item.label}</Text>
+          <Text 
+          color={linkColor}
+          fontSize={{base:"16px", sm:"18px", md:"20px"}}
+          >
+            {item.label}</Text>
         </Link>
       ))}
     </Flex>

@@ -1,4 +1,5 @@
 "use client";
+import { useState, ChangeEvent } from "react";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import {
   Box,
@@ -8,12 +9,26 @@ import {
   Input,
   Stack,
   Button,
+  Flex,
 } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
+import Link from "next/link";
+import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
 import { HeaderColor } from "@/models/enums";
 
 function ContactForm() {
+  const [fullName, setFullName] = useState("");
+  const [fullNameError, setFullNameError] = useState("");
+
+  const [reason, setReason] = useState("");
+  const [reasonError, setReasonError] = useState("");
+
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+
+  const [isSubmitted, setIsSubmitted] = useState(false); // State to track form submission
+
   const primaryTextColors = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
@@ -23,7 +38,6 @@ function ContactForm() {
     SecondaryTextColors.lightMode,
     SecondaryTextColors.darkMode
   );
-
   const inputColor = useColorModeValue(
     HeaderColor.lightMode,
     HeaderColor.darkMode
@@ -52,10 +66,100 @@ function ContactForm() {
         Whatever you would like to share with us, we are always prepared to
         listen.
       </Text>
-      <Stack spacing="44px" mt="100px" align="center">
-        <Box>
-          <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
-            Your Full Name
+      {!isSubmitted ? (
+        <Stack
+          spacing="44px"
+          mt={["50px", "70px", "90px", "110px", "130px"]}
+          align="center"
+          width={["90%", "80%", "70%", "60%", "50%"]}
+          mx="auto"
+        >
+          <Box width="100%">
+            <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
+              Your Full Name
+            </Text>
+            <Input
+              type="text"
+              size="md"
+              width="100%"
+              borderBottomWidth="1px"
+              borderColor={secondaryTextColors}
+              borderTopWidth="0"
+              borderLeftWidth="0"
+              borderRightWidth="0"
+              borderRadius="0"
+              value={fullName}
+              onChange={handleFullNameChange}
+            />
+            {fullNameError && (
+              <Text fontSize="14px" color="red" textAlign="left" mt="5px">
+                {fullNameError}
+              </Text>
+            )}
+          </Box>
+          <Box width="100%">
+            <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
+              Your Email Address
+            </Text>
+            <Input
+              type="email"
+              size="md"
+              width="100%"
+              borderBottomWidth="1px"
+              borderTopWidth="0"
+              borderLeftWidth="0"
+              borderColor={secondaryTextColors}
+              borderRightWidth="0"
+              borderRadius="0"
+              value={email}
+              onChange={handleEmailChange}
+            />
+            {emailError && (
+              <Text fontSize="14px" color="red" textAlign="left" mt="5px">
+                {emailError}
+              </Text>
+            )}
+          </Box>
+          <Box width="100%">
+            <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
+              What Brings You Here?
+            </Text>
+            <Input
+              type="text"
+              size="md"
+              width="100%"
+              borderBottomWidth="1px"
+              borderTopWidth="0"
+              borderLeftWidth="0"
+              borderColor={secondaryTextColors}
+              borderRightWidth="0"
+              borderRadius="0"
+              value={reason}
+              onChange={handleReasonChange}
+            />
+            {reasonError && (
+              <Text fontSize="14px" color="red" textAlign="left" mt="5px">
+                {reasonError}
+              </Text>
+            )}
+          </Box>
+          <Box width="80%">
+            <Button
+              mt={50}
+              color={secondaryTextColors}
+              variant="outline"
+              borderColor={secondaryTextColors}
+              width="100%"
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
+          </Box>
+        </Stack>
+      ) : (
+        <Box mt="50px">
+          <Text fontSize="xl" color="green.500">
+            Successfully submitted the form!
           </Text>
           <Input
             type="text"
@@ -116,6 +220,7 @@ function ContactForm() {
           </Button>{" "}
         </Box>
       </Stack>
+
     </Box>
   );
 }
