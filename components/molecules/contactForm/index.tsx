@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
+import { HeaderColor } from "@/models/enums";
 
 function ContactForm() {
   const primaryTextColors = useColorModeValue(
@@ -22,6 +23,11 @@ function ContactForm() {
     SecondaryTextColors.lightMode,
     SecondaryTextColors.darkMode
   );
+
+  const inputColor = useColorModeValue(
+    HeaderColor.lightMode,
+    HeaderColor.darkMode
+  )
 
   return (
     <Box textAlign="center">
@@ -54,7 +60,7 @@ function ContactForm() {
           <Input
             type="text"
             size="md"
-            width="950px"
+            width={["301px", "666px", "1236px"]}
             borderBottomWidth="1px"
             borderColor={secondaryTextColors}
             borderTopWidth="0"
@@ -70,7 +76,7 @@ function ContactForm() {
           <Input
             type="email"
             size="md"
-            width="950px"
+            width={["301px", "666px", "1236px"]}
             borderBottomWidth="1px"
             borderTopWidth="0"
             borderLeftWidth="0"
@@ -87,7 +93,7 @@ function ContactForm() {
           <Input
             type="text"
             size="md"
-            width="950px"
+            width={["301px", "666px", "1236px"]}
             borderBottomWidth="1px"
             borderTopWidth="0"
             borderLeftWidth="0"
@@ -103,7 +109,8 @@ function ContactForm() {
             color={secondaryTextColors}
             variant="outline"
             borderColor={secondaryTextColors}
-            width="100%"
+            width={["300px", "700px", "950px"]}
+            bg={inputColor}  
           >
             Submit
           </Button>{" "}

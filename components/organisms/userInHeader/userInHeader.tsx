@@ -70,18 +70,7 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
                   marginBottom: "10px",
                 }}
               >
-                {/* Նկարի հետ կա փոքր խնդիր հետագայում պետք է փոխել */}
 
-                <img
-                  src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
-                  alt="Profile Picture"
-                  style={{
-                    width: "50px",
-                    height: "50px",
-                    borderRadius: "50%",
-                    marginRight: "10px",
-                  }}
-                />
                 <div>
                   <span>{user.firstname + " " + user.lastname}</span>
                   <span style={{ color: "gray", fontSize: "0.8em" }}></span>
