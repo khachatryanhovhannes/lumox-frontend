@@ -15,6 +15,7 @@ import { Inter } from "next/font/google";
 import Link from "next/link";
 import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
+import { HeaderColor } from "@/models/enums";
 
 function ContactForm() {
   const [fullName, setFullName] = useState("");
@@ -37,56 +38,10 @@ function ContactForm() {
     SecondaryTextColors.lightMode,
     SecondaryTextColors.darkMode
   );
-
-  const handleFullNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setFullName(value);
-
-    if (/\d/.test(value)) {
-      setFullNameError("Your Full Name must not contain numbers.");
-    } else if (value.length < 3) {
-      setFullNameError("Your Full Name must be at least 3 letters long.");
-    } else {
-      setFullNameError("");
-    }
-  };
-
-  const handleReasonChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setReason(value);
-
-    if (value.length < 10) {
-      setReasonError("Please provide a reason of at least 10 characters.");
-    } else {
-      setReasonError("");
-    }
-  };
-
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setEmail(value);
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailRegex.test(value)) {
-      setEmailError("Please enter a valid email address.");
-    } else {
-      setEmailError("");
-    }
-  };
-
-  const handleSubmit = () => {
-    if (fullNameError || emailError || reasonError) {
-      return; // Exit function if there are errors
-    }
-
-    console.log("Form submitted with:");
-    console.log("Full Name:", fullName);
-    console.log("Email:", email);
-    console.log("Reason:", reason);
-
-    setIsSubmitted(true);
-  };
+  const inputColor = useColorModeValue(
+    HeaderColor.lightMode,
+    HeaderColor.darkMode
+  )
 
   return (
     <Box textAlign="center">
@@ -206,31 +161,66 @@ function ContactForm() {
           <Text fontSize="xl" color="green.500">
             Successfully submitted the form!
           </Text>
+          <Input
+            type="text"
+            size="md"
+            width={["301px", "666px", "1236px"]}
+            borderBottomWidth="1px"
+            borderColor={secondaryTextColors}
+            borderTopWidth="0"
+            borderLeftWidth="0"
+            borderRightWidth="0"
+            borderRadius="0"
+          />
         </Box>
-      )}
-      <Flex
-        justifyContent="flex-end"
-        pt={20}
-        my={50}
-        pr="200px"
-        color={primaryTextColors}
-      >
-        <Box mr="20px">
-          <Link href="/contact">Contact</Link>
-        </Box>{" "}
-        <Link href="/user">My Profile</Link>
-      </Flex>
-      <Box
-        width="80%"
-        mx="auto"
-        color={primaryTextColors}
-        borderBottom={`3px solid `}
-        my={10}
-        // mb={5}
-      ></Box>
-      <Box p={4}>
-        <ScrollToTopButton />
-      </Box>
+        <Box>
+          <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
+            Your Email Address
+          </Text>
+          <Input
+            type="email"
+            size="md"
+            width={["301px", "666px", "1236px"]}
+            borderBottomWidth="1px"
+            borderTopWidth="0"
+            borderLeftWidth="0"
+            borderColor={secondaryTextColors}
+            borderRightWidth="0"
+            borderRadius="0"
+          />
+        </Box>
+        <Box>
+          <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
+            {" "}
+            What Brings You Here?
+          </Text>
+          <Input
+            type="text"
+            size="md"
+            width={["301px", "666px", "1236px"]}
+            borderBottomWidth="1px"
+            borderTopWidth="0"
+            borderLeftWidth="0"
+            borderColor={secondaryTextColors}
+            borderRightWidth="0"
+            borderRadius="0"
+          />
+        </Box>
+        <Box width="850px">
+          {" "}
+          <Button
+            mt={50}
+            color={secondaryTextColors}
+            variant="outline"
+            borderColor={secondaryTextColors}
+            width={["300px", "700px", "950px"]}
+            bg={inputColor}  
+          >
+            Submit
+          </Button>{" "}
+        </Box>
+      </Stack>
+
     </Box>
   );
 }

@@ -5,17 +5,19 @@ import { NAV_BAR_ITEMS } from "../../../constants";
 import { INavItem, PrimaryTextColors } from "../../../models";
 import Link from "next/link";
 
-function NavigationBar() {
+
+interface NavigationBarProps{
+  direction?: "row" | "column"
+}
+
+function NavigationBar({direction = "row"}: NavigationBarProps) {
   const linkColor = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
   );
 
   return (
-    <Flex 
-     gap={{base:"10px", sm:"15px", md:"20px"}}
-     direction={{base:"column", md:"row"}}
-     >
+    <Flex direction={direction} gap="20px">
       {NAV_BAR_ITEMS.map((item: INavItem) => (
         <Link href={item.path} key={item.path}>
           <Text 

@@ -99,7 +99,7 @@ function AboutForm() {
 
         <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
-            height="50px"
+            height="auto"
             width="650px"
             mb="10px"
             textAlign="left"
@@ -109,13 +109,15 @@ function AboutForm() {
           >
             CONTENT AND SCOPE
           </Heading>
-          <Text
-            height="auto"
-            width="950px"
-            textAlign="left"
-            lineHeight="2"
-            color={headerColor}
-          >
+          <Text 
+           height="auto" 
+           width="950px" 
+           textAlign="left" 
+           lineHeight="2" 
+           color={headerColor}
+           fontFamily="Inter, sans-serif"
+            fontSize={["16px", "18px", "20px", "22px", "16px"]}
+            >
             ITLumox covers a wide array of subjects, from technology and science
             to arts and personal development. Our platform hosts articles,
             <br />
@@ -128,7 +130,7 @@ function AboutForm() {
 
         <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
-            height="50px"
+            height="auto"
             width="650px"
             mb="10px"
             textAlign="left"
@@ -138,13 +140,15 @@ function AboutForm() {
           >
             COMMUNITY AND EDITING
           </Heading>
-          <Text
-            height="auto"
-            width="970px"
-            textAlign="left"
-            lineHeight="2"
-            color={headerColor}
-          >
+          <Text 
+           height="auto" 
+           width="970px" 
+           textAlign="left" 
+           lineHeight="2" 
+           color={headerColor}
+           fontFamily="Inter, sans-serif"
+           fontSize={["16px", "18px", "20px", "22px", "16px"]}
+           >
             Our community is at the heart of ITLumox. We believe that the best
             knowledge comes from collaboration and sharing diverse <br />
             perspectives. Our platform allows users to make a post, write
@@ -157,7 +161,7 @@ function AboutForm() {
 
         <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
-            height="50px"
+            height="auto"
             width="650px"
             mb="10px"
             textAlign="left"
@@ -168,11 +172,14 @@ function AboutForm() {
             FIVE STRONG PILLARS
           </Heading>
           <Text
-            width="950px"
-            textAlign="left"
-            height="auto"
-            color={headerColor}
-          >
+           width="950px"
+           textAlign="left" 
+           height="auto"
+           color={headerColor}
+           fontFamily="Inter, sans-serif"
+            fontSize={["16px", "18px", "20px", "22px", "16px"]}
+           >
+
             Our platform is built on five strong pillars that guide our
             operations and community engagement:
           </Text>
@@ -208,7 +215,7 @@ function AboutForm() {
 
         <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
-            height="50px"
+            height="auto"
             width="650px"
             mb="10px"
             textAlign="left"
@@ -218,13 +225,9 @@ function AboutForm() {
           >
             QUALITY CONTROL
           </Heading>
-          <Text
-            height="auto"
-            width="960px"
-            textAlign="left"
-            lineHeight="2"
-            color={headerColor}
-          >
+          <Text height="auto" width="960px" textAlign="left" lineHeight="2" color={headerColor} fontFamily="Inter, sans-serif"
+            fontSize={["16px", "18px", "20px", "22px", "16px"]}>
+
             Quality is a cornerstone of ITLumox. We employ rigorous quality
             control measures to ensure that all content is trustworthy and
             valuable:
@@ -257,7 +260,7 @@ function AboutForm() {
 
         <Box mt="70px" ml={["10px", "50px", "100px", "150px", "250px"]}>
           <Heading
-            height="50px"
+            height="auto"
             width="650px"
             mb="10px"
             textAlign="left"
@@ -267,13 +270,16 @@ function AboutForm() {
           >
             GLOBAL REACH
           </Heading>
-          <Text
-            height="auto"
-            width="950px"
-            textAlign="left"
-            lineHeight="2"
-            color={headerColor}
-          >
+          <Text 
+           height="auto" 
+           width="950px" 
+           textAlign="left" 
+           lineHeight="2" 
+           color={headerColor}
+           fontFamily="Inter, sans-serif"
+           fontSize={["16px", "18px", "20px", "22px", "16px"]}
+           >
+
             ITLumox aims to have a global reach. We are working towards
             translating our content into multiple languages to cater to a
             <br />

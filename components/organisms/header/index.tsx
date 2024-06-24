@@ -65,12 +65,26 @@ function Header() {
         </Flex>
       ) : (
         <>
+          <Flex alignItems="center">
+          {user && !pending && (
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
+              alt="Profile Picture"
+              style={{
+                width: "35px",
+                height: "35px",
+                borderRadius: "80%",
+                marginRight: "10px",
+              }}
+            />
+          )}
           <IconButton
             aria-label="Toggle Menu"
             icon={<HamburgerIcon />}
             variant="ghost"
             onClick={() => setIsDrawerOpen(true)}
           />
+          </Flex>
           <Drawer
             placement="left"
             onClose={handleDrawerClose}
@@ -84,19 +98,10 @@ function Header() {
                 <DrawerBody>
                   <VStack spacing="4" align="stretch">
                     <Divider />
-                    <NavigationBar />
+                    <NavigationBar direction="column"/>
                     <Divider />
                     {pending && <Spinner />}
-                    {user && !pending && (
-                      <UserInHeader
-                        user={user}
-                        updateUserProfilePicture={updateUserProfilePicture}
-                      />
-                    )}
                     {error && !user && <SignButtons />}
-                    <Divider />
-                    <Text fontWeight="bold">Preferences</Text>
-                    <Divider />
                     <ColorModeSwitcher />
                   </VStack>
                 </DrawerBody>
