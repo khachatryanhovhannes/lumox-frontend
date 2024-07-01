@@ -8,7 +8,7 @@ import ContactForm from "./contactForm/index";
 import TeamForm from "./teamForm";
 import UserPage from "./userPage/index";
 import WritePage from "./writePage/index";
-
+import PolicyForm from "./policyForm/index";
 
 export {
   NavigationBar,
@@ -21,5 +21,5 @@ export {
   TeamForm,
   UserPage,
   WritePage,
-
+  PolicyForm,
 };

@@ -11,10 +11,12 @@ const NAV_BAR_ITEMS: INavItem[] = [
     label: "About",
     path: "/about",
   },
+
   {
     label: "Contact",
     path: "/contact",
   },
+
   {
     label: "Help",
     path: "/help",
