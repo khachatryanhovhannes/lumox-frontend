@@ -9,10 +9,8 @@ import {
   Input,
   Stack,
   Button,
-  Flex,
 } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
-import Link from "next/link";
 import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
 import { HeaderColor } from "@/models/enums";
@@ -38,10 +36,79 @@ function ContactForm() {
     SecondaryTextColors.lightMode,
     SecondaryTextColors.darkMode
   );
+
   const inputColor = useColorModeValue(
     HeaderColor.lightMode,
     HeaderColor.darkMode
-  )
+  );
+
+  const validateFullName = (name: string) => {
+    const nameRegex = /^[a-zA-ZԱ-Ֆա-ֆ]{3,}$/; // Allow Armenian and English letters only, at least 3 characters
+    return nameRegex.test(name);
+  };
+
+  const validateEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validateReason = (reason: string) => {
+    return reason.length >= 10;
+  };
+
+  const handleFullNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFullName(value);
+    if (!validateFullName(value)) {
+      setFullNameError(
+        "Your Full Name must be at least 3 letters long and cannot contain numbers."
+      );
+    } else {
+      setFullNameError("");
+    }
+  };
+
+  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmail(value);
+    if (!validateEmail(value)) {
+      setEmailError("Please enter a valid email address.");
+    } else {
+      setEmailError("");
+    }
+  };
+
+  const handleReasonChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setReason(value);
+    if (!validateReason(value)) {
+      setReasonError(
+        "What Brings You Here? must be at least 10 characters long."
+      );
+    } else {
+      setReasonError("");
+    }
+  };
+
+  const handleSubmit = () => {
+    const isFullNameValid = validateFullName(fullName);
+    const isEmailValid = validateEmail(email);
+    const isReasonValid = validateReason(reason);
+
+    if (isFullNameValid && isEmailValid && isReasonValid) {
+      setIsSubmitted(true);
+    } else {
+      if (!isFullNameValid)
+        setFullNameError(
+          "Your Full Name must be at least 3 letters long and cannot contain numbers."
+        );
+      if (!isEmailValid) setEmailError("Please enter a valid email address.");
+      if (!isReasonValid)
+        setReasonError(
+          "What Brings You Here? must be at least 10 characters long."
+        );
+    }
+  };
 
   return (
     <Box textAlign="center">
@@ -161,66 +228,9 @@ function ContactForm() {
           <Text fontSize="xl" color="green.500">
             Successfully submitted the form!
           </Text>
-          <Input
-            type="text"
-            size="md"
-            width={["301px", "666px", "1236px"]}
-            borderBottomWidth="1px"
-            borderColor={secondaryTextColors}
-            borderTopWidth="0"
-            borderLeftWidth="0"
-            borderRightWidth="0"
-            borderRadius="0"
-          />
         </Box>
-        <Box>
-          <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
-            Your Email Address
-          </Text>
-          <Input
-            type="email"
-            size="md"
-            width={["301px", "666px", "1236px"]}
-            borderBottomWidth="1px"
-            borderTopWidth="0"
-            borderLeftWidth="0"
-            borderColor={secondaryTextColors}
-            borderRightWidth="0"
-            borderRadius="0"
-          />
-        </Box>
-        <Box>
-          <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
-            {" "}
-            What Brings You Here?
-          </Text>
-          <Input
-            type="text"
-            size="md"
-            width={["301px", "666px", "1236px"]}
-            borderBottomWidth="1px"
-            borderTopWidth="0"
-            borderLeftWidth="0"
-            borderColor={secondaryTextColors}
-            borderRightWidth="0"
-            borderRadius="0"
-          />
-        </Box>
-        <Box width="850px">
-          {" "}
-          <Button
-            mt={50}
-            color={secondaryTextColors}
-            variant="outline"
-            borderColor={secondaryTextColors}
-            width={["300px", "700px", "950px"]}
-            bg={inputColor}  
-          >
-            Submit
-          </Button>{" "}
-        </Box>
-      </Stack>
-
+      )}
+      <ScrollToTopButton />
     </Box>
   );
 }
