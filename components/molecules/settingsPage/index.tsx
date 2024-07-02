@@ -187,6 +187,7 @@ function SettingsPage() {
       align="center"
       justify="space-between"
       minHeight="100vh"
+      px={[4, 6, 8]}
     >
       <Box textAlign="center">
         <Heading
@@ -208,7 +209,13 @@ function SettingsPage() {
         >
           Real-time information and activities of your property.
         </Text>
-        <Flex align="center" justify="space-between" width="100%" p={10}>
+        <Flex
+          align="center"
+          justify="space-between"
+          width="100%"
+          flexDirection={["column", "row"]}
+          p={10}
+        >
           <Box>
             {selectedImage ? (
               <Image
@@ -229,17 +236,18 @@ function SettingsPage() {
               onChange={handleFileSelect}
             />
           </Box>
-          <Text color={primaryTextColors} ml={5}>
+          <Text color={primaryTextColors} ml={[0, 5]} mt={[4, 0]}>
             Profile picture
           </Text>
-          <Flex ml={600}>
+          <Flex ml={[0, 600]} mt={[4, 0]} flexDirection={["column", "row"]}>
             <label htmlFor="imageInput">
               <Button
                 as="span"
                 color={primaryTextColors}
                 variant="outline"
                 borderWidth="3px"
-                mr={5}
+                mr={[0, 5]}
+                mb={[4, 0]}
                 borderColor={primaryTextColors}
               >
                 Change
@@ -264,8 +272,14 @@ function SettingsPage() {
         >
           Full Name
         </Text>
-        <Flex justify="space-between" width="95%" mx="auto" mt={5}>
-          <Box width="45%">
+        <Flex
+          justify="space-between"
+          width="95%"
+          mx="auto"
+          mt={5}
+          flexDirection={["column", "row"]}
+        >
+          <Box width={["100%", "45%"]} mb={[5, 0]}>
             <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
               First Name
             </Text>
@@ -281,7 +295,7 @@ function SettingsPage() {
               </Text>
             )}
           </Box>
-          <Box width="45%" ml={10}>
+          <Box width={["100%", "45%"]} ml={[0, 10]}>
             <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
               Last Name
             </Text>
@@ -313,16 +327,22 @@ function SettingsPage() {
         >
           Contact Email
         </Text>
-        <Flex justify="space-between" width="95%" mx="auto" mt={5}>
-          <Box width="45%">
+        <Flex
+          justify="space-between"
+          width="95%"
+          mx="auto"
+          mt={5}
+          flexDirection={["column", "row"]}
+        >
+          <Box width={["100%", "45%"]} mb={[5, 0]}>
             <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
               Email
             </Text>
             <Input borderWidth="2px" borderColor={primaryTextColors} />
           </Box>
-          <Box width="45%" ml={10}>
+          <Box width={["100%", "45%"]} ml={[0, 10]}>
             <Button
-              w={250}
+              w={["100%", 250]}
               my={7}
               color={primaryTextColors}
               variant="outline"
@@ -350,8 +370,14 @@ function SettingsPage() {
         >
           Password
         </FormLabel>
-        <Flex justify="space-between" width="95%" mx="auto" mt={5}>
-          <InputGroup alignItems="center" width="45%">
+        <Flex
+          justify="space-between"
+          width="95%"
+          mx="auto"
+          mt={5}
+          flexDirection={["column", "row"]}
+        >
+          <InputGroup alignItems="center" width={["100%", "45%"]} mb={[5, 0]}>
             <InputRightElement>
               <IconButton
                 fontSize="20px"
@@ -376,7 +402,7 @@ function SettingsPage() {
               onChange={handlePassword1Change}
             />
           </InputGroup>
-          <InputGroup alignItems="center" width="45%">
+          <InputGroup alignItems="center" width={["100%", "45%"]} mb={[5, 0]}>
             <InputRightElement>
               <IconButton
                 fontSize="20px"
