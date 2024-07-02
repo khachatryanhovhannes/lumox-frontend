@@ -33,12 +33,11 @@ function Header() {
 
   const handleDrawerClose = () => {
     setIsDrawerOpen(false);
-  }; 
-  
+  };
+
   const handleDrawerOpen = () => {
     setIsDrawerOpen(true);
   };
-
 
   return (
     <Flex
@@ -66,24 +65,24 @@ function Header() {
       ) : (
         <>
           <Flex alignItems="center">
-          {user && !pending && (
-            <img
-              src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
-              alt="Profile Picture"
-              style={{
-                width: "35px",
-                height: "35px",
-                borderRadius: "80%",
-                marginRight: "10px",
-              }}
+            {user && !pending && (
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
+                alt="Profile Picture"
+                style={{
+                  width: "35px",
+                  height: "35px",
+                  borderRadius: "80%",
+                  marginRight: "10px",
+                }}
+              />
+            )}
+            <IconButton
+              aria-label="Toggle Menu"
+              icon={<HamburgerIcon />}
+              variant="ghost"
+              onClick={() => setIsDrawerOpen(true)}
             />
-          )}
-          <IconButton
-            aria-label="Toggle Menu"
-            icon={<HamburgerIcon />}
-            variant="ghost"
-            onClick={() => setIsDrawerOpen(true)}
-          />
           </Flex>
           <Drawer
             placement="left"
@@ -91,14 +90,14 @@ function Header() {
             isOpen={isDrawerOpen}
           >
             <DrawerOverlay>
-              <DrawerContent h="100vh">
+              <DrawerContent h="100%" w="200vh">
                 <DrawerCloseButton />
                 <DrawerHeader>Menu</DrawerHeader>
 
                 <DrawerBody>
                   <VStack spacing="4" align="stretch">
                     <Divider />
-                    <NavigationBar direction="column"/>
+                    <NavigationBar direction="column" />
                     <Divider />
                     {pending && <Spinner />}
                     {error && !user && <SignButtons />}
@@ -109,7 +108,7 @@ function Header() {
             </DrawerOverlay>
           </Drawer>
         </>
-      ) }
+      )}
     </Flex>
   );
 }
