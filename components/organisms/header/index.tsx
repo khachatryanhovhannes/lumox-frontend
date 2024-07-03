@@ -14,6 +14,7 @@ import {
   Text,
   Divider,
   Spinner,
+  Box,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
@@ -86,12 +87,16 @@ function Header() {
           </Flex>
           <Drawer
             placement="left"
+            size="md"
             onClose={handleDrawerClose}
             isOpen={isDrawerOpen}
           >
             <DrawerOverlay>
               <DrawerContent h="100%" w="200vh">
                 <DrawerCloseButton />
+                <Box justifySelf="flex-start">
+                  <ColorModeSwitcher />
+                </Box>
                 <DrawerHeader>Menu</DrawerHeader>
 
                 <DrawerBody>
@@ -101,7 +106,6 @@ function Header() {
                     <Divider />
                     {pending && <Spinner />}
                     {error && !user && <SignButtons />}
-                    <ColorModeSwitcher />
                   </VStack>
                 </DrawerBody>
               </DrawerContent>
