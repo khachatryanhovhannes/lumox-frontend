@@ -8,18 +8,12 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { PrimaryTextColors } from "../../../models";
-import { HeaderColor } from "@/models/enums";
 
 function Search() {
   const borderColor = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
   );
-
-  const inputColor = useColorModeValue(
-    HeaderColor.lightMode,
-    HeaderColor.darkMode
-  )
 
   const textColors = useColorModeValue("black", "white");
 
@@ -36,7 +30,7 @@ function Search() {
       </InputLeftElement>
       <Input
         placeholder="Search..."
-        bg={inputColor}  
+        bg="transparent"
         color={textColors}
         borderRadius="full"
         width="100%"
