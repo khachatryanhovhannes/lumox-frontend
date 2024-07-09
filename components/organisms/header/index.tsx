@@ -91,6 +91,7 @@ function Header() {
             onClose={handleDrawerClose}
             isOpen={isDrawerOpen}
           >
+            only shoping stringify
             <DrawerOverlay>
               <DrawerContent h="100%" w="200vh">
                 <DrawerCloseButton />

@@ -43,17 +43,17 @@ function ContactForm() {
   );
 
   const validateFullName = (name: string) => {
-    const nameRegex = /^[a-zA-ZԱ-Ֆա-ֆ]{3,}$/; // Allow Armenian and English letters only, at least 3 characters
+    const nameRegex = /^[a-zA-ZԱ-Ֆա-ֆ]{3,13}$/; // Allow Armenian and English letters only, 3 to 13 characters
     return nameRegex.test(name);
   };
 
   const validateEmail = (email: string) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{1,13}$/; // Allow 1 to 13 characters before and after the '@' symbol
     return emailRegex.test(email);
   };
 
   const validateReason = (reason: string) => {
-    return reason.length >= 10;
+    return reason.length >= 10 && reason.length <= 30;
   };
 
   const handleFullNameChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -61,7 +61,7 @@ function ContactForm() {
     setFullName(value);
     if (!validateFullName(value)) {
       setFullNameError(
-        "Your Full Name must be at least 3 letters long and cannot contain numbers."
+        "Your Full Name must be between 3 and 13 letters long and cannot contain numbers."
       );
     } else {
       setFullNameError("");
@@ -72,7 +72,9 @@ function ContactForm() {
     const value = e.target.value;
     setEmail(value);
     if (!validateEmail(value)) {
-      setEmailError("Please enter a valid email address.");
+      setEmailError(
+        "Please enter a valid email address with a maximum length of 13 characters."
+      );
     } else {
       setEmailError("");
     }
@@ -83,7 +85,7 @@ function ContactForm() {
     setReason(value);
     if (!validateReason(value)) {
       setReasonError(
-        "What Brings You Here? must be at least 10 characters long."
+        "What Brings You Here? must be between 10 and 30 characters long."
       );
     } else {
       setReasonError("");
@@ -100,12 +102,15 @@ function ContactForm() {
     } else {
       if (!isFullNameValid)
         setFullNameError(
-          "Your Full Name must be at least 3 letters long and cannot contain numbers."
+          "Your Full Name must be between 3 and 13 letters long and cannot contain numbers."
         );
-      if (!isEmailValid) setEmailError("Please enter a valid email address.");
+      if (!isEmailValid)
+        setEmailError(
+          "Please enter a valid email address with a maximum length of 13 characters."
+        );
       if (!isReasonValid)
         setReasonError(
-          "What Brings You Here? must be at least 10 characters long."
+          "What Brings You Here? must be between 10 and 30 characters long."
         );
     }
   };
@@ -155,6 +160,7 @@ function ContactForm() {
               borderLeftWidth="0"
               borderRightWidth="0"
               borderRadius="0"
+              maxLength={13} // Maximum length set to 13
               value={fullName}
               onChange={handleFullNameChange}
             />
@@ -178,6 +184,7 @@ function ContactForm() {
               borderColor={secondaryTextColors}
               borderRightWidth="0"
               borderRadius="0"
+              maxLength={13} // Maximum length set to 13
               value={email}
               onChange={handleEmailChange}
             />
@@ -201,6 +208,7 @@ function ContactForm() {
               borderColor={secondaryTextColors}
               borderRightWidth="0"
               borderRadius="0"
+              maxLength={30} // Maximum length set to 30
               value={reason}
               onChange={handleReasonChange}
             />
@@ -212,7 +220,7 @@ function ContactForm() {
           </Box>
           <Box width="80%">
             <Button
-              mt={50}
+              mb={50}
               color={secondaryTextColors}
               variant="outline"
               borderColor={secondaryTextColors}
