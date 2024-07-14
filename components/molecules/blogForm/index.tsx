@@ -22,7 +22,7 @@ function BlogForm() {
       <Heading
         fontFamily="Lateef"
         color={primaryTextColors}
-        fontSize={["30px", "35px", "40px", "45px", "50px"]}
+        fontSize={["30px", "35px", "40px", "45px", "70px"]}
         fontWeight="normal"
         mt={["20px", "25px", "30px", "35px", "40px"]}
         lineHeight={["1", "1.1", "1.2", "1.3", "1.4"]}
@@ -35,7 +35,7 @@ function BlogForm() {
         fontWeight="100"
         lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
         color={secondaryTextColors}
-        mt={["15px", "20px", "25px", "30px", "35px"]}
+        mt={["15px", "20px", "25px", "30px", "2px"]}
       >
         Join the millions learning to code with Lumox for free
       </Text>

@@ -27,7 +27,7 @@ function AboutForm() {
       <Heading
         fontFamily="Lateef"
         color={headerColor}
-        fontSize={["30px", "35px", "40px", "45px", "70px"]}
+        fontSize={["40px", "35px", "40px", "45px", "70px"]}
         fontWeight="normal"
         mt={["20px", "25px", "30px", "35px", "90px"]}
         lineHeight={["1", "0.9", "0.8", "0.7", "0.3"]}
@@ -36,7 +36,7 @@ function AboutForm() {
       </Heading>
       <Text
         className={inter.className}
-        fontSize={["16px", "18px", "20px", "22px", "24px"]}
+        fontSize={["16px", "18px", "20px", "22px", "28px"]}
         fontWeight="100"
         lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
         color={headerColor}
