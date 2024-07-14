@@ -11,12 +11,10 @@ const NAV_BAR_ITEMS: INavItem[] = [
     label: "About",
     path: "/about",
   },
-
   {
     label: "Contact",
     path: "/contact",
   },
-
   {
     label: "Help",
     path: "/help",
@@ -25,18 +23,9 @@ const NAV_BAR_ITEMS: INavItem[] = [
     label: "Team",
     path: "/team",
   },
-
-  // {
-  //   label: " User",
-  //   path: "/user",
-  // }
   {
     label: "Blog",
     path: "/blog",
-  },
-  {
-    label: "Write",
-    path: "/write",
   },
 ];
 
@@ -47,7 +36,7 @@ const OUR_TEAM = [
     position: "Project Manager / Content Writer",
     description: "",
     image: "",
-    prifile_link: "",
+    profile_link: "",
   },
   {
     firstname: "Hovhannes",
@@ -55,7 +44,7 @@ const OUR_TEAM = [
     position: "Full-stack Developer",
     description: "",
     image: "",
-    prifile_link: "",
+    profile_link: "",
   },
   {
     firstname: "Jora",
@@ -63,7 +52,7 @@ const OUR_TEAM = [
     position: "Front-end Developer",
     description: "",
     image: "",
-    prifile_link: "",
+    profile_link: "",
   },
   {
     firstname: "Rima",

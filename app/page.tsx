@@ -1,4 +1,5 @@
 "use client";
+
 import {
   Box,
   Heading,
@@ -16,6 +17,8 @@ import { BASE_URL } from "@/constants";
 import UseAuth from "@/hooks/useAuth";
 import { useEffect } from "react";
 import ScrollToTopButton from "@/constants/scrool";
+// import ScrollToTopButton from "@/constants/scroll"; // Corrected import path
+
 const inter = Inter({ subsets: ["latin"] });
 
 function Home() {
@@ -33,8 +36,6 @@ function Home() {
   useEffect(() => {
     console.log(user);
   }, [user]);
-
-  console.log("___________________________________", user);
 
   return (
     <Box textAlign="center" p={[4, 6, 8, 10]}>
@@ -151,7 +152,7 @@ function Home() {
         <Box mr="20px" mb={["10px", "0"]}>
           <Link href="/contact">Contact</Link>
         </Box>
-        <Link href="/user">My Profile</Link>
+        {user && <Link href="/user">My Profile</Link>}
       </Flex>
       <Box
         width="80%"
