@@ -134,6 +134,9 @@ function ContactForm() {
         lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
         color={secondaryTextColors}
         mt={["15px", "20px", "25px", "30px", "42px"]}
+        width="80%"
+        textAlign="center"
+        mx="auto"
       >
         Whatever you would like to share with us, we are always prepared to
         listen.

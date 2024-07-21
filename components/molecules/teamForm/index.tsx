@@ -54,6 +54,9 @@ function TeamForm() {
         lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
         color={secondaryTextColors}
         mt={["15px", "20px", "25px", "30px", "22px"]}
+        width="80%"
+        textAlign={"center"}
+        mx="auto"
       >
         IT Lumox is a home for human stories and ideas.
       </Text>
