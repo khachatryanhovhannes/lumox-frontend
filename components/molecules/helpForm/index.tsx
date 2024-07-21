@@ -1,6 +1,6 @@
 "use client";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
-import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Center, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import Search from "../search";
 import Link from "next/link";
@@ -50,7 +50,7 @@ function HelpForm() {
         px={[2, 4, 6, 8]}
         fontFamily="Inter, sans-serif"
       >
-        <Box mt="90px">
+        <Box mt="90px" width="80%" mx="auto">
           <Text
             height="120px"
             width="100%"
@@ -68,7 +68,7 @@ function HelpForm() {
           </Text>
         </Box>
 
-        <Box mt="180px">
+        <Box mt="180px" width="80%" mx="auto">
           <Heading
             mb="40px"
             textAlign="left"
@@ -101,7 +101,7 @@ function HelpForm() {
           </Text>
         </Box>
 
-        <Box mt="70px">
+        <Box mt="70px" width="80%" mx="auto">
           <Heading
             mb="40px"
             textAlign="left"
@@ -132,7 +132,7 @@ function HelpForm() {
           </Text>
         </Box>
 
-        <Box mt="110px">
+        <Box mt="110px" width="80%" mx="auto">
           <Heading
             mb="40px"
             textAlign="left"
@@ -159,7 +159,7 @@ function HelpForm() {
           </Text>
         </Box>
 
-        <Box mt="70px">
+        <Box mt="70px" width="80%" mx="auto">
           <Heading
             mb="40px"
             textAlign="left"
@@ -184,7 +184,7 @@ function HelpForm() {
           </Text>
         </Box>
 
-        <Box mt="70px">
+        <Box mt="70px" width="80%" mx="auto">
           <Heading
             mb="40px"
             textAlign="left"
@@ -209,7 +209,7 @@ function HelpForm() {
           </Text>
         </Box>
 
-        <Box mt="70px">
+        <Box mt="70px" width="80%" mx="auto">
           <Heading
             mb="40px"
             textAlign="left"
@@ -232,7 +232,7 @@ function HelpForm() {
           </Text>
         </Box>
 
-        <Box mt="70px">
+        <Box mt="70px" width="80%" mx="auto">
           <Heading
             mb="40px"
             textAlign="left"
@@ -253,7 +253,7 @@ function HelpForm() {
         </Box>
       </Flex>
 
-      <Box mt="70px">
+      <Box mt="70px" width="80%" mx="auto">
         <Text
           height="80px"
           width="100%"
