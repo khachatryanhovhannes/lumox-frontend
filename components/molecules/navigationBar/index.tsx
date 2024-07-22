@@ -24,7 +24,7 @@ function NavigationBar({ direction = "row" }: NavigationBarProps) {
   if (pending) return <div>Loading...</div>;
 
   return (
-    <Flex direction={direction} gap="20px">
+    <Flex direction={direction} gap="20px" padding="10px 20px" mb={20}>
       {navItems.map((item: INavItem) => (
         <Link href={item.path} key={item.path}>
           <Text
