@@ -24,7 +24,7 @@ const OUR_TEAM = [
   {
     firstname: "Hovhannes",
     lastname: "Khachatryan",
-    position: "Full-stack Developer",
+    position: " Founder & Full stack Developer",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
     image: "/Hovo.jpg",
@@ -33,7 +33,7 @@ const OUR_TEAM = [
   {
     firstname: "Jora",
     lastname: "Hovsepyan",
-    position: "Front-end Developer",
+    position: "Software Developer",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
     image: "/Jor.jpg",
