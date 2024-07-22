@@ -14,11 +14,11 @@ function Logo() {
 
   return (
     <Link href="/">
-      <Flex alignItems="center">
-        <Image src={logo} alt="Lumox Logo" width={50} height={50}/>
-        <Text fontSize={{base:"48px", md:"24px"}} fontFamily="Italiana" color={textColor}>
-          IT Lumox
-        </Text>
+      <Flex alignItems="center" ml="40px">
+        <Image src={logo} alt="Lumox Logo" width={120} height={50} />
+        {/* <Text fontSize={{ base: "28px", md: "24px" }} color={textColor}>
+          Lumoox
+        </Text> */}
       </Flex>
     </Link>
   );

@@ -39,6 +39,7 @@ function SignButtons() {
               background="transparent"
               border={`2px solid ${borderandTextColor}`}
               borderRadius={"50px"}
+              mb={20}
               color={borderandTextColor}
               onClick={saveCurrentPath}
             >
@@ -52,4 +53,3 @@ function SignButtons() {
 }
 
 export default SignButtons;
-
