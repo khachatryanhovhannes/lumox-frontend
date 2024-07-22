@@ -1,6 +1,6 @@
 "use client";
 
-import { Flex, Text, useColorModeValue } from "@chakra-ui/react";
+import { Flex, Text, Spinner, useColorModeValue } from "@chakra-ui/react";
 import { NAV_BAR_ITEMS } from "@/constants";
 import { INavItem, PrimaryTextColors } from "@/models";
 import Link from "next/link";
@@ -8,9 +8,10 @@ import useAuth from "@/hooks/useAuth";
 
 interface NavigationBarProps {
   direction?: "row" | "column";
+  onLinkClick?: () => void;
 }
 
-function NavigationBar({ direction = "row" }: NavigationBarProps) {
+function NavigationBar({ direction = "row", onLinkClick }: NavigationBarProps) {
   const linkColor = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
@@ -21,12 +22,10 @@ function NavigationBar({ direction = "row" }: NavigationBarProps) {
     ? [...NAV_BAR_ITEMS, { label: "Write", path: "/write" }]
     : NAV_BAR_ITEMS;
 
-  if (pending) return <div>Loading...</div>;
-
   return (
     <Flex direction={direction} gap="20px" padding="10px 20px" mb={20}>
       {navItems.map((item: INavItem) => (
-        <Link href={item.path} key={item.path}>
+        <Link href={item.path} key={item.path} onClick={onLinkClick}>
           <Text
             color={linkColor}
             fontSize={{ base: "16px", sm: "18px", md: "20px" }}
@@ -35,6 +34,7 @@ function NavigationBar({ direction = "row" }: NavigationBarProps) {
           </Text>
         </Link>
       ))}
+      {pending && <Spinner color={linkColor} />}
     </Flex>
   );
 }

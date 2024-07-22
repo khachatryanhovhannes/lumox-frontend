@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import React, { useState } from "react";
 import {
@@ -32,7 +33,7 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleOpen = () => {
+  const handleToggleOpen = () => {
     setIsOpen(!isOpen);
   };
 
@@ -44,47 +45,41 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
   return (
     <Flex>
       {pathname !== "/signin" && (
-        <Popover placement="bottom" isOpen={isOpen} onClose={handleOpen}>
+        <Popover placement="bottom" isOpen={isOpen} onClose={handleToggleOpen}>
           <PopoverTrigger>
             <Flex alignItems="center" cursor="pointer">
-              {/* Նկարի հետ կա փոքր խնդիր հետագայում պետք է փոխել */}
               <img
                 src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
                 alt="Profile Picture"
                 style={{
                   width: "35px",
                   height: "35px",
-                  borderRadius: "80%",
+                  borderRadius: "50%",
                   marginRight: "20px",
+                  marginBottom: "80px",
                 }}
-                onClick={handleOpen}
+                onClick={handleToggleOpen}
               />
             </Flex>
           </PopoverTrigger>
-          <PopoverContent maxW="200px">
+          <PopoverContent maxW="200px" mt={-20}>
             <PopoverBody>
               <div
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  marginBottom: "10px",
+                  marginBottom: "15px",
                 }}
               >
-
                 <div>
-                  <span>{user.firstname + " " + user.lastname}</span>
-                  <span style={{ color: "gray", fontSize: "0.8em" }}></span>
+                  <span>
+                    {user.firstname} {user.lastname}
+                  </span>
                 </div>
-              </div>
-
-              <div>
-                <span
-                  style={{ color: "gray", fontSize: "1em", marginLeft: "30px" }}
-                ></span>
               </div>
               <span>Account </span>
               <Link href="/user" style={{ display: "block", color: "gray" }}>
-                User{" "}
+                User
               </Link>
               <Link
                 href="/settings"
@@ -92,7 +87,6 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
               >
                 Settings & Privacy
               </Link>
-
               <Link
                 href="/language"
                 style={{ display: "block", color: "gray" }}
@@ -100,13 +94,6 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
                 Language
               </Link>
               <span>Manage </span>
-              <Link href="/logout" style={{ display: "block", color: "gray" }}>
-                Link
-              </Link>
-              <Link
-                href="/logout"
-                style={{ display: "block", color: "gray" }}
-              ></Link>
               <Link
                 onClick={handleLogOut}
                 style={{ display: "block", color: "gray" }}
@@ -122,4 +109,3 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
 }
 
 export default UserInHeader;
-

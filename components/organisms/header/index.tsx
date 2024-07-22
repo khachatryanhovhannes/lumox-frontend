@@ -11,24 +11,22 @@ import {
   DrawerHeader,
   DrawerBody,
   VStack,
-  Text,
-  Divider,
   Spinner,
   Box,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 import { ColorModeSwitcher, Logo } from "../../atoms";
-import { NavigationBar, SignButtons } from "../../molecules";
+import SignButtons from "../../molecules/signButtons";
+import NavigationBar from "../../molecules/navigationBar";
+
 import UserInHeader from "../userInHeader/userInHeader";
-import UseAuth from "@/hooks/useAuth";
+import useAuth from "@/hooks/useAuth";
 
 function Header() {
   const [isLargerThan834] = useMediaQuery("(min-width: 834px)");
-  const [isLargerThan390] = useMediaQuery("(min-width: 390px)");
-
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { user, pending, error } = UseAuth();
+  const { user, pending, error } = useAuth();
 
   const updateUserProfilePicture = (image: string | null) => {};
 
@@ -81,8 +79,9 @@ function Header() {
             <IconButton
               aria-label="Toggle Menu"
               icon={<HamburgerIcon />}
+              mb={80}
               variant="ghost"
-              onClick={() => setIsDrawerOpen(true)}
+              onClick={handleDrawerOpen}
             />
           </Flex>
           <Drawer
@@ -91,7 +90,6 @@ function Header() {
             onClose={handleDrawerClose}
             isOpen={isDrawerOpen}
           >
-            only shoping stringify
             <DrawerOverlay>
               <DrawerContent h="100%" w="200vh">
                 <DrawerCloseButton />
@@ -99,12 +97,12 @@ function Header() {
                   <ColorModeSwitcher />
                 </Box>
                 <DrawerHeader>Menu</DrawerHeader>
-
                 <DrawerBody>
                   <VStack spacing="4" align="stretch">
-                    <Divider />
-                    <NavigationBar direction="column" />
-                    <Divider />
+                    <NavigationBar
+                      direction="column"
+                      onLinkClick={handleDrawerClose}
+                    />
                     {pending && <Spinner />}
                     {error && !user && <SignButtons />}
                   </VStack>
