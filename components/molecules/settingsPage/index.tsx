@@ -19,6 +19,7 @@ import {
 import { HiEye, HiEyeOff } from "react-icons/hi";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import ScrollToTopButton from "@/constants/scrool";
+import Footer from "../Footer/footer";
 
 function SettingsPage() {
   const primaryTextColors = useColorModeValue(
@@ -448,6 +449,7 @@ function SettingsPage() {
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
+      <Footer />
     </Flex>
   );
 }

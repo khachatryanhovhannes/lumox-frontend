@@ -9,6 +9,8 @@ import {
   Flex,
   Button,
   Grid,
+  Divider,
+  IconButton,
 } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import { Search } from "../components";
@@ -17,6 +19,8 @@ import { BASE_URL } from "@/constants";
 import UseAuth from "@/hooks/useAuth";
 import { useEffect } from "react";
 import ScrollToTopButton from "@/constants/scrool";
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import Footer from "@/components/molecules/Footer/footer";
 // import ScrollToTopButton from "@/constants/scroll"; // Corrected import path
 
 const inter = Inter({ subsets: ["latin"] });
@@ -141,29 +145,12 @@ function Home() {
           See more stories
         </Button>
       </Box>
-      <Flex
-        justifyContent="flex-end"
-        pt={5}
-        my={50}
-        pr={["10px", "50px", "200px"]}
-        color={primaryTextColors}
-        wrap="wrap"
-      >
-        <Box mr="20px" mb={["10px", "0"]}>
-          <Link href="/contact">Contact</Link>
-        </Box>
-        {user && <Link href="/user">My Profile</Link>}
-      </Flex>
-      <Box
-        width="80%"
-        mx="auto"
-        color={primaryTextColors}
-        borderBottom="3px solid"
-        my={10}
-      ></Box>
+
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
+
+      <Footer />
     </Box>
   );
 }

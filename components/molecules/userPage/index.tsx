@@ -15,6 +15,7 @@ import { Inter } from "next/font/google";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ScrollToTopButton from "@/constants/scrool";
+import Footer from "../Footer/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 const getCurrentUser = () => {
@@ -200,6 +201,7 @@ function UserPage() {
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
+      <Footer />
     </Box>
   );
 }

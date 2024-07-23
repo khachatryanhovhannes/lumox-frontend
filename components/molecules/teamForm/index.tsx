@@ -15,6 +15,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
+import Footer from "../Footer/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 function TeamForm() {
@@ -142,6 +143,7 @@ function TeamForm() {
         borderBottom="3px solid"
         my={20}
       ></Box>
+      <Footer />
     </Box>
   );
 }

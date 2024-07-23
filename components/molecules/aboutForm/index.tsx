@@ -4,6 +4,7 @@ import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import { HeaderColor } from "@/models/enums";
+import Footer from "../Footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -298,6 +299,7 @@ function AboutForm() {
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
+      <Footer />
     </Box>
   );
 }

@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import Search from "../search";
 import Link from "next/link";
 import ScrollToTopButton from "@/constants/scrool";
+import Footer from "../Footer/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 function BlogForm() {
@@ -74,28 +75,10 @@ function BlogForm() {
         </Flex>
       </Flex>
 
-      <Flex
-        justifyContent="flex-end"
-        pt={50}
-        my={50}
-        pr={["10px", "50px", "100px", "200px"]}
-        color={primaryTextColors}
-      >
-        <Box mr="20px">
-          <Link href="/contact">Contact</Link>
-        </Box>
-        <Link href="/user">My Profile</Link>
-      </Flex>
-      <Box
-        width="80%"
-        mx="auto"
-        color={primaryTextColors}
-        borderBottom={`3px solid`}
-        my={10}
-      ></Box>
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
+      <Footer />
     </Box>
   );
 }
