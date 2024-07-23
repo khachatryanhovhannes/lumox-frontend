@@ -9,11 +9,17 @@ import {
   Input,
   Stack,
   Button,
+  IconButton,
+  Divider,
 } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import ScrollToTopButton from "@/constants/scrool";
 const inter = Inter({ subsets: ["latin"] });
 import { HeaderColor } from "@/models/enums";
+import Link from "next/link";
+import { Flex } from "@chakra-ui/react";
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import Footer from "../Footer/footer";
 
 function ContactForm() {
   const [fullName, setFullName] = useState("");
@@ -242,6 +248,7 @@ function ContactForm() {
         </Box>
       )}
       <ScrollToTopButton />
+      <Footer />
     </Box>
   );
 }

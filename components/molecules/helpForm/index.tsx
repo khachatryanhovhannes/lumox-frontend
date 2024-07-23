@@ -1,10 +1,18 @@
 "use client";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
-import { Box, Center, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import {
+  Box,
+  Center,
+  Flex,
+  Heading,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import Search from "../search";
 import Link from "next/link";
 import ScrollToTopButton from "@/constants/scrool";
+import Footer from "../Footer/footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -267,6 +275,7 @@ function HelpForm() {
       </Box>
 
       <ScrollToTopButton />
+      <Footer />
     </Box>
   );
 }
