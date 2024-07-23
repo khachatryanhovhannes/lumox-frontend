@@ -24,26 +24,26 @@ function AboutForm() {
   );
 
   return (
-    <Box textAlign="center" px={[4, 6, 8, 10]}>
+    <Box textAlign="center" px={[4, 6, 8, 20]}>
       <Heading
         fontFamily="Lateef"
         color={headerColor}
-        fontSize={["40px", "35px", "40px", "45px", "70px"]}
+        fontSize={["30px", "35px", "40px", "45px", "80px"]}
         fontWeight="normal"
-        mt={["20px", "25px", "30px", "35px", "90px"]}
-        lineHeight={["1", "0.9", "0.8", "0.7", "0.3"]}
+        mt={["20px", "25px", "30px", "35px", "40px"]}
+        lineHeight={["1", "0.9", "0.8", "0.7", "1.3"]}
       >
-        Everyone has a story to tell.
+        About Us{" "}
       </Heading>
       <Text
         className={inter.className}
-        fontSize={["16px", "18px", "20px", "22px", "28px"]}
+        fontSize={["16px", "18px", "20px", "22px", "24px"]}
         fontWeight="100"
-        lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
+        lineHeight={["1.2", "1.3", "1.4", "1.5", "0.001"]}
         color={headerColor}
-        mt={["15px", "20px", "25px", "30px", "35px"]}
+        mt={["15px", "20px", "25px", "30px", "15px"]}
       >
-        Join Lumox, learn free – just like millions already!.
+        Join Lumox, learn free – just like millions already!{" "}
       </Text>
 
       <Flex
@@ -60,7 +60,8 @@ function AboutForm() {
             lineHeight="2"
             color={primaryTextColor}
             fontFamily="Inter, sans-serif"
-            fontSize={["16px", "18px", "20px", "22px", "24px"]}
+            mt={100}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
           >
             ITLumox believes in YOU. Every human being is a library of stories,
             filled with chapters of failure, victory, and valuable information.
@@ -78,7 +79,7 @@ function AboutForm() {
             width="100%"
             mb="10px"
             textAlign="left"
-            fontSize={["20px", "22px", "24px", "26px", "28px"]}
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
             color={headerColor}
           >
             MISSION AND VISION
@@ -90,7 +91,8 @@ function AboutForm() {
             lineHeight="2"
             color={primaryTextColor}
             fontFamily="Inter, sans-serif"
-            fontSize={["16px", "18px", "20px", "22px", "24px"]}
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
           >
             Our mission is to build a vibrant and strong online community where
             anyone can find professional information and enhance their
@@ -109,9 +111,8 @@ function AboutForm() {
             width="100%"
             mb="10px"
             textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
             color={headerColor}
-            fontWeight={300}
-            fontSize={["20px", "22px", "24px", "26px", "28px"]}
           >
             CONTENT AND SCOPE
           </Heading>
@@ -120,9 +121,10 @@ function AboutForm() {
             width="100%"
             textAlign="left"
             lineHeight="2"
-            color={headerColor}
+            color={primaryTextColor}
             fontFamily="Inter, sans-serif"
-            fontSize={["16px", "18px", "20px", "22px", "24px"]}
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
           >
             ITLumox covers a wide array of subjects, from technology and science
             to arts and personal development. Our platform hosts articles,
@@ -139,9 +141,8 @@ function AboutForm() {
             width="100%"
             mb="10px"
             textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
             color={headerColor}
-            fontWeight={300}
-            fontSize={["20px", "22px", "24px", "26px", "28px"]}
           >
             COMMUNITY AND EDITING
           </Heading>
@@ -150,9 +151,10 @@ function AboutForm() {
             width="100%"
             textAlign="left"
             lineHeight="2"
-            color={headerColor}
+            color={primaryTextColor}
             fontFamily="Inter, sans-serif"
-            fontSize={["16px", "18px", "20px", "22px", "24px"]}
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
           >
             Our community is at the heart of ITLumox. We believe that the best
             knowledge comes from collaboration and sharing diverse perspectives.
@@ -169,19 +171,20 @@ function AboutForm() {
             width="100%"
             mb="10px"
             textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
             color={headerColor}
-            fontWeight={300}
-            fontSize={["20px", "22px", "24px", "26px", "28px"]}
           >
             FIVE STRONG PILLARS
           </Heading>
           <Text
+            height="auto"
             width="100%"
             textAlign="left"
-            height="auto"
-            color={headerColor}
+            lineHeight="2"
+            color={primaryTextColor}
             fontFamily="Inter, sans-serif"
-            fontSize={["16px", "18px", "20px", "22px", "24px"]}
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
           >
             Our platform is built on five strong pillars that guide our
             operations and community engagement:
@@ -222,9 +225,8 @@ function AboutForm() {
             width="100%"
             mb="10px"
             textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
             color={headerColor}
-            fontWeight={300}
-            fontSize={["20px", "22px", "24px", "26px", "28px"]}
           >
             QUALITY CONTROL
           </Heading>
@@ -233,9 +235,10 @@ function AboutForm() {
             width="100%"
             textAlign="left"
             lineHeight="2"
-            color={headerColor}
+            color={primaryTextColor}
             fontFamily="Inter, sans-serif"
-            fontSize={["16px", "18px", "20px", "22px", "24px"]}
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
           >
             Quality is a cornerstone of ITLumox. We employ rigorous quality
             control measures to ensure that all content is trustworthy and
@@ -273,9 +276,8 @@ function AboutForm() {
             width="100%"
             mb="10px"
             textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
             color={headerColor}
-            fontWeight={300}
-            fontSize={["20px", "22px", "24px", "26px", "28px"]}
           >
             GLOBAL REACH
           </Heading>
@@ -284,9 +286,10 @@ function AboutForm() {
             width="100%"
             textAlign="left"
             lineHeight="2"
-            color={headerColor}
+            color={primaryTextColor}
             fontFamily="Inter, sans-serif"
-            fontSize={["16px", "18px", "20px", "22px", "24px"]}
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
           >
             ITLumox aims to have a global reach. We are working towards
             translating our content into multiple languages to cater to a

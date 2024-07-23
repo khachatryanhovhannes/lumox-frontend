@@ -28,7 +28,7 @@ function Footer() {
         <Flex justifyContent="space-between" alignItems="center" wrap="wrap">
           <Box>
             {/* Logo */}
-            <Heading size="md">LUMOX</Heading>
+            <Heading size="md">LUMOOX</Heading>
           </Box>
           <Flex gap={4}>
             <IconButton

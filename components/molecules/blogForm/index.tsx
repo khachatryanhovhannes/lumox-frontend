@@ -19,29 +19,30 @@ function BlogForm() {
   );
 
   return (
-    <Box textAlign="center" px={[2, 4, 8, 16]}>
+    <Box textAlign="center" px={[2, 4, 6, 8]}>
       <Heading
         fontFamily="Lateef"
-        color={primaryTextColors}
-        fontSize={["30px", "35px", "40px", "45px", "70px"]}
+        color={secondaryTextColors}
+        fontSize={["30px", "35px", "40px", "45px", "80px"]}
         fontWeight="normal"
         mt={["20px", "25px", "30px", "35px", "40px"]}
-        lineHeight={["1", "1.1", "1.2", "1.3", "1.4"]}
+        lineHeight={["1", "0.9", "0.8", "0.7", "1.3"]}
       >
-        The IT Lumox Blog
+        The Lumoox Blog{" "}
       </Heading>
+
       <Text
         className={inter.className}
-        fontSize={["16px", "18px", "20px", "22px", "25px"]}
+        fontSize={["16px", "18px", "20px", "22px", "24px"]}
         fontWeight="100"
-        lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
+        lineHeight={["1.2", "1.3", "1.4", "1.5", "0.001"]}
         color={secondaryTextColors}
-        mt={["15px", "20px", "25px", "30px", "2px"]}
+        mt={["15px", "20px", "25px", "30px", "15px"]}
       >
         Join the millions learning to code with Lumox for free
       </Text>
 
-      <Box mt="20px">
+      <Box mt="40px">
         <Search />
       </Box>
 

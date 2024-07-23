@@ -32,27 +32,25 @@ function TeamForm() {
   const boxShadow = "lg"; // Moved here
 
   return (
-    <Box textAlign="center" p={[2, 4, 6, 8]}>
+    <Box textAlign="center" px={[2, 4, 6, 8]}>
       <Heading
         fontFamily="Lateef"
-        color={primaryTextColors}
-        fontSize={["30px", "35px", "40px", "45px", "130px"]}
+        color={secondaryTextColors}
+        fontSize={["30px", "35px", "40px", "45px", "80px"]}
         fontWeight="normal"
         mt={["20px", "25px", "30px", "35px", "40px"]}
-        lineHeight={["1.2", "1.1", "1", "0.9", "0.8"]}
+        lineHeight={["1", "0.9", "0.8", "0.7", "1.3"]}
       >
-        Our Team
+        Our Team{" "}
       </Heading>
 
       <Text
         className={inter.className}
-        fontSize={["16px", "18px", "20px", "22px", "25px"]}
+        fontSize={["16px", "18px", "20px", "22px", "24px"]}
         fontWeight="100"
-        lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
+        lineHeight={["1.2", "1.3", "1.4", "1.5", "0.001"]}
         color={secondaryTextColors}
-        mt={["15px", "20px", "25px", "30px", "35px"]}
-        mx="auto"
-        maxWidth="80%"
+        mt={["15px", "20px", "25px", "30px", "15px"]}
       >
         IT Lumox is a home for human stories and ideas.
       </Text>
@@ -64,7 +62,7 @@ function TeamForm() {
           fontWeight="400"
           lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
           color={secondaryTextColors}
-          mt={["15px", "20px", "25px", "30px", "35px"]}
+          mt={["15px", "20px", "25px", "30px", "155px"]}
           mx="auto"
           maxWidth="80%"
           textAlign="justify"
