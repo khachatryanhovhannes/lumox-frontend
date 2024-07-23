@@ -125,27 +125,25 @@ function ContactForm() {
     <Box textAlign="center">
       <Heading
         fontFamily="Lateef"
-        color={primaryTextColors}
-        fontSize={["30px", "35px", "40px", "45px", "100px"]}
+        color={secondaryTextColors}
+        fontSize={["30px", "35px", "40px", "45px", "80px"]}
         fontWeight="normal"
-        mt={["20px", "25px", "30px", "35px", "80px"]}
-        lineHeight={["1", "0.9", "0.8", "0.7", "0.2"]}
+        mt={["20px", "25px", "30px", "35px", "40px"]}
+        lineHeight={["1", "0.9", "0.8", "0.7", "1.3"]}
       >
         How to contact us?
       </Heading>
+
       <Text
         className={inter.className}
-        fontSize={["16px", "18px", "20px", "22px", "25px"]}
+        fontSize={["16px", "18px", "20px", "22px", "24px"]}
         fontWeight="100"
-        lineHeight={["1.2", "1.3", "1.4", "1.5", "1.6"]}
+        lineHeight={["1.2", "1.3", "1.4", "1.5", "0.001"]}
         color={secondaryTextColors}
-        mt={["15px", "20px", "25px", "30px", "42px"]}
-        width="80%"
-        textAlign="center"
-        mx="auto"
+        mt={["15px", "20px", "25px", "30px", "15px"]}
       >
         Whatever you would like to share with us, we are always prepared to
-        listen.
+        listen.{" "}
       </Text>
       {!isSubmitted ? (
         <Stack

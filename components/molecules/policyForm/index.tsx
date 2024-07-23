@@ -5,6 +5,7 @@ import { Inter } from "next/font/google";
 import Search from "../search";
 import Link from "next/link";
 import ScrollToTopButton from "@/constants/scrool";
+import Footer from "../Footer/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 function PolicyForm() {
@@ -318,6 +319,7 @@ function PolicyForm() {
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
+      <Footer />
     </Box>
   );
 }
