@@ -33,19 +33,19 @@ function Footer() {
           <Flex gap={4}>
             <IconButton
               as={Link}
-              href="https://www.facebook.com/Lumox"
+              href=""
               aria-label="Facebook"
               icon={<FaFacebook />}
             />
             <IconButton
               as={Link}
-              href="https://www.instagram.com/Lumox"
+              href=""
               aria-label="Instagram"
               icon={<FaInstagram />}
             />
             <IconButton
               as={Link}
-              href="https://www.linkedin.com/company/Lumox"
+              href=""
               aria-label="LinkedIn"
               icon={<FaLinkedin />}
             />
