@@ -1,10 +1,10 @@
 "use client";
-import ScrollToTopButton from "@/constants/scrool";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
 import { Inter } from "next/font/google";
 import { HeaderColor } from "@/models/enums";
 import Footer from "../Footer/footer";
+import ScrollToTopButton from "@/constants/scrool";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -33,7 +33,7 @@ function AboutForm() {
         mt={["20px", "25px", "30px", "35px", "40px"]}
         lineHeight={["1", "0.9", "0.8", "0.7", "1.3"]}
       >
-        About Us{" "}
+        About Us
       </Heading>
       <Text
         className={inter.className}
@@ -43,7 +43,7 @@ function AboutForm() {
         color={headerColor}
         mt={["15px", "20px", "25px", "30px", "15px"]}
       >
-        Join Lumox, learn free – just like millions already!{" "}
+        Join Lumox, learn free – just like millions already!
       </Text>
 
       <Flex
@@ -256,16 +256,17 @@ function AboutForm() {
               supported by credible sources.
             </Box>
             <Box as="li">
-              Editorial Oversight: Our editorial team ensures that articles
-              adhere to our standards of quality and relevance.
+              Expert Review: Experienced professionals in various fields review
+              content for technical accuracy and relevance.
             </Box>
             <Box as="li">
-              User Reviews: Community members can rate and review articles,
-              providing additional layers of quality assurance.
+              Continuous Updates: Our team regularly updates content to reflect
+              new information and advancements in the field.
             </Box>
             <Box as="li">
-              Anti-Vandalism: We have robust systems in place to detect and
-              prevent vandalism or malicious edits.
+              Community Feedback: We actively seek feedback from our community
+              to identify areas for improvement and ensure content remains
+              relevant.
             </Box>
           </Box>
         </Box>
@@ -279,7 +280,7 @@ function AboutForm() {
             fontSize={["20px", "22px", "24px", "26px", "22px"]}
             color={headerColor}
           >
-            GLOBAL REACH
+            USER EXPERIENCE
           </Heading>
           <Text
             height="auto"
@@ -291,18 +292,72 @@ function AboutForm() {
             mt={8}
             fontSize={["16px", "18px", "20px", "22px", "20px"]}
           >
-            ITLumox aims to have a global reach. We are working towards
-            translating our content into multiple languages to cater to a
-            diverse audience. Our platform is designed to be user-friendly and
-            accessible, ensuring that people from all around the world can
-            benefit from the knowledge shared on ITLumox.
+            User experience is at the core of our design philosophy. Our
+            platform is user-friendly, intuitive, and accessible. We offer a
+            seamless browsing experience, making it easy for users to find the
+            information they need. We continuously gather feedback and make
+            improvements to enhance the overall user experience.
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 10]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={headerColor}
+          >
+            DATA SECURITY
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColor}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            At ITLumox, we take data security seriously. We implement robust
+            security measures to protect user data and ensure privacy. Our
+            platform complies with industry standards and regulations to
+            safeguard personal information and maintain user trust.
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 10]} mb="50px">
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={headerColor}
+          >
+            JOIN US
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColor}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            Join the ITLumox community today and become a part of a dynamic and
+            vibrant network of knowledge seekers and sharers. Together, we can
+            build a better future by spreading knowledge and fostering learning
+            across the globe.
           </Text>
         </Box>
       </Flex>
-      <Box p={4}>
-        <ScrollToTopButton />
-      </Box>
       <Footer />
+      <ScrollToTopButton />
     </Box>
   );
 }
