@@ -62,7 +62,13 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
               />
             </Flex>
           </PopoverTrigger>
-          <PopoverContent maxW="200px" mt={-20}>
+          <PopoverContent
+            maxW="200px"
+            mt={-20}
+            zIndex="popover"
+            _focus={{ outline: "none" }}
+            style={{ marginBottom: "10px", marginRight: "10px" }}
+          >
             <PopoverBody>
               <div
                 style={{

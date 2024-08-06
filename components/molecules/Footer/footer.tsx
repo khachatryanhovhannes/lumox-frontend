@@ -11,64 +11,85 @@ import {
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import ScrollToTopButton from "@/constants/scrool";
-import { PrimaryTextColors } from "@/models";
+import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 
-function Footer() {
+interface FooterProps {
+  marginTop?: string;
+  paddingY?: string;
+  paddingX?: string;
+}
+
+function Footer({
+  marginTop = "40px",
+  paddingY = "8",
+  paddingX = "8",
+}: FooterProps) {
   const primaryTextColor = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
   );
-  const secondaryTextColors = useColorModeValue("gray.800", "gray.200");
+  const secondaryTextColor = useColorModeValue(
+    SecondaryTextColors.lightMode,
+    SecondaryTextColors.darkMode
+  );
 
   return (
-    <Box textAlign="center" mt="40px">
+    <Box textAlign="center" mt={marginTop} py={paddingY} px={paddingX}>
       <ScrollToTopButton />
 
-      <Box color={secondaryTextColors} py={5} px={6} mt={10}>
+      <Box color={secondaryTextColor} py={5} px={6} mt={10}>
         <Flex justifyContent="space-between" alignItems="center" wrap="wrap">
           <Box>
             {/* Logo */}
-            <Heading size="md">LUMOOX</Heading>
+            <Heading size="md" color={primaryTextColor}>
+              LUMOOX
+            </Heading>
           </Box>
           <Flex gap={4}>
             <IconButton
               as={Link}
-              href=""
+              href="#"
               aria-label="Facebook"
               icon={<FaFacebook />}
+              bg="transparent"
+              color={primaryTextColor}
             />
             <IconButton
               as={Link}
-              href=""
+              href="#"
               aria-label="Instagram"
               icon={<FaInstagram />}
+              bg="transparent"
+              color={primaryTextColor}
             />
             <IconButton
               as={Link}
-              href=""
+              href="#"
               aria-label="LinkedIn"
               icon={<FaLinkedin />}
+              bg="transparent"
+              color={primaryTextColor}
             />
           </Flex>
         </Flex>
-        <Divider color={secondaryTextColors} my={6} />
-        <Flex justifyContent="left" gap={10}>
-          <Link href="#" color={secondaryTextColors}>
+        <Divider color={secondaryTextColor} my={6} />
+        <Flex justifyContent="left" gap={10} flexWrap="wrap">
+          <Link href="#" color={secondaryTextColor}>
             Support
           </Link>
-          <Link href="#help" color={secondaryTextColors}>
+          <Link href="#help" color={secondaryTextColor}>
             Help
           </Link>
-          <Link href="#" color={secondaryTextColors}>
+          <Link href="#" color={secondaryTextColor}>
             Events
           </Link>
-          <Link href="#" color={secondaryTextColors}>
+          <Link href="#" color={secondaryTextColor}>
             Privacy Policy
           </Link>
-          <Link href="#policy" color={secondaryTextColors}>
+          <Link href="#policy" color={secondaryTextColor}>
             Blog
           </Link>
-          <Link href="#blog" color={secondaryTextColors}>
+          <Link href="#blog" color={secondaryTextColor}>
             News
           </Link>
         </Flex>

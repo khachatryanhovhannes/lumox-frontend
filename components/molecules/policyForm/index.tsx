@@ -319,7 +319,9 @@ function PolicyForm() {
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
-      <Footer />
+      <Box p={4}>
+        <Footer marginTop="3100px" />
+      </Box>
     </Box>
   );
 }
