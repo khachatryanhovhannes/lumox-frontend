@@ -4,3 +4,7 @@ interface INavItem {
 }
 
 export type { INavItem };
+interface NavigationBarProps {
+  direction?: "row" | "column";
+  onLinkClick?: () => void;
+}

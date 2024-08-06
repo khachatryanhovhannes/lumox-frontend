@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import { useState } from "react";
 import {
@@ -19,7 +20,6 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 import { ColorModeSwitcher, Logo } from "../../atoms";
 import SignButtons from "../../molecules/signButtons";
 import NavigationBar from "../../molecules/navigationBar";
-
 import UserInHeader from "../userInHeader/userInHeader";
 import useAuth from "@/hooks/useAuth";
 
@@ -28,35 +28,28 @@ function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const { user, pending, error } = useAuth();
 
-  const updateUserProfilePicture = (image: string | null) => {};
-
-  const handleDrawerClose = () => {
-    setIsDrawerOpen(false);
-  };
-
-  const handleDrawerOpen = () => {
-    setIsDrawerOpen(true);
-  };
+  const handleDrawerClose = () => setIsDrawerOpen(false);
+  const handleDrawerOpen = () => setIsDrawerOpen(true);
 
   return (
     <Flex
       w="100%"
       m="auto"
-      justify="space-between"
-      p="10px"
+      p={{ base: "5px", md: "10px", lg: "15px" }} // Responsive padding
       alignItems="center"
-      maxW={{ sm: "100%", md: "100%", lg: "1920px" }}
+      justify="space-between"
+      maxW={{ base: "100%", md: "100%", lg: "1920px" }}
     >
       <Logo />
       {isLargerThan834 ? (
-        <Flex alignItems="center" gap="30px">
+        <Flex
+          alignItems="center"
+          gap={{ base: "10px", md: "20px", lg: "30px" }}
+        >
           <NavigationBar />
           {pending && <Spinner />}
           {user && !pending && (
-            <UserInHeader
-              user={user}
-              updateUserProfilePicture={updateUserProfilePicture}
-            />
+            <UserInHeader user={user} updateUserProfilePicture={() => {}} />
           )}
           {error && !user && <SignButtons />}
           <ColorModeSwitcher />
@@ -67,38 +60,48 @@ function Header() {
             {user && !pending && (
               <img
                 src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
-                alt="Profile Picture"
+                alt="Profile"
                 style={{
                   width: "35px",
                   height: "35px",
-                  borderRadius: "80%",
+                  borderRadius: "50%",
                   marginRight: "10px",
                 }}
               />
             )}
             <IconButton
-              aria-label="Toggle Menu"
+              aria-label="Open menu"
               icon={<HamburgerIcon />}
-              mb={80}
               variant="ghost"
               onClick={handleDrawerOpen}
             />
           </Flex>
           <Drawer
             placement="left"
-            size="md"
+            size={{ base: "full", sm: "sm" }} // Full width on mobile
             onClose={handleDrawerClose}
             isOpen={isDrawerOpen}
           >
             <DrawerOverlay>
-              <DrawerContent h="100%" w="200vh">
-                <DrawerCloseButton />
-                <Box justifySelf="flex-start">
+              <DrawerContent
+                w={{ base: "100%", sm: "200px" }} // Full width on mobile
+                h="100vh"
+                p={4}
+              >
+                <DrawerCloseButton
+                  position="absolute"
+                  top={2}
+                  right={2}
+                  m={2}
+                />
+                <Box mb={4}>
                   <ColorModeSwitcher />
                 </Box>
-                <DrawerHeader>Menu</DrawerHeader>
+                <DrawerHeader fontSize={{ base: "md", lg: "lg" }}>
+                  Menu
+                </DrawerHeader>
                 <DrawerBody>
-                  <VStack spacing="4" align="stretch">
+                  <VStack spacing={4} align="stretch">
                     <NavigationBar
                       direction="column"
                       onLinkClick={handleDrawerClose}

@@ -12,6 +12,7 @@ function ColorModeSwitcher() {
       aria-label="Toggle color mode"
       icon={colorMode === "dark" ? <SunIcon /> : <MoonIcon />}
       onClick={toggleColorMode}
+      mb={20}
       size="md"
     />
   );

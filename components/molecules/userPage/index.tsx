@@ -201,7 +201,7 @@ function UserPage() {
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
-      <Footer />
+      {/* <Footer /> */}
     </Box>
   );
 }

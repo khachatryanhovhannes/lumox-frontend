@@ -19,7 +19,6 @@ import { PrimaryTextColors, SecondaryTextColors } from "../models";
 import { BASE_URL } from "@/constants";
 import UseAuth from "@/hooks/useAuth";
 import { useEffect } from "react";
-// import ScrollToTopButton from "@/constants/scroll"; // Corrected import path
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import Footer from "@/components/molecules/Footer/footer";
 import ScrollToTopButton from "@/constants/scrool";
@@ -39,7 +38,9 @@ function Home() {
   const { user } = UseAuth();
 
   useEffect(() => {
-    console.log(user);
+    if (user) {
+      console.log(user);
+    }
   }, [user]);
 
   return (
@@ -113,7 +114,7 @@ function Home() {
             </Box>
           </Box>
         </Grid>
-        <Text fontSize="md" color={secondaryTextColors} fontWeight={220} mt={4}>
+        <Text fontSize="md" color={secondaryTextColors} fontWeight="220" mt={4}>
           17 Developer tools that keep me productive
         </Text>
       </Box>
