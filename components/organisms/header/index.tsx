@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Flex,
   IconButton,
@@ -58,16 +58,7 @@ function Header() {
         <>
           <Flex alignItems="center">
             {user && !pending && (
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/1177/1177568.png"
-                alt="Profile"
-                style={{
-                  width: "35px",
-                  height: "35px",
-                  borderRadius: "50%",
-                  marginRight: "10px",
-                }}
-              />
+              <UserInHeader user={user} updateUserProfilePicture={() => {}} />
             )}
             <IconButton
               aria-label="Open menu"
