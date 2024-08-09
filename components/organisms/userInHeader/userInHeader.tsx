@@ -9,6 +9,7 @@ import {
   PopoverContent,
   PopoverBody,
   Link,
+  useMediaQuery,
 } from "@chakra-ui/react";
 import { PrimaryTextColors } from "../../../models";
 import { usePathname } from "next/navigation";
@@ -25,6 +26,7 @@ interface IUserInHeaderProps {
 }
 
 function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
+  const [isLargerThan834] = useMediaQuery("(min-width: 834px)");
   const borderandTextColor = useColorModeValue(
     PrimaryTextColors.lightMode,
     PrimaryTextColors.darkMode
@@ -55,8 +57,9 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
                   width: "35px",
                   height: "35px",
                   borderRadius: "50%",
-                  marginRight: "20px",
-                  marginBottom: "80px",
+                  marginRight: isLargerThan834 ? "20px" : "10px",
+                  marginBottom: isLargerThan834 ? "80px" : "0",
+                  marginTop: isLargerThan834 ? "0" : "4px", 
                 }}
                 onClick={handleToggleOpen}
               />
@@ -64,7 +67,7 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
           </PopoverTrigger>
           <PopoverContent
             maxW="200px"
-            mt={-20}
+            mt={{ base: "10px", md: "-60px" }}
             zIndex="popover"
             _focus={{ outline: "none" }}
             style={{ marginBottom: "10px", marginRight: "10px" }}
