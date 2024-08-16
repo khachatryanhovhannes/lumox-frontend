@@ -10,6 +10,7 @@ import {
 import { Inter } from "next/font/google";
 import React, { useRef, useState } from "react";
 import Footer from "../Footer/footer";
+
 const inter = Inter({ subsets: ["latin"] });
 
 function WritePage() {
@@ -54,7 +55,10 @@ function WritePage() {
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
-        setCoverPhoto(reader.result as string);
+        const result = reader.result;
+        if (typeof result === "string") {
+          setCoverPhoto(result);
+        }
       };
       reader.readAsDataURL(file);
     }

@@ -52,7 +52,7 @@ function TeamForm() {
         color={secondaryTextColors}
         mt={["15px", "20px", "25px", "30px", "15px"]}
       >
-        IT Lumox is a home for human stories and ideas.
+        Who are the real people behind the creativity at <b>Lumoox</b>?{" "}
       </Text>
 
       <Box p={4}>
@@ -67,15 +67,14 @@ function TeamForm() {
           maxWidth="80%"
           textAlign="justify"
         >
-          Who are the real people behind the creativity at Lumoox? <br />
           <br />
-          Meet the Brilliant Minds Behind ITLumox. We are a group of
-          enthusiastic beginners, passionate about creating something great and
-          making a positive impact on the world. We started as a group of
-          beginners with a common goal. Our team believes that great things are
-          done by a series of small things brought together. The seeds of
-          innovation are planted in the soil of change, nurtured by the light of
-          vision.
+          Meet the Brilliant Minds Behind <b>Lumoox</b>. We are a group of
+          enthusiastics, passionate about creating something great and making a
+          positive impact on the world. Our team believes that great things are
+          done by a series of small things brought together. <br />
+          The seeds of innovation are planted in the soil of change, nurtured by
+          the light of vision.The seeds of innovation are planted in the soil of
+          change, nurtured by the light of vision.
         </Text>
         <Heading as="h1" fontSize="24px" mt="10px">
           Meet your team!

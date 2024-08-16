@@ -60,7 +60,7 @@ function PolicyForm() {
         color={secondaryTextColors}
         mt={["15px", "20px", "25px", "30px", "12px"]}
       >
-        You can see our previous Privacy Policy here.{" "}
+        {/* You can see our previous Privacy Policy here.{" "} */}
       </Text>
       <Box mt="20px">
         <Search />
@@ -83,9 +83,9 @@ function PolicyForm() {
           >
             <b>Welcome to Lumoox!</b>
             <br />
-            At Lumoox ,your trust is our best estimate. This Privacy Policy
-            outlines how we collect, use, and protect your personal information
-            when you <br />
+            At <b>Lumoox</b> ,your trust is our best estimate. This Privacy
+            Policy outlines how we collect, use, and protect your personal
+            information when you <br />
             use our website and services. By using our platform, you agree to
             the terms of this Privacy Policy. Therefore, we encourage you to
             read it <br /> carefully. <br />
