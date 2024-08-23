@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 "use client";
 import { useState, ChangeEvent } from "react";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
@@ -145,6 +146,476 @@ function ContactForm() {
         Whatever you would like to share with us, we are always prepared to
         listen.{" "}
       </Text>
+      <Flex
+        direction="column"
+        alignItems="flex-start"
+        mx="auto"
+        maxWidth="1200px"
+      >
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            // mt={50}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            We prioritize clear and effective communication. Whether you have a
+            question, need support, or want to collaborate, we're here to assist
+            you. Below are the various ways you can get in touch with us:
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+            How to Reach Us{" "}
+          </Heading>
+          <br />
+          <br />
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+            General questions{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            For general questions or information about Lumoox, please contact us
+            via: <br /> ·        Email: info@Lumoox.com <br /> ·        Phone:
+            +374 98 123456
+          </Text>
+          <br />
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+            Customer Support{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            Our dedicated  customer support team is here to help you with any
+            technical issues, account queries, or other concerns. Contact us at:{" "}
+            <br />
+            ·        Email: support@Lumoox.com <br />
+            ·        Phone: +374 10 654321
+            <br />
+            ·        Support Hours: Monday to Friday, 9:00 AM - 6:00 PM
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+            Media Inquiries{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            For media-related inquiries, including interviews, press releases,
+            or media kits, please contact our media relations team:
+            <br /> ·        Email: media@Lumoox.com
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+            Partnership Opportunities
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            Together we learn ,together we grow. We are always open to
+            meaningful partnerships and collaborations that align with our
+            mission to provide professional information. If you are interested
+            in partnering with Lumoox, please reach out to us at: <br />{" "}
+            ·        Email: partnerships@Lumoox.com
+          </Text>
+          <Box
+            as="ol"
+            pl="20px"
+            textAlign="left"
+            lineHeight="2.5"
+            color={primaryTextColors}
+          ></Box>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+            Content Contribution{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            We value the expertise and contributions of individuals who wish to
+            share their knowledge. If you are interested in contributing
+            content, please contact our editorial team at: <br /> ·       
+            Email: contribute@Lumoox.com <br /> ·        Submission Guidelines:
+            [Lumoox.com/submission-guidelines](https://Lumoox.com/submission-guidelines)
+          </Text>
+          <Box
+            as="ul"
+            pl="20px"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+          ></Box>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+            Connect with Us{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            Stay updated with the latest news, articles, and events from Lumoox
+            by following us on social media: <br /> ·        Facebook:
+            [facebook.com/Lumoox](https://facebook.com/Lumoox) <br /> ·       
+            LinkedIn:
+            [linkedin.com/company/Lumoox](https://linkedin.com/company/Lumoo)
+            <br />
+            ·        Instagram:
+            [instagram.com/Lumoox](https://instagram.com/Lumoox)
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+            Feedback{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            Your feedback has the power to inspire profound change. We
+            continuously strive to improve our platform, and your suggestions
+            help <br /> us achieve this goal. Please send your feedback to:{" "}
+            <br /> ·        Email: feedback@Lumoox.com
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+            Frequently Asked Questions (FAQs){" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            For answers to common questions about Lumoox, please visit our FAQ
+            page:
+            <br /> ·        Website: [Lumoox.com/faq](https://Lumoox.com/faq)
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+            Privacy{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            Your  privacy is our priority. To understand how we handle your
+            information, please review our Privacy Policy:
+            <br /> ·        Privacy Policy:
+            [Lumoox.com/privacy-policy](https://Lumoox.com/privacy-policy)
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+             Join Our Team{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            We are always looking for passionate and talented individuals to
+            join the Lumoox team. If you are interested, please check our
+            current job openings on the Careers page:
+            <br /> ·        Website:
+            [Lumoox.com/careers](https://Lumoox.com/careers)
+            <br /> ·        Email: careers@Lumoox.com
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+              Community Guidelines{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            To ensure a respectful and productive environment, we have
+            established community guidelines that all users are expected to
+            follow. These guidelines help maintain a safe and engaging platform
+            for everyone. For more information, please visit:
+            <br /> ·        Website:
+            [Lumoox.com/community-guidelines](https://Lumoox.com/community-guidelines)
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+             Advertising with Lumoox{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            For businesses and organizations interested in advertising on
+            Lumoox, we offer various advertising options tailored to your needs.
+            To learn more about our advertising opportunities, please contact
+            our advertising team at:
+            <br /> ·        Email: advertising@Lumoox.com
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+             Technical Support{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            For technical support related to the website, app, or other Lumoox
+            services, please contact our technical support team:
+            <br /> ·        Email: techsupport@Lumoox.com
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Heading
+            height="auto"
+            width="100%"
+            mb="10px"
+            textAlign="left"
+            fontSize={["20px", "22px", "24px", "26px", "22px"]}
+            color={primaryTextColors}
+          >
+              Innovation Hub{" "}
+          </Heading>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            Our Innovation Hub is dedicated to exploring new technologies and
+            methodologies to enhance our platform. If you have ideas or
+            innovations that you believe could benefit Lumoox, please reach out
+            to us:
+            <br /> ·        Email: innovation@Lumoox.com
+          </Text>
+        </Box>
+
+        <Box mt="50px" px={[4, 6, 8, 1]}>
+          <Text
+            height="auto"
+            width="100%"
+            textAlign="left"
+            lineHeight="2"
+            color={primaryTextColors}
+            fontFamily="Inter, sans-serif"
+            mt={8}
+            fontSize={["16px", "18px", "20px", "22px", "20px"]}
+          >
+            Thank you for visiting Lumoox. We are excited to have you as part of
+            our community and look forward to hearing from you. Lumoox -
+            Illuminating Minds, Empowering Knowledge
+          </Text>
+        </Box>
+      </Flex>
       {!isSubmitted ? (
         <Stack
           spacing="44px"

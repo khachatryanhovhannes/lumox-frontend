@@ -102,7 +102,7 @@ function Home() {
             <Image
               borderRadius="full"
               boxSize="80px"
-              src="https://scontent.fevn2-1.fna.fbcdn.net/v/t39.30808-6/441065201_1679345445932135_6563685465057658347_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=VuSeGa4xYKkQ7kNvgHq1FZA&_nc_ht=scontent.fevn2-1.fna&oh=00_AYDtaAxLjkLJ9PVsCf9r9vHDo9-UPtkFUYijzbCYrdKSQQ&oe=66A56AB0"
+              src="https://scontent.fevn7-1.fna.fbcdn.net/v/t39.30808-6/441065201_1679345445932135_6563685465057658347_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=8JoDGiaXbR4Q7kNvgGRPNZa&_nc_ht=scontent.fevn7-1.fna&oh=00_AYB6bnrf7TChQi7seuDGobMvFl-VnT6KOUdrvG8AT0rD4Q&oe=66CEB9B0"
               alt="Profile Image"
               mr={4}
             />
@@ -118,7 +118,7 @@ function Home() {
           17 Developer tools that keep me productive
         </Text>
       </Box>
-
+      zz
       <Box mt="100px">
         <Button
           color={secondaryTextColors}
@@ -130,11 +130,9 @@ function Home() {
           See more stories
         </Button>
       </Box>
-
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
-
       <Footer />
     </Box>
   );
