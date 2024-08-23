@@ -61,7 +61,7 @@ function AboutForm() {
             lineHeight="2"
             color={primaryTextColor}
             fontFamily="Inter, sans-serif"
-            mt={100}
+            // mt={50}
             fontSize={["16px", "18px", "20px", "22px", "20px"]}
           >
             <b>Lumoox</b> believes in YOU. Every human being is a library of

@@ -1,11 +1,11 @@
 "use client";
 
 import { Flex, Text, useColorMode, useColorModeValue } from "@chakra-ui/react";
+import Image from "next/image";
+import Link from "next/link";
 import logoLight from "../../../public/lumox-logo-light-mode.png";
 import logoDark from "../../../public/lumox-logo-dark-mode.png";
 import { LogoColor } from "../../../models";
-import Link from "next/link";
-import Image from "next/image";
 
 function Logo() {
   const { colorMode } = useColorMode();
@@ -14,8 +14,14 @@ function Logo() {
 
   return (
     <Link href="/">
-      <Flex alignItems="center">
-        <Image src={logo} alt="Lumox Logo" width={120} height={50} />
+      <Flex alignItems="center" minW="120px" minH="50px">
+        <Image
+          src={logo}
+          alt="Lumox Logo"
+          width={120}
+          height={50}
+          layout="intrinsic"
+        />
         <Text
           fontSize={{ base: "48px", md: "24px" }}
           fontFamily="Italiana"

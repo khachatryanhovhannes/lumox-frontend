@@ -75,17 +75,14 @@ function Header() {
           >
             <DrawerOverlay>
               <DrawerContent
-                w={{ base: "100%", sm: "200px" }} // Full width on mobile
                 h="100vh"
                 p={4}
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
               >
-                <DrawerCloseButton
-                  position="absolute"
-                  top={2}
-                  right={2}
-                  m={2}
-                />
-                <Box mb={4}>
+                <DrawerCloseButton />
+                <Box mb={-70}>
                   <ColorModeSwitcher />
                 </Box>
                 <DrawerHeader fontSize={{ base: "md", lg: "lg" }}>

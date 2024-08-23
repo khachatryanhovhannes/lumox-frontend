@@ -1,5 +1,3 @@
-// components/molecules/footer/Footer.tsx
-
 import {
   Box,
   Flex,
@@ -7,11 +5,14 @@ import {
   Heading,
   Divider,
   useColorModeValue,
+  Stack,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
 import ScrollToTopButton from "@/constants/scrool";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
+import { Logo } from "@/components/atoms";
 
 interface FooterProps {
   marginTop?: string;
@@ -38,14 +39,18 @@ function Footer({
       <ScrollToTopButton />
 
       <Box color={secondaryTextColor} py={5} px={6} mt={10}>
-        <Flex justifyContent="space-between" alignItems="center" wrap="wrap">
-          <Box>
+        <Flex
+          direction={{ base: "column", md: "row" }}
+          justifyContent="space-between"
+          alignItems="center"
+          wrap="wrap"
+          mb={6}
+        >
+          <Box mb={{ base: 4, md: 0 }}>
             {/* Logo */}
-            <Heading size="md" color={primaryTextColor}>
-              LUMOOX
-            </Heading>
+            <Logo />
           </Box>
-          <Flex gap={4}>
+          <Flex gap={4} mb={{ base: 4, md: 0 }}>
             <IconButton
               as={Link}
               href="#"
@@ -53,6 +58,7 @@ function Footer({
               icon={<FaFacebook />}
               bg="transparent"
               color={primaryTextColor}
+              size={{ base: "sm", md: "md" }}
             />
             <IconButton
               as={Link}
@@ -61,6 +67,7 @@ function Footer({
               icon={<FaInstagram />}
               bg="transparent"
               color={primaryTextColor}
+              size={{ base: "sm", md: "md" }}
             />
             <IconButton
               as={Link}
@@ -69,30 +76,36 @@ function Footer({
               icon={<FaLinkedin />}
               bg="transparent"
               color={primaryTextColor}
+              size={{ base: "sm", md: "md" }}
             />
           </Flex>
         </Flex>
         <Divider color={secondaryTextColor} my={6} />
-        <Flex justifyContent="left" gap={10} flexWrap="wrap">
-          <Link href="#" color={secondaryTextColor}>
+        <Stack
+          direction={{ base: "column", sm: "row" }}
+          justifyContent={{ base: "center", sm: "start" }}
+          spacing={4}
+          mb={4}
+        >
+          <ChakraLink as={Link} href="#" color={secondaryTextColor}>
             Support
-          </Link>
-          <Link href="#help" color={secondaryTextColor}>
+          </ChakraLink>
+          <ChakraLink as={Link} href="#help" color={secondaryTextColor}>
             Help
-          </Link>
-          <Link href="#" color={secondaryTextColor}>
+          </ChakraLink>
+          <ChakraLink as={Link} href="#" color={secondaryTextColor}>
             Events
-          </Link>
-          <Link href="#" color={secondaryTextColor}>
+          </ChakraLink>
+          <ChakraLink as={Link} href="#" color={secondaryTextColor}>
             Privacy Policy
-          </Link>
-          <Link href="#policy" color={secondaryTextColor}>
+          </ChakraLink>
+          <ChakraLink as={Link} href="#policy" color={secondaryTextColor}>
             Blog
-          </Link>
-          <Link href="#blog" color={secondaryTextColor}>
+          </ChakraLink>
+          <ChakraLink as={Link} href="#blog" color={secondaryTextColor}>
             News
-          </Link>
-        </Flex>
+          </ChakraLink>
+        </Stack>
       </Box>
     </Box>
   );

@@ -14,7 +14,7 @@ const NAV_BAR_ITEMS: INavItem[] = [
 const OUR_TEAM = [
   {
     firstname: "Gayane",
-    lastname: "Haruthunyan",
+    lastname: "Harutyunyan",
     position: "Project Manager / Content Writer",
     description:
       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",

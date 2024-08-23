@@ -64,7 +64,7 @@ function TeamForm() {
           color={secondaryTextColors}
           mt={["15px", "20px", "25px", "30px", "155px"]}
           mx="auto"
-          maxWidth="80%"
+          maxWidth="90%"
           textAlign="justify"
         >
           <br />
@@ -85,13 +85,13 @@ function TeamForm() {
         <ScrollToTopButton />
       </Box>
 
-      <SimpleGrid columns={[1, 1, 2, 3]} spacing={10} mb="30px">
+      <SimpleGrid columns={[1, 1, 2, 3]} spacing={5} mb="30px">
         {OUR_TEAM.map((member, index) => (
           <Box
             key={index}
             textAlign="left"
             p={5}
-            borderWidth="1px"
+            borderWidth="3px"
             borderRadius="lg"
             overflow="hidden"
             bg={bgColor}
@@ -138,7 +138,6 @@ function TeamForm() {
         mx="auto"
         color={primaryTextColors}
         borderBottom="3px solid"
-        my={20}
       ></Box>
       <Footer />
     </Box>
