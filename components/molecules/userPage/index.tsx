@@ -146,7 +146,7 @@ function UserPage() {
   ];
 
   return (
-    <Box p={4}>
+    <Box p={4} position="relative">
       <CoverPhoto
         src={coverPhoto}
         alt="Background Picture"
@@ -160,7 +160,7 @@ function UserPage() {
         top={{ base: "100px", md: "150px" }}
         left={10}
         right={0}
-        bottom={0}
+        bottom={100}
         p={4}
         zIndex={2}
       >
@@ -192,16 +192,69 @@ function UserPage() {
         <Link href="#">My Favourites</Link>
         <Link href="#">Account Settings</Link>
       </HStack>
+
       <Input
         type="file"
         ref={fileInputRef}
         style={{ display: "none" }}
         onChange={handleCoverPhotoChange}
       />
+
+      {/* Centered Squares */}
+      <Flex
+        position="absolute"
+        bottom={{ base: "20px", sm: "40px", md: "60px" }}
+        left="50%"
+        transform="translateX(-50%)"
+        justifyContent="center"
+        align="center"
+        gap={4}
+        mb={-500}
+      >
+        {Array(4)
+          .fill(null)
+          .map((_, index) => (
+            <Box key={index} position="relative" textAlign="center">
+              <Text
+                w={{ base: "60px", sm: "80px", md: "200px" }}
+                h={{ base: "60px", sm: "80px", md: "200px" }}
+                bg={primaryTextColors}
+                borderRadius="md"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color="white"
+                fontWeight="bold"
+                fontSize={{ base: "sm", sm: "md", md: "lg" }}
+              >
+                Text {index + 1}
+              </Text>
+              <Text
+                position="absolute"
+                bottom={-20}
+                left="50%"
+                transform="translateX(-50%)"
+                w={{ base: "20px", sm: "30px", md: "50px" }}
+                h={{ base: "20px", sm: "30px", md: "50px" }}
+                bg={secondaryTextColors}
+                borderRadius="md"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color="white"
+                fontWeight="bold"
+                fontSize={{ base: "xs", sm: "sm", md: "md" }}
+              >
+                {index + 1}
+              </Text>
+            </Box>
+          ))}
+      </Flex>
+
       <Box p={4}>
         <ScrollToTopButton />
       </Box>
-      {/* <Footer /> */}
+      {/* <Footer  /> */}
     </Box>
   );
 }

@@ -414,23 +414,11 @@ function HelpForm() {
             3. Growth: Enhance your learning and expand your knowledge base.{" "}
             <br />
             4. Impact: Share your insights and experiences to help others.{" "}
+            <br />
+            <br /> <b>Happy learning and sharing on Lumoox!</b>
           </Text>
         </Box>
       </Flex>
-
-      <Box mt="70px" width="80%" mx="auto" ml={170}>
-        <Text
-          height="auto"
-          width="100%"
-          textAlign="left"
-          lineHeight="2"
-          color={primaryTextColor}
-          fontFamily="Inter, sans-serif"
-          fontSize={["16px", "18px", "20px", "22px", "20px"]}
-        >
-          Happy learning and sharing on Lumoox!
-        </Text>
-      </Box>
 
       <ScrollToTopButton />
       <Footer />
