@@ -269,7 +269,7 @@ function SettingsPage() {
           fontSize="18px"
           color={secondaryTextColors}
           textAlign="left"
-          pl={7}
+          pl={10}
         >
           Full Name
         </Text>
@@ -281,7 +281,12 @@ function SettingsPage() {
           flexDirection={["column", "row"]}
         >
           <Box width={["100%", "45%"]} mb={[5, 0]}>
-            <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
+            <Text
+              fontSize="16px"
+              color={secondaryTextColors}
+              textAlign="left"
+              pl={3}
+            >
               First Name
             </Text>
             <Input
@@ -297,7 +302,12 @@ function SettingsPage() {
             )}
           </Box>
           <Box width={["100%", "45%"]} ml={[0, 10]}>
-            <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
+            <Text
+              fontSize="16px"
+              color={secondaryTextColors}
+              textAlign="left"
+              pl={3}
+            >
               Last Name
             </Text>
             <Input
@@ -324,7 +334,7 @@ function SettingsPage() {
           fontSize="18px"
           color={secondaryTextColors}
           textAlign="left"
-          pl={7}
+          pl={10}
         >
           Contact Email
         </Text>
@@ -336,14 +346,19 @@ function SettingsPage() {
           flexDirection={["column", "row"]}
         >
           <Box width={["100%", "45%"]} mb={[5, 0]}>
-            <Text fontSize="16px" color={secondaryTextColors} textAlign="left">
+            <Text
+              fontSize="16px"
+              color={secondaryTextColors}
+              textAlign="left"
+              pl={3}
+            >
               Email
             </Text>
             <Input borderWidth="2px" borderColor={primaryTextColors} />
           </Box>
           <Box width={["100%", "45%"]} ml={[0, 10]}>
             <Button
-              w={["100%", 250]}
+              w={["100%", 450]}
               my={7}
               color={primaryTextColors}
               variant="outline"
@@ -365,7 +380,7 @@ function SettingsPage() {
           fontSize="18px"
           color={secondaryTextColors}
           textAlign="left"
-          pl={7}
+          pl={10}
           mt={8}
           mb={10}
         >
