@@ -1,5 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import {
   Flex,
   IconButton,
@@ -11,73 +12,90 @@ import {
   DrawerHeader,
   DrawerBody,
   VStack,
-  Text,
-  Divider,
+  Spinner,
+  Box,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
 import { ColorModeSwitcher, Logo } from "../../atoms";
-import { NavigationBar, SignButtons } from "../../molecules";
+import SignButtons from "../../molecules/signButtons";
+import NavigationBar from "../../molecules/navigationBar";
 import UserInHeader from "../userInHeader/userInHeader";
-import UseAuth from "@/hooks/useAuth";
+import useAuth from "@/hooks/useAuth";
 
 function Header() {
-  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
+  const [isLargerThan834] = useMediaQuery("(min-width: 834px)");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const { user, pending, error } = UseAuth();
+  const { user, pending, error } = useAuth();
 
-  const updateUserProfilePicture = (image: string | null) => {};
+  const handleDrawerClose = () => setIsDrawerOpen(false);
+  const handleDrawerOpen = () => setIsDrawerOpen(true);
 
   return (
     <Flex
       w="100%"
       m="auto"
-      justify="space-between"
-      p="10px"
+      p={{ base: "5px", md: "10px", lg: "15px" }} // Responsive padding
       alignItems="center"
+      justify="space-between"
+      maxW={{ base: "100%", md: "100%", lg: "1920px" }}
     >
       <Logo />
-      {isLargerThan768 ? (
-        <Flex alignItems="center" gap="30px">
+      {isLargerThan834 ? (
+        <Flex
+          alignItems="center"
+          gap={{ base: "10px", md: "20px", lg: "30px" }}
+        >
           <NavigationBar />
-          {user && (
-            <UserInHeader
-              user={user}
-              updateUserProfilePicture={updateUserProfilePicture}
-            />
+          {pending && <Spinner />}
+          {user && !pending && (
+            <UserInHeader user={user} updateUserProfilePicture={() => {}} />
           )}
-          {!user && pending && <p>Pending</p>}
-          {error && <SignButtons />}
+          {error && !user && <SignButtons />}
           <ColorModeSwitcher />
         </Flex>
       ) : (
         <>
-          <IconButton
-            aria-label="Toggle Menu"
-            icon={<HamburgerIcon />}
-            variant="ghost"
-            onClick={() => setIsDrawerOpen(true)}
-          />
+          <Flex alignItems="center">
+            {user && !pending && (
+              <UserInHeader user={user} updateUserProfilePicture={() => {}} />
+            )}
+            <IconButton
+              aria-label="Open menu"
+              icon={<HamburgerIcon />}
+              variant="ghost"
+              onClick={handleDrawerOpen}
+            />
+          </Flex>
           <Drawer
             placement="left"
-            onClose={() => setIsDrawerOpen(false)}
+            size={{ base: "full", sm: "sm" }} // Full width on mobile
+            onClose={handleDrawerClose}
             isOpen={isDrawerOpen}
           >
             <DrawerOverlay>
-              <DrawerContent>
+              <DrawerContent
+                h="100vh"
+                p={4}
+                display="flex"
+                flexDirection="column"
+                justifyContent="space-between"
+              >
                 <DrawerCloseButton />
-                <DrawerHeader>Menu</DrawerHeader>
-
+                <Box mb={-70}>
+                  <ColorModeSwitcher />
+                </Box>
+                <DrawerHeader fontSize={{ base: "md", lg: "lg" }}>
+                  Menu
+                </DrawerHeader>
                 <DrawerBody>
-                  <VStack spacing="4" align="stretch">
-                    <Divider />
-                    <NavigationBar />
-                    <Divider />
-                    <SignButtons />
-                    <Divider />
-                    <Text fontWeight="bold">Preferences</Text>
-                    <Divider />
-                    <ColorModeSwitcher />
+                  <VStack spacing={4} align="stretch">
+                    <NavigationBar
+                      direction="column"
+                      onLinkClick={handleDrawerClose}
+                    />
+                    {pending && <Spinner />}
+                    {error && !user && <SignButtons />}
                   </VStack>
                 </DrawerBody>
               </DrawerContent>

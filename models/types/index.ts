@@ -10,4 +10,11 @@ type UserRegister = {
   password: string;
   agreeTerms: boolean;
 };
+// src/types.ts
+export interface Post {
+  coverPhoto?: string;
+  headerText: string;
+  contentText: string;
+}
+
 export type { UserLogin, UserRegister };

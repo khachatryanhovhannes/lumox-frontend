@@ -12,6 +12,7 @@ import TeamForm from "@/components/molecules/teamForm/index";
 import SettingsPage from "@/components/molecules/settingsPage";
 import UserPage from "./molecules/userPage/index";
 import WritePage from "./molecules/writePage/index";
+import PolicyForm from "./molecules/policyForm/index";
 
 export {
   NavigationBar,
@@ -26,4 +27,5 @@ export {
   SettingsPage,
   UserPage,
   WritePage,
+  PolicyForm,
 };
