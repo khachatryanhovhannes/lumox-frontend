@@ -1,46 +1,14 @@
 "use client";
-import { PrimaryTextColors, SecondaryTextColors } from "@/models";
-import {
-  useColorModeValue,
-  Flex,
-  Button,
-  Image,
-  Textarea,
-} from "@chakra-ui/react";
-import { Inter } from "next/font/google";
+
 import React, { useRef, useState } from "react";
+import { Flex, Button, Image, Textarea, Text } from "@chakra-ui/react";
 import Footer from "../Footer/footer";
 
-const inter = Inter({ subsets: ["latin"] });
-
 function WritePage() {
-  const primaryTextColors = [
-    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
-  ];
-
-  const secondaryTextColors = [
-    useColorModeValue(
-      SecondaryTextColors.lightMode,
-      SecondaryTextColors.darkMode
-    ),
-    useColorModeValue(
-      SecondaryTextColors.lightMode,
-      SecondaryTextColors.darkMode
-    ),
-    useColorModeValue(
-      SecondaryTextColors.lightMode,
-      SecondaryTextColors.darkMode
-    ),
-    useColorModeValue(
-      SecondaryTextColors.lightMode,
-      SecondaryTextColors.darkMode
-    ),
-  ];
-
   const [coverPhoto, setCoverPhoto] = useState<string>("");
+  const [headerText, setHeaderText] = useState<string>("");
+  const [postContent, setPostContent] = useState<string>("");
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -64,6 +32,29 @@ function WritePage() {
     }
   };
 
+  const handlePublish = () => {
+    if (headerText.trim() && postContent.trim()) {
+      const existingPosts = JSON.parse(localStorage.getItem("posts") || "[]");
+      const newPost = {
+        coverPhoto,
+        headerText,
+        postContent,
+      };
+
+      existingPosts.push(newPost);
+      localStorage.setItem("posts", JSON.stringify(existingPosts));
+
+      setCoverPhoto("");
+      setHeaderText("");
+      setPostContent("");
+      setSuccessMessage("Successful");
+      setTimeout(() => setSuccessMessage(null), 3000); // Hide the message after 3 seconds
+    } else {
+      setSuccessMessage("Please fill out all fields");
+      setTimeout(() => setSuccessMessage(null), 3000); // Hide the message after 3 seconds
+    }
+  };
+
   return (
     <>
       <Flex direction="column" alignItems="center" px={8} py={8}>
@@ -83,65 +74,38 @@ function WritePage() {
             objectFit="cover"
           />
         )}
-
         <Flex justifyContent="space-around" width="100%" px={8} py={8}>
-          <Button
-            mr={8}
-            borderWidth="1px"
-            borderColor={primaryTextColors}
-            background="none"
-            onClick={handleAddImage}
-          >
+          <Button mr={8} onClick={handleAddImage}>
             Add a Cover Photo
           </Button>
-          <Button
-            mr={8}
-            borderWidth="1px"
-            borderColor={primaryTextColors}
-            background="none"
-          >
+          <Button mr={8} onClick={handlePublish}>
             Publish
           </Button>
         </Flex>
-
         <Textarea
           placeholder="Enter your header here"
           mt={8}
           width="100%"
           maxWidth="800px"
-          sx={{
-            "::placeholder": {
-              fontWeight: "bold",
-              fontSize: "1.5rem",
-            },
-            borderWidth: "0px",
-            _hover: {
-              borderColor: "transparent",
-            },
-            _focus: {
-              borderColor: "transparent",
-              boxShadow: "none",
-            },
-          }}
+          onChange={(e) => setHeaderText(e.target.value)}
+          value={headerText}
         />
-
         <Textarea
-          placeholder="Write your post content here ... "
+          placeholder="Write your post content here ..."
           mt={8}
           width="100%"
           maxWidth="800px"
-          sx={{
-            borderWidth: "1px",
-            borderColor: "transparent",
-            _hover: {
-              borderColor: "transparent",
-            },
-            _focus: {
-              borderColor: "transparent",
-              boxShadow: "none",
-            },
-          }}
+          onChange={(e) => setPostContent(e.target.value)}
+          value={postContent}
         />
+        {successMessage && (
+          <Text
+            mt={4}
+            color={successMessage === "Successful" ? "green.500" : "red.500"}
+          >
+            {successMessage}
+          </Text>
+        )}
       </Flex>
       <Footer />
     </>
