@@ -59,7 +59,7 @@ function UserInHeader({ user, updateUserProfilePicture }: IUserInHeaderProps) {
                   borderRadius: "50%",
                   marginRight: isLargerThan834 ? "20px" : "10px",
                   marginBottom: isLargerThan834 ? "80px" : "0",
-                  marginTop: isLargerThan834 ? "0" : "4px", 
+                  marginTop: isLargerThan834 ? "0" : "4px",
                 }}
                 onClick={handleToggleOpen}
               />
