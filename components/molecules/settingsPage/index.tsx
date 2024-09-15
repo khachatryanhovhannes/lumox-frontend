@@ -52,6 +52,12 @@ function SettingsPage() {
     if (storedImage) {
       setSelectedImage(storedImage);
     }
+
+    // Load existing name from localStorage
+    const storedFirstName = localStorage.getItem("firstName");
+    const storedLastName = localStorage.getItem("lastName");
+    if (storedFirstName) setFirstName(storedFirstName);
+    if (storedLastName) setLastName(storedLastName);
   }, []);
 
   const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -85,6 +91,10 @@ function SettingsPage() {
       isPassword2Valid &&
       password1 === password2
     ) {
+      // Save name to localStorage
+      localStorage.setItem("firstName", firstName);
+      localStorage.setItem("lastName", lastName);
+
       toast({
         title: "Changes Saved Successfully",
         description: "Your changes have been saved.",
@@ -221,7 +231,7 @@ function SettingsPage() {
             {selectedImage ? (
               <Image
                 src={selectedImage}
-                alt=""
+                alt="Profile"
                 w="80px"
                 h="80px"
                 borderRadius="50%"
@@ -267,204 +277,200 @@ function SettingsPage() {
         </Flex>
         <Text
           fontSize="18px"
+          // mt={50}
           color={secondaryTextColors}
           textAlign="left"
-          pl={10}
+          pl={5}
         >
           Full Name
         </Text>
-        <Flex
-          justify="space-between"
-          width="95%"
-          mx="auto"
-          mt={5}
-          flexDirection={["column", "row"]}
-        >
-          <Box width={["100%", "45%"]} mb={[5, 0]}>
-            <Text
-              fontSize="16px"
-              color={secondaryTextColors}
-              textAlign="left"
-              pl={3}
-            >
-              First Name
-            </Text>
-            <Input
-              borderWidth="2px"
-              borderColor={primaryTextColors}
-              value={firstName}
-              onChange={handleFirstNameChange}
-            />
-            {firstNameError && (
-              <Text color="red" mt={1} fontSize="14px">
-                {firstNameError}
-              </Text>
-            )}
-          </Box>
-          <Box width={["100%", "45%"]} ml={[0, 10]}>
-            <Text
-              fontSize="16px"
-              color={secondaryTextColors}
-              textAlign="left"
-              pl={3}
-            >
-              Last Name
-            </Text>
-            <Input
-              borderWidth="2px"
-              borderColor={primaryTextColors}
-              value={lastName}
-              onChange={handleLastNameChange}
-            />
-            {lastNameError && (
-              <Text color="red" mt={1} fontSize="14px">
-                {lastNameError}
-              </Text>
-            )}
-          </Box>
-        </Flex>
         <Box
-          width="95%"
-          mx="auto"
-          borderBottom={`2px solid ${secondaryTextColors} `}
-          my={50}
-          mb={5}
-        ></Box>
-        <Text
-          fontSize="18px"
-          color={secondaryTextColors}
-          textAlign="left"
-          pl={10}
+          // borderColor={primaryTextColors}
+          maxW="5000px"
         >
-          Contact Email
-        </Text>
-        <Flex
-          justify="space-between"
-          width="95%"
-          mx="auto"
-          mt={5}
-          flexDirection={["column", "row"]}
-        >
-          <Box width={["100%", "45%"]} mb={[5, 0]}>
-            <Text
-              fontSize="16px"
-              color={secondaryTextColors}
-              textAlign="left"
-              pl={3}
-            >
-              Email
-            </Text>
-            <Input borderWidth="2px" borderColor={primaryTextColors} />
-          </Box>
-          <Box width={["100%", "45%"]} ml={[0, 10]}>
-            <Button
-              w={["100%", 450]}
-              my={7}
-              color={primaryTextColors}
-              variant="outline"
-              borderWidth="2px"
-              borderColor={primaryTextColors}
-            >
-              Add another email
-            </Button>
-          </Box>
-        </Flex>
-        <Box
-          width="95%"
-          mx="auto"
-          borderBottom={`2px solid ${secondaryTextColors} `}
-          my={50}
-          mb={5}
-        ></Box>
-        <FormLabel
-          fontSize="18px"
-          color={secondaryTextColors}
-          textAlign="left"
-          pl={10}
-          mt={8}
-          mb={10}
-        >
-          Password
-        </FormLabel>
-        <Flex
-          justify="space-between"
-          width="95%"
-          mx="auto"
-          mt={5}
-          flexDirection={["column", "row"]}
-        >
-          <InputGroup alignItems="center" width={["100%", "45%"]} mb={[5, 0]}>
-            <InputRightElement>
-              <IconButton
-                fontSize="20px"
-                variant="ghost"
-                aria-label={isOpenFirst ? "Hide password" : "Show password"}
-                icon={isOpenFirst ? <HiEyeOff /> : <HiEye />}
-                onClick={() => {
-                  setIsOpenFirst(!isOpenFirst);
-                }}
+          <Flex mb={4} direction="row" wrap="wrap" justify="space-between">
+            <Box flex="1" mt={5} mr={2}>
+              <FormLabel color={primaryTextColors} ml={5}>
+                First Name:
+              </FormLabel>
+              <Input
+                value={firstName}
+                onChange={handleFirstNameChange}
+                color={primaryTextColors}
+                borderColor={primaryTextColors}
+                _focus={{ borderColor: primaryTextColors }}
+                placeholder="Enter your first name"
+                isInvalid={!!firstNameError}
               />
-            </InputRightElement>
-            <Input
-              h="40px"
-              color={secondaryTextColors}
-              borderWidth="2px"
-              borderColor={primaryTextColors}
-              id="password-1"
-              type={isOpenFirst ? "text" : "password"}
-              autoComplete="current-password"
-              placeholder="Enter Password"
-              value={password1}
-              onChange={handlePassword1Change}
-            />
-          </InputGroup>
-          <InputGroup alignItems="center" width={["100%", "45%"]} mb={[5, 0]}>
-            <InputRightElement>
-              <IconButton
-                fontSize="20px"
-                variant="ghost"
-                aria-label={isOpenSecond ? "Hide password" : "Show password"}
-                icon={isOpenSecond ? <HiEyeOff /> : <HiEye />}
-                onClick={() => {
-                  setIsOpenSecond(!isOpenSecond);
-                }}
+              {firstNameError && (
+                <Text color="red.500" fontSize="sm">
+                  {firstNameError}
+                </Text>
+              )}
+            </Box>
+            <Box flex="1" mt={5} ml={4}>
+              <FormLabel color={primaryTextColors} ml={4}>
+                Last Name:
+              </FormLabel>
+              <Input
+                value={lastName}
+                onChange={handleLastNameChange}
+                color={primaryTextColors}
+                borderColor={primaryTextColors}
+                _focus={{ borderColor: primaryTextColors }}
+                placeholder="Enter your last name"
+                isInvalid={!!lastNameError}
               />
-            </InputRightElement>
-            <Input
-              h="40px"
-              color={secondaryTextColors}
-              borderWidth="2px"
-              borderColor={primaryTextColors}
-              id="password-2"
-              type={isOpenSecond ? "text" : "password"}
-              autoComplete="current-password"
-              placeholder="Confirm Password"
-              value={password2}
-              onChange={handlePassword2Change}
-            />
-          </InputGroup>
-        </Flex>
-        {passwordError && (
-          <Text color="red" mt={1} fontSize="14px" textAlign="center">
-            {passwordError}
+              {lastNameError && (
+                <Text color="red.500" fontSize="sm">
+                  {lastNameError}
+                </Text>
+              )}
+            </Box>
+          </Flex>
+          <Box
+            width="100%"
+            mx="auto"
+            mt={10}
+            mb={5}
+            color={primaryTextColors}
+            borderBottom="3px solid"
+          ></Box>
+
+          <Text
+            fontSize="18px"
+            color={secondaryTextColors}
+            textAlign="left"
+            pl={5}
+          >
+            Contact Email
           </Text>
-        )}
-        <Button
-          w={250}
-          my={70}
-          color={primaryTextColors}
-          variant="outline"
-          borderWidth="2px"
-          borderColor={primaryTextColors}
-          onClick={handleSaveChange}
-        >
-          Save Change
-        </Button>
+          <Flex
+            justify="space-between"
+            width="100%"
+            mx="auto"
+            mt={5}
+            flexDirection={["column", "row"]}
+          >
+            <Box width={["100%", "50%"]} mb={[5, 0]}>
+              <FormLabel color={primaryTextColors} ml={5}>
+                Email{" "}
+              </FormLabel>
+              <Input borderWidth="2px" borderColor={primaryTextColors} />
+            </Box>
+            <Box width={["100%", "50%"]} ml={[0, 10]}>
+              <Button
+                w={["100%", 300]}
+                my={7}
+                color={primaryTextColors}
+                variant="outline"
+                borderWidth="2px"
+                ml={200}
+                borderColor={primaryTextColors}
+              >
+                Add another email
+              </Button>
+            </Box>
+          </Flex>
+          <Box
+            width="100%"
+            mx="auto"
+            mt={10}
+            mb={5}
+            color={primaryTextColors}
+            borderBottom="3px solid"
+          ></Box>
+          <Text
+            fontSize="18px"
+            mt={50}
+            color={secondaryTextColors}
+            textAlign="left"
+            pl={5}
+          >
+            Full Name
+          </Text>
+          <Flex
+            mb={4}
+            mt={10}
+            direction="row"
+            wrap="wrap"
+            justify="space-between"
+          >
+            <Box flex="1" mr={5}>
+              <FormLabel color={primaryTextColors} ml={5}>
+                Password:
+              </FormLabel>
+              <InputGroup>
+                <Input
+                  type={isOpenFirst ? "text" : "password"}
+                  value={password1}
+                  onChange={handlePassword1Change}
+                  color={primaryTextColors}
+                  borderColor={primaryTextColors}
+                  _focus={{ borderColor: primaryTextColors }}
+                  placeholder="Enter your password"
+                  isInvalid={!!passwordError}
+                />
+                <InputRightElement>
+                  <IconButton
+                    aria-label={isOpenFirst ? "Hide password" : "Show password"}
+                    icon={isOpenFirst ? <HiEyeOff /> : <HiEye />}
+                    onClick={() => setIsOpenFirst(!isOpenFirst)}
+                    bg="transparent"
+                    _hover={{ bg: "transparent" }}
+                  />
+                </InputRightElement>
+              </InputGroup>
+              {passwordError && (
+                <Text color="red.500" fontSize="sm">
+                  {passwordError}
+                </Text>
+              )}
+            </Box>
+            <Box flex="1" ml={2}>
+              <FormLabel color={primaryTextColors} ml={5}>
+                Confirm Password:
+              </FormLabel>
+              <InputGroup>
+                <Input
+                  type={isOpenSecond ? "text" : "password"}
+                  value={password2}
+                  onChange={handlePassword2Change}
+                  color={primaryTextColors}
+                  borderColor={primaryTextColors}
+                  _focus={{ borderColor: primaryTextColors }}
+                  placeholder="Confirm your password"
+                  isInvalid={!!passwordError}
+                />
+                <InputRightElement>
+                  <IconButton
+                    aria-label={
+                      isOpenSecond ? "Hide password" : "Show password"
+                    }
+                    icon={isOpenSecond ? <HiEyeOff /> : <HiEye />}
+                    onClick={() => setIsOpenSecond(!isOpenSecond)}
+                    bg="transparent"
+                    _hover={{ bg: "transparent" }}
+                  />
+                </InputRightElement>
+              </InputGroup>
+            </Box>
+          </Flex>
+          <Button
+            mt={100}
+            color={primaryTextColors}
+            variant="outline"
+            borderWidth="3px"
+            w={300}
+            borderColor={primaryTextColors}
+            onClick={handleSaveChange}
+          >
+            Save Changes
+          </Button>
+        </Box>
       </Box>
-      <Box p={4}>
-        <ScrollToTopButton />
-      </Box>
-      <Footer />
+      {/* <Footer /> */}
+      <ScrollToTopButton />
     </Flex>
   );
 }

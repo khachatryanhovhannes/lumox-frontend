@@ -138,6 +138,7 @@ function TeamForm() {
         mx="auto"
         color={primaryTextColors}
         borderBottom="3px solid"
+        mb={-100}
       ></Box>
       <Footer />
     </Box>
