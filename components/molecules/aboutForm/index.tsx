@@ -1,4 +1,4 @@
-/* eslint-disable react/no-unescaped-entities */
+
 "use client";
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import { Box, Flex, Heading, Text, useColorModeValue } from "@chakra-ui/react";
@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import { HeaderColor } from "@/models/enums";
 import Footer from "../Footer/footer";
 import ScrollToTopButton from "@/constants/scrool";
+
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -261,6 +262,17 @@ function AboutForm() {
           >
             GLOBAL REACH
           </Heading>
+          <Text height="120px" width="950px" textAlign="left" lineHeight="2">
+            ITLumox aims to have a global reach. We are working towards
+            translating our content into multiple languages to cater to a
+            <br />
+            diverse audience. Our platform is designed to be user-friendly and
+            accessible, ensuring that people from all around the world can
+            <br />
+            benefit from the knowledge shared on ITLumox.
+          </Text>
+        </Box>
+      </Flex>
           <Text
             height="auto"
             width="100%"
