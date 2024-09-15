@@ -1,5 +1,4 @@
 "use client";
-
 import { PrimaryTextColors, SecondaryTextColors } from "@/models";
 import {
   Box,
@@ -17,9 +16,15 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import ScrollToTopButton from "@/constants/scrool";
 import Footer from "../Footer/footer";
-import { getMe } from "../../../service/api/userService/index"; // Import getMe function
-
 const inter = Inter({ subsets: ["latin"] });
+
+const getCurrentUser = () => {
+  return {
+    username: "User Name",
+    profilePicture:
+      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
+  };
+};
 
 interface ProfilePictureProps {
   src: string;
@@ -31,9 +36,12 @@ function ProfilePicture({ src, alt }: ProfilePictureProps) {
     <Image
       src={src}
       alt={alt}
-      borderRadius="full"
+      borderRadius="50%"
       boxSize={{ base: "100px", sm: "120px", md: "150px" }}
       objectFit="cover"
+      zIndex={1}
+      position="relative"
+      top={{ base: "20px", sm: "30px", md: "50px" }}
     />
   );
 }
@@ -46,14 +54,21 @@ interface CoverPhotoProps {
 
 function CoverPhoto({ src, alt, onChangePhoto }: CoverPhotoProps) {
   return (
-    <Box position="relative" mb={10}>
-      <Image src={src} alt={alt} w="full" h="250px" objectFit="cover" />
+    <Box position="relative">
+      <Image
+        src={src}
+        alt={alt}
+        objectFit="cover"
+        w="100%"
+        h={{ base: "150px", sm: "180px", md: "200px" }}
+        position="relative"
+      />
       <Button
         position="absolute"
         bottom={4}
         right={4}
         size="sm"
-        zIndex={2}
+        zIndex={3}
         onClick={onChangePhoto}
       >
         Change Cover Photo
@@ -63,48 +78,24 @@ function CoverPhoto({ src, alt, onChangePhoto }: CoverPhotoProps) {
 }
 
 function UserPage() {
-  const primaryTextColors = useColorModeValue("gray.800", "white");
-
   const [coverPhoto, setCoverPhoto] = useState<string>("");
   const [user, setUser] = useState<{
     username: string;
     profilePicture: string;
   } | null>(null);
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await getMe(); // Fetch user data using getMe
-        const userData = response.data;
-        setUser({
-          username: `${userData.firstname} ${userData.lastname}`,
-          profilePicture:
-            userData.profilePicture ||
-            "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png",
-        });
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    fetchUserData();
+    const userData = getCurrentUser();
+    setUser(userData);
 
     if (typeof window !== "undefined") {
       const storedCoverPhoto = localStorage.getItem("coverPhoto");
       setCoverPhoto(
         storedCoverPhoto ||
-          "https://img.freepik.com/free-/abstract-luxury-blur-grey-color-gradient-used-as-background-studio-wall-display-your-products_1258-52609.jpg"
+          "https://img.freepik.com/free-photo/abstract-luxury-blur-grey-color-gradient-used-as-background-studio-wall-display-your-products_1258-52609.jpg"
       );
-    }
-  }, []);
-
-  useEffect(() => {
-    const storedImage = localStorage.getItem("profilePicture");
-    if (storedImage) {
-      setSelectedImage(storedImage);
     }
   }, []);
 
@@ -115,7 +106,6 @@ function UserPage() {
       const reader = new FileReader();
       reader.onload = (e) => {
         if (e.target && typeof e.target.result === "string") {
-          console.log("Selected file:", e.target.result); // Debugging log
           localStorage.setItem("coverPhoto", e.target.result);
           setCoverPhoto(e.target.result);
         }
@@ -124,115 +114,147 @@ function UserPage() {
     }
   };
 
-  const handleProfilePictureChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        if (e.target && typeof e.target.result === "string") {
-          console.log("Profile picture file:", e.target.result); // Debugging log
-          localStorage.setItem("profilePicture", e.target.result);
-          setSelectedImage(e.target.result);
-        }
-      };
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  };
+  const primaryTextColors = [
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+    useColorModeValue(PrimaryTextColors.lightMode, PrimaryTextColors.darkMode),
+  ];
 
-  useEffect(() => {
-    const firstName = localStorage.getItem("firstName");
-    const lastName = localStorage.getItem("lastName");
-    if (firstName && lastName) {
-      setUser((prevUser) => ({
-        ...prevUser,
-        username: `${firstName} ${lastName}`,
-        profilePicture: prevUser?.profilePicture || "", // Հաճախորդի նկարը ապահովում ենք պարունակող արժեքով
-      }));
-    }
-  }, []);
+  const secondaryTextColors = [
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+    useColorModeValue(
+      SecondaryTextColors.lightMode,
+      SecondaryTextColors.darkMode
+    ),
+  ];
 
   return (
-    <Box minH="100vh" display="flex" flexDirection="column">
-      <Box flex="1">
-        <CoverPhoto
-          src={coverPhoto}
-          alt="Cover Photo"
-          onChangePhoto={() => fileInputRef.current?.click()}
-        />
-        <Flex
-          justifyContent="center"
-          align="center"
-          marginBottom="20px"
-          position="absolute"
-          top="130px" // Adjusted for more spacing
-          right={1300}
-          bottom={170}
-          p={1}
-          zIndex={2}
-        >
-          {user && (
-            <ProfilePicture
-              src={selectedImage || user.profilePicture}
-              alt="Profile Picture"
-            />
-          )}
-        </Flex>
-
-        <Box
-          width="83%"
-          // mx="auto"
-          mt={-7}
-          ml={250}
-          color={primaryTextColors}
-          borderBottom="3px solid"
-        >
-          <Box
-            width="3%"
-            // mx="auto"
-
-            mr={200}
-            color={primaryTextColors}
-            borderBottom="3px solid"
-          ></Box>
-        </Box>
-
+    <Box p={4} position="relative">
+      <CoverPhoto
+        src={coverPhoto}
+        alt="Background Picture"
+        onChangePhoto={() => fileInputRef.current?.click()}
+      />
+      <Flex
+        justifyContent="space-between"
+        align="center"
+        marginBottom="20px"
+        position="absolute"
+        top={{ base: "100px", md: "150px" }}
+        left={10}
+        right={0}
+        bottom={100}
+        p={4}
+        zIndex={2}
+      >
         {user && (
-          <Heading
-            as="h1"
-            size="lg"
-            ml="230px"
-            mt="-0px"
-            position="absolute"
-            color={primaryTextColors}
-          >
-            {user.username}
-          </Heading>
+          <ProfilePicture src={user.profilePicture} alt="Profile Picture" />
         )}
-        <HStack
-          spacing="20px"
-          justifyContent="center"
-          mt={20}
+      </Flex>
+      {user && (
+        <Heading
+          as="h1"
+          size="lg"
+          ml={{ base: "150px", sm: "180px", md: "230px" }}
+          mt="20px"
           position="absolute"
-          left={0}
-          right={0}
         >
-          <Link href="#">TimeLine</Link>
-          <Link href="#">Booking History</Link>
-          <Link href="#">My Favourites</Link>
-          <Link href="#">Account Settings</Link>
-        </HStack>
-        <Input
-          type="file"
-          ref={fileInputRef}
-          style={{ display: "none" }}
-          onChange={handleCoverPhotoChange}
-        />
-        <Box p={4}>
-          <ScrollToTopButton />
-        </Box>
-        {/* <Footer /> */}
+          {user.username}
+        </Heading>
+      )}
+      <HStack
+        spacing={{ base: "10px", sm: "20px", md: "80px" }}
+        justifyContent="center"
+        mt={20}
+        position="absolute"
+        left={0}
+        right={0}
+      >
+        <Link href="#">TimeLine</Link>
+        <Link href="#">Booking History</Link>
+        <Link href="#">My Favourites</Link>
+        <Link href="#">Account Settings</Link>
+      </HStack>
+
+      <Input
+        type="file"
+        ref={fileInputRef}
+        style={{ display: "none" }}
+        onChange={handleCoverPhotoChange}
+      />
+
+      {/* Centered Squares */}
+      <Flex
+        position="absolute"
+        bottom={{ base: "20px", sm: "40px", md: "60px" }}
+        left="50%"
+        transform="translateX(-50%)"
+        justifyContent="center"
+        align="center"
+        gap={4}
+        mb={-500}
+      >
+        {Array(4)
+          .fill(null)
+          .map((_, index) => (
+            <Box key={index} position="relative" textAlign="center">
+              <Text
+                w={{ base: "60px", sm: "80px", md: "200px" }}
+                h={{ base: "60px", sm: "80px", md: "200px" }}
+                bg={primaryTextColors}
+                borderRadius="md"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color="white"
+                fontWeight="bold"
+                fontSize={{ base: "sm", sm: "md", md: "lg" }}
+              >
+                Text {index + 1}
+              </Text>
+              <Text
+                position="absolute"
+                bottom={-20}
+                left="50%"
+                transform="translateX(-50%)"
+                w={{ base: "20px", sm: "30px", md: "50px" }}
+                h={{ base: "20px", sm: "30px", md: "50px" }}
+                bg={secondaryTextColors}
+                borderRadius="md"
+                display="flex"
+                alignItems="center"
+                justifyContent="center"
+                color="white"
+                fontWeight="bold"
+                fontSize={{ base: "xs", sm: "sm", md: "md" }}
+              >
+                {index + 1}
+              </Text>
+            </Box>
+          ))}
+      </Flex>
+
+      <Box p={4}>
+        <ScrollToTopButton />
       </Box>
+      {/* <Footer  /> */}
     </Box>
   );
 }

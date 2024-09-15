@@ -1,44 +1,43 @@
-const FullBackgroundColors = {
-  lightMode: "rgb(255,250,250)",
-  darkMode: "rgb(41,41,41)",
-} as const;
+const enum FullBackgrundColors {
+  lightMode = "rgb(255,250,250)",
+  darkMode = "rgb(41,41,41)",
+}
 
-const PrimaryTextColors = {
-  lightMode: "rgb(0, 41, 102)",
-  darkMode: "rgb(168,232,222)",
-} as const;
+const enum PrimaryTextColors {
+  lightMode = "rgb(0, 41, 102)",
+  darkMode = "rgb(168,232,222)",
+}
+const enum SecondaryTextColors {
+  lightMode = "rgb(0, 0, 0)",
+  darkMode = "rgb(168, 232, 222)",
+}
 
-const SecondaryTextColors = {
-  lightMode: "rgb(0, 0, 0)",
-  darkMode: "rgb(168, 232, 222)",
-} as const;
+const enum ActiveColors {
+  lightMode = "rgb(62,113,243)",
+  darkMode = "rgb(253,253,255)",
+}
 
-const ActiveColors = {
-  lightMode: "rgb(62,113,243)",
-  darkMode: "rgb(253,253,255)",
-} as const;
+const enum ColorMode {
+  light = "light",
+  dark = "dark",
+}
 
-const ColorMode = {
-  light: "light",
-  dark: "dark",
-} as const;
+const enum LogoColor {
+  lightMode = "rgb(7,8,30)",
+  darkMode = "rgb(168,232,222)",
+}
+const enum HeaderColor {
+  lightMode = "rgb(69, 41, 102)",
+  darkMode = "rgb(168, 232, 222)"
+}
 
-const LogoColor = {
-  lightMode: "rgb(7,8,30)",
-  darkMode: "rgb(168,232,222)",
-} as const;
-
-const HeaderColor = {
-  lightMode: "rgb(69, 41, 102)",
-  darkMode: "rgb(168, 232, 222)",
-} as const;
 
 export {
-  FullBackgroundColors,
+  FullBackgrundColors,
   PrimaryTextColors,
   SecondaryTextColors,
   ActiveColors,
   ColorMode,
   LogoColor,
-  HeaderColor,
+  HeaderColor
 };
