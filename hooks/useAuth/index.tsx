@@ -2,16 +2,25 @@
 import { getMe } from "@/service/api/userService";
 import { useEffect, useState } from "react";
 
-function UseAuth() {
-  const [user, setUser] = useState();
+function useAuth() {
+  const [user, setUser] = useState(null);
+  const [pending, setPending] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getMe().then((me) => {
-      setUser(me.data);
-    });
+    getMe()
+      .then((me) => {
+        setUser(me.data);
+      })
+      .catch((error) => {
+        setError(error);
+      })
+      .finally(() => {
+        setPending(false);
+      });
   }, []);
 
-  return { user };
+  return { user, pending, error };
 }
 
-export default UseAuth;
+export default useAuth;

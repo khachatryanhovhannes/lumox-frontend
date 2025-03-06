@@ -25,12 +25,14 @@ async function userRegistrationWithUsernamePassword({
   firstname,
   lastname,
 }: userRegistrationParams) {
-  return await instance.post("/auth/signup", {
+  const data = await instance.post("/auth/signup", {
     email,
     password,
     firstname,
     lastname,
   });
+
+  return data.data;
 }
 
 async function getMe() {

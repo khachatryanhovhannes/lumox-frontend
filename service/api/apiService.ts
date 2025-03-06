@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/constants";
+// import { BASE_URL } from "@/constants";
 import UseCookies from "@/hooks/useCookies";
 import axios from "axios";
 
